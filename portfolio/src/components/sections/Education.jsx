@@ -102,7 +102,7 @@ const Education = () => {
                                 "Tailwind CSS",
                                 "PostgreSQL",
                                 "Git",
-                                "Trello",
+                                "Vercel",
                             ].map((item) => (
                                 <span
                                     key={item}
