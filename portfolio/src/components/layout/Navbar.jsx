@@ -25,6 +25,7 @@ const Navbar = () => {
                         href="#home"
                         className="flex items-center gap-2 text-2xl font-bold text-white"
                     >
+
                         <span className="text-violet-500">&lt;/&gt;</span>
                         <span>CodeCraft</span>
                     </a>

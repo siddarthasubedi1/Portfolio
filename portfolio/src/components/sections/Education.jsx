@@ -5,7 +5,7 @@ const Education = () => {
     return (
         <section
             id="education"
-            className="bg-[#070B1A] py-24 text-white"
+            className="scroll-mt-32 bg-[#070B1A] py-24 text-white"
         >
             <div className="mx-auto max-w-7xl px-6">
 
@@ -78,7 +78,7 @@ const Education = () => {
 
                             <div className="flex items-center gap-3 text-slate-400">
                                 <MapPin size={18} />
-                                <span>Kathmandu, Nepal</span>
+                                <span>Pokhara, Nepal</span>
                             </div>
 
                         </div>
@@ -102,6 +102,7 @@ const Education = () => {
                                 "Tailwind CSS",
                                 "PostgreSQL",
                                 "Git",
+                                "Trello",
                             ].map((item) => (
                                 <span
                                     key={item}

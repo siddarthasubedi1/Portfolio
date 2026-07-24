@@ -51,7 +51,7 @@ const WhyHireMe = () => {
     return (
         <section
             id="why-hire-me"
-            className="bg-[#070B1A] py-24 text-white"
+            className="scroll-mt-32 bg-[#070B1A] py-24 text-white"
         >
             <div className="mx-auto max-w-7xl px-6">
 

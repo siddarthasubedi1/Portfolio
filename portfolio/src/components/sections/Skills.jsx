@@ -19,7 +19,7 @@ const skills = [
     {
         icon: <FaReact size={24} className="text-cyan-400" />,
         name: "React",
-        level: 85,
+        level: 50,
     },
     {
         icon: <SiDjango size={24} className="text-green-500" />,
@@ -39,12 +39,12 @@ const skills = [
     {
         icon: <SiJavascript size={24} className="text-yellow-300" />,
         name: "JavaScript",
-        level: 80,
+        level: 60,
     },
     {
         icon: <SiTailwindcss size={24} className="text-sky-400" />,
         name: "Tailwind CSS",
-        level: 85,
+        level: 70,
     },
     {
         icon: <FaHtml5 size={24} className="text-orange-500" />,
@@ -72,7 +72,7 @@ const Skills = () => {
     return (
         <section
             id="skills"
-            className="bg-[#070B1A] py-24 text-white"
+            className="scroll-mt-32 bg-[#070B1A] py-24 text-white"
         >
             <div className="mx-auto max-w-7xl px-6">
 

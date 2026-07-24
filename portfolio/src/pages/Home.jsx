@@ -10,7 +10,7 @@ import About from "../components/sections/About";
 import Education from "../components/sections/Education";
 import Certificates from "../components/sections/Certificates";
 import Contact from "../components/sections/Contact";
-
+import Skills from "../components/sections/Skills"
 
 function Home() {
     return (
@@ -21,18 +21,19 @@ function Home() {
 
             <main>
                 <Hero />
+                <About />
+                <Skills />
 
                 <Projects />
-
-
-
-                <WhyHireMe />
-
-                <About />
 
                 <Education />
 
                 <Certificates />
+
+                <WhyHireMe />
+
+
+
 
                 <Contact />
 

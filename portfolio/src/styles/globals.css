@@ -1,5 +1,6 @@
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 120px;
 }
 
 body {
@@ -7,7 +8,7 @@ body {
 }
 
 ::selection {
-    background-color: #7c3aed;
+    background: #7c3aed;
     color: white;
 }
 
@@ -20,10 +21,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #7c3aed;
+    background: #7c3aed6e;
     border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #8b5cf6;
+    background: #8a5cf67b;
 }

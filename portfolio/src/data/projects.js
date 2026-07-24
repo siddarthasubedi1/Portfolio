@@ -75,6 +75,48 @@ const projects = [
             "Responsive Layout",
         ],
     },
+    {
+        id: 3,
+        slug: "jwt-authentication",
+
+        featured: true,
+
+        title: "Jwt Authentication Django Rest Framework",
+
+        shortDescription:
+            "JWT authentication implementation for Django REST Framework.",
+
+        description:
+            "A secure JWT authentication system built with Django REST Framework, including user registration, login, and token management.",
+
+        github: "https://github.com/siddarthasubedi1",
+
+        demo: "",
+
+        image:
+            "/images/jwt-authentication.png",
+
+        technologies: [
+            "Python",
+            "Django-REST-Framework",
+            "PostgreSQL",
+            "Postman",
+            "JWT",
+
+
+        ],
+
+        features: [
+            "Register User",
+            "Login User",
+            "User Listings",
+            "Password change",
+            "Reset Password",
+            "JWT Token",
+            "Refresh Token",
+
+        ],
+    },
 ];
 
 export default projects;

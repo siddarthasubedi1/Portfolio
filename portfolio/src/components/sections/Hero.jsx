@@ -20,7 +20,8 @@ const Hero = () => {
     return (
         <section
             id="home"
-            className="relative overflow-hidden bg-[#070B1A] text-white"
+            className="scroll-mt-32 bg-[#070B1A] py-24 text-white"
+
         >
             {/* Background Blur */}
             <div className="absolute -left-24 top-20 h-96 w-96 rounded-full bg-violet-600/20 blur-[140px]" />
@@ -153,11 +154,11 @@ const Hero = () => {
                         }}
                         src="/profile.png"
                         alt="Siddartha Raj Subedi"
-                        className="relative z-10 w-[340px] object-contain lg:w-[470px]"
+                        className="relative z-10 w-[340px] object-contain lg:w-[570px]"
                     />
 
                     {/* Floating Card */}
-                    <motion.div
+                    {/* <motion.div
                         animate={{
                             y: [0, -12, 0],
                         }}
@@ -191,7 +192,7 @@ const Hero = () => {
   passion: "Building"
 };`}
                         </pre>
-                    </motion.div>
+                    </motion.div> */}
 
                     {/* Dots */}
                     <div className="absolute -right-6 top-0 grid grid-cols-4 gap-2 opacity-40">
