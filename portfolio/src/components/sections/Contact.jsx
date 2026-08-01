@@ -3,175 +3,157 @@ import {
     Mail,
     Phone,
     MapPin,
-    Download,
     Send,
+
 } from "lucide-react";
 
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+
+import profile from "../../constants/profile";
 
 const Contact = () => {
     return (
         <section
             id="contact"
-            className="scroll-mt-32 bg-[#070B1A] py-24 text-white"
+            className="bg-white py-28"
         >
             <div className="mx-auto max-w-7xl px-6">
 
                 {/* Heading */}
+
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7 }}
                     viewport={{ once: true }}
-                    className="mb-16 text-center"
+                    className="text-center"
                 >
-                    <span className="rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-sm font-semibold uppercase tracking-[3px] text-violet-400">
-                        Contact
-                    </span>
+                    <p className="font-bold uppercase tracking-[6px] text-indigo-600">
+                        CONTACT
+                    </p>
 
-                    <h2 className="mt-6 text-4xl font-bold lg:text-5xl">
+                    <h2 className="mt-6 text-5xl font-extrabold text-slate-900 md:text-6xl">
                         Let's Work Together
                     </h2>
 
-                    <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
-                        I'm currently looking for internship opportunities where I
-                        can contribute, learn from experienced developers and grow
-                        as a Full Stack Developer.
+                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-600">
+                        I'm currently looking for internship opportunities and exciting
+                        projects. Feel free to contact me anytime.
                     </p>
                 </motion.div>
 
-                <div className="grid gap-8 lg:grid-cols-2">
+                <div className="mt-20 grid gap-12 lg:grid-cols-2">
 
-                    {/* Contact Info */}
+                    {/* Left */}
+
                     <motion.div
                         initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.7 }}
                         viewport={{ once: true }}
-                        className="rounded-3xl border border-slate-800 bg-[#0B1220] p-8"
+                        className="space-y-8"
                     >
-                        <h3 className="mb-8 text-2xl font-bold">
-                            Contact Information
-                        </h3>
-
-                        <div className="space-y-8">
-
-                            <div className="flex items-start gap-4">
-                                <div className="rounded-xl bg-violet-500/10 p-3 text-violet-400">
-                                    <Mail size={22} />
-                                </div>
-
-                                <div>
-                                    <h4 className="font-semibold">
-                                        Email
-                                    </h4>
-
-                                    <a
-                                        href="mailto:siddarthasubedi123@gmail.com"
-                                        className="mt-2 block text-slate-400 hover:text-violet-400"
-                                    >
-                                        siddarthasubedi123@gmail.com
-                                    </a>
-                                </div>
+                        <div className="flex items-center gap-5">
+                            <Mail className="text-indigo-600" size={30} />
+                            <div>
+                                <h3 className="font-bold text-xl">Email</h3>
+                                <a
+                                    href={`mailto:${profile.email}`}
+                                    className="text-slate-600 hover:text-indigo-600"
+                                >
+                                    {profile.email}
+                                </a>
                             </div>
-
-                            <div className="flex items-start gap-4">
-                                <div className="rounded-xl bg-violet-500/10 p-3 text-violet-400">
-                                    <Phone size={22} />
-                                </div>
-
-                                <div>
-                                    <h4 className="font-semibold">
-                                        Phone
-                                    </h4>
-
-                                    <p className="mt-2 text-slate-400">
-                                        +977-9826606151
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-4">
-                                <div className="rounded-xl bg-violet-500/10 p-3 text-violet-400">
-                                    <MapPin size={22} />
-                                </div>
-
-                                <div>
-                                    <h4 className="font-semibold">
-                                        Location
-                                    </h4>
-
-                                    <p className="mt-2 text-slate-400">
-                                        Pokhara, Nepal
-                                    </p>
-                                </div>
-                            </div>
-
                         </div>
 
+                        <div className="flex items-center gap-5">
+                            <Phone className="text-indigo-600" size={30} />
+                            <div>
+                                <h3 className="font-bold text-xl">Phone</h3>
+                                <a
+                                    href={`tel:${profile.phone}`}
+                                    className="text-slate-600 hover:text-indigo-600"
+                                >
+                                    {profile.phone}
+                                </a>
+                            </div>
+                        </div>
+
+                        <div className="flex items-center gap-5">
+                            <MapPin className="text-indigo-600" size={30} />
+                            <div>
+                                <h3 className="font-bold text-xl">Location</h3>
+                                <p className="text-slate-600">{profile.location}</p>
+                            </div>
+                        </div>
+
+                        <div className="flex gap-5 pt-6">
+                            <a
+                                href={profile.github}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="rounded-xl border border-slate-200 p-4 transition hover:bg-indigo-600 hover:text-white"
+                            >
+                                <FaGithub />
+                            </a>
+
+                            <a
+                                href={profile.linkedin}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="rounded-xl border border-slate-200 p-4 transition hover:bg-indigo-600 hover:text-white"
+                            >
+                                <FaLinkedin />
+                            </a>
+                        </div>
                     </motion.div>
 
-                    {/* Quick Actions */}
-                    <motion.div
+                    {/* Right */}
+
+                    <motion.form
                         initial={{ opacity: 0, x: 40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.7 }}
                         viewport={{ once: true }}
-                        className="rounded-3xl border border-slate-800 bg-[#0B1220] p-8"
+                        action={`mailto:${profile.email}`}
+                        method="POST"
+                        encType="text/plain"
+                        className="space-y-6 rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-lg"
                     >
-                        <h3 className="mb-8 text-2xl font-bold">
-                            Quick Actions
-                        </h3>
+                        <input
+                            type="text"
+                            placeholder="Your Name"
+                            className="w-full rounded-xl border border-slate-300 p-4 outline-none focus:border-indigo-600"
+                        />
 
-                        <div className="space-y-5">
+                        <input
+                            type="email"
+                            placeholder="Your Email"
+                            className="w-full rounded-xl border border-slate-300 p-4 outline-none focus:border-indigo-600"
+                        />
 
-                            <a
-                                href="/resume.pdf"
-                                download
-                                className="flex items-center justify-center gap-3 rounded-xl bg-violet-600 px-6 py-4 font-semibold transition hover:bg-violet-700"
-                            >
-                                <Download size={20} />
-                                Download Resume
-                            </a>
+                        <input
+                            type="text"
+                            placeholder="Subject"
+                            className="w-full rounded-xl border border-slate-300 p-4 outline-none focus:border-indigo-600"
+                        />
 
-                            <a
-                                href="mailto:siddarthasubedi123@gmail.com"
-                                className="flex items-center justify-center gap-3 rounded-xl border border-slate-700 px-6 py-4 transition hover:border-violet-500 hover:bg-slate-900"
-                            >
-                                <Send size={20} />
-                                Send Email
-                            </a>
+                        <textarea
+                            rows="6"
+                            placeholder="Your Message"
+                            className="w-full rounded-xl border border-slate-300 p-4 outline-none focus:border-indigo-600"
+                        ></textarea>
 
-                            <a
-                                href="https://github.com/siddarthasubedi1"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="flex items-center justify-center gap-3 rounded-xl border border-slate-700 px-6 py-4 transition hover:border-violet-500 hover:bg-slate-900"
-                            >
-                                <FaGithub size={20} />
-                                GitHub Profile
-                            </a>
-
-                        </div>
-
-                        <div className="mt-10 rounded-2xl border border-violet-500/20 bg-violet-500/10 p-6">
-
-                            <h4 className="text-xl font-semibold text-violet-400">
-                                Open to Opportunities
-                            </h4>
-
-                            <p className="mt-4 leading-8 text-slate-400">
-                                I'm actively seeking internships and junior developer
-                                opportunities where I can contribute, continue learning,
-                                and grow as a Full Stack Developer.
-                            </p>
-
-                        </div>
-
-                    </motion.div>
+                        <button
+                            type="submit"
+                            className="inline-flex items-center gap-3 rounded-full bg-indigo-600 px-8 py-4 font-semibold text-white transition hover:scale-105"
+                        >
+                            Send Message
+                            <Send size={18} />
+                        </button>
+                    </motion.form>
 
                 </div>
-
             </div>
         </section>
     );

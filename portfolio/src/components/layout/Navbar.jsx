@@ -1,120 +1,130 @@
-import { useState } from "react";
-import { Menu, X, Moon, Sun, ArrowUpRight } from "lucide-react";
-import { useTheme } from "../../context/ThemeContext";
+import { useEffect, useState } from "react";
+import { Menu, X, Download } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
+import profile from "../../constants/profile";
 
 const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { title: "Home", href: "#hero" },
+    { title: "Featured", href: "#featured-project" },
+    { title: "Projects", href: "#projects" },
+    { title: "Skills", href: "#skills" },
+    { title: "Journey", href: "#journey" },
+    { title: "Certificates", href: "#certificates" },
+    { title: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
-    const { theme, toggleTheme } = useTheme();
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 40);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
-        <header className="fixed left-0 top-0 z-50 w-full">
-            <div className="mx-auto mt-5 max-w-7xl px-4">
-                <nav className="flex h-20 items-center justify-between rounded-2xl border border-white/10 bg-[#0B1220]/80 px-6 backdrop-blur-xl shadow-2xl">
-
+        <>
+            <motion.header
+                initial={{ y: -80 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5 }}
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+                    ? "bg-white/90 backdrop-blur-xl shadow-lg border-b border-slate-200"
+                    : "bg-transparent"
+                    }`}
+            >
+                <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
                     {/* Logo */}
+
                     <a
-                        href="#home"
-                        className="flex items-center gap-2 text-2xl font-bold text-white"
+                        href="#hero"
+                        className="text-2xl font-black tracking-tight text-slate-900"
                     >
-
-                        <span className="text-violet-500">&lt;/&gt;</span>
-                        <span>CodeCraft</span>
+                        Siddartha<span className="text-indigo-600">.</span>
                     </a>
-
+                    <ThemeToggle />
                     {/* Desktop Navigation */}
-                    <div className="hidden items-center gap-8 lg:flex">
+
+                    <nav className="hidden items-center gap-8 lg:flex">
                         {navLinks.map((item) => (
                             <a
-                                key={item.name}
+                                key={item.title}
                                 href={item.href}
-                                className="text-sm font-medium text-slate-300 transition duration-300 hover:text-violet-400"
+                                className="font-medium text-slate-600 transition hover:text-indigo-600"
                             >
-                                {item.name}
+                                {item.title}
                             </a>
                         ))}
-                    </div>
+                    </nav>
 
-                    {/* Right Side */}
-                    <div className="hidden items-center gap-4 lg:flex">
-                        <button
-                            onClick={toggleTheme}
-                            className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-700 bg-slate-900 text-slate-300 transition hover:border-violet-500 hover:text-violet-400"
-                        >
-                            {theme === "dark" ? (
-                                <Sun size={20} />
-                            ) : (
-                                <Moon size={20} />
-                            )}
-                        </button>
+                    {/* Resume */}
 
+                    <div className="hidden lg:block">
                         <a
-                            href="#contact"
-                            className="flex items-center gap-2 rounded-xl bg-violet-600 px-5 py-3 font-medium text-white transition hover:bg-violet-700"
+                            href={profile.resume}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-3 font-semibold text-white transition hover:scale-105 hover:bg-indigo-700"
                         >
-                            Hire Me
-                            <ArrowUpRight size={18} />
+                            <Download size={18} />
+                            Resume
                         </a>
                     </div>
 
-                    {/* Mobile Buttons */}
-                    <div className="flex items-center gap-3 lg:hidden">
-                        <button
-                            onClick={toggleTheme}
-                            className="rounded-lg border border-slate-700 p-2 text-slate-300"
-                        >
-                            {theme === "dark" ? (
-                                <Sun size={20} />
-                            ) : (
-                                <Moon size={20} />
-                            )}
-                        </button>
+                    {/* Mobile Button */}
 
-                        <button
-                            onClick={() => setOpen(!open)}
-                            className="rounded-lg border border-slate-700 p-2 text-slate-300"
-                        >
-                            {open ? <X size={22} /> : <Menu size={22} />}
-                        </button>
-                    </div>
-                </nav>
+                    <button
+                        onClick={() => setOpen(!open)}
+                        className="rounded-lg p-2 lg:hidden"
+                    >
+                        {open ? <X size={28} /> : <Menu size={28} />}
+                    </button>
+                </div>
+            </motion.header>
 
-                {/* Mobile Menu */}
+            {/* Mobile Menu */}
+
+            <AnimatePresence>
                 {open && (
-                    <div className="mt-3 rounded-2xl border border-white/10 bg-[#0B1220]/95 p-6 backdrop-blur-xl lg:hidden">
-                        <div className="flex flex-col gap-5">
+                    <motion.div
+                        initial={{ opacity: 0, x: "100%" }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: "100%" }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed right-0 top-0 z-40 h-screen w-72 bg-white p-8 shadow-2xl lg:hidden"
+                    >
+                        <div className="mt-20 flex flex-col gap-6">
                             {navLinks.map((item) => (
                                 <a
-                                    key={item.name}
+                                    key={item.title}
                                     href={item.href}
                                     onClick={() => setOpen(false)}
-                                    className="text-slate-300 transition hover:text-violet-400"
+                                    className="text-lg font-semibold text-slate-700 transition hover:text-indigo-600"
                                 >
-                                    {item.name}
+                                    {item.title}
                                 </a>
                             ))}
 
                             <a
-                                href="/resume.pdf"
-                                download
-                                onClick={() => setOpen(false)}
-                                className="rounded-xl bg-violet-600 px-5 py-3 text-center font-semibold text-white transition hover:bg-violet-700"
+                                href={profile.resume}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-3 font-semibold text-white transition hover:scale-105 hover:bg-indigo-700"
                             >
-                                Download Resume
+                                <Download size={18} />
+                                Resume
                             </a>
                         </div>
-                    </div>
+                    </motion.div>
                 )}
-            </div>
-        </header>
+            </AnimatePresence>
+        </>
     );
 };
 

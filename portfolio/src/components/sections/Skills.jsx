@@ -1,70 +1,93 @@
 import { motion } from "framer-motion";
+
 import {
+    FaHtml5,
+    FaCss3Alt,
     FaReact,
     FaPython,
     FaGitAlt,
-    FaHtml5,
-    FaCss3Alt,
-    FaNodeJs,
 } from "react-icons/fa";
 
 import {
     SiJavascript,
-    SiTailwindcss,
-    SiPostgresql,
     SiDjango,
+    SiPostgresql,
+    SiTailwindcss,
+    SiPostman,
+    SiGithub,
 } from "react-icons/si";
 
-const skills = [
+const categories = [
     {
-        icon: <FaReact size={24} className="text-cyan-400" />,
-        name: "React",
-        level: 50,
+        title: "Frontend Development",
+        technologies: [
+            {
+                name: "HTML5",
+                icon: <FaHtml5 className="text-orange-500 text-4xl" />,
+            },
+            {
+                name: "CSS3",
+                icon: <FaCss3Alt className="text-blue-500 text-4xl" />,
+            },
+            {
+                name: "JavaScript",
+                icon: <SiJavascript className="text-yellow-400 text-4xl" />,
+            },
+            {
+                name: "React",
+                icon: <FaReact className="text-cyan-500 text-4xl" />,
+            },
+            {
+                name: "Tailwind CSS",
+                icon: <SiTailwindcss className="text-sky-500 text-4xl" />,
+            },
+        ],
     },
+
     {
-        icon: <SiDjango size={24} className="text-green-500" />,
-        name: "Django",
-        level: 85,
+        title: "Backend Development",
+        technologies: [
+            {
+                name: "Python",
+                icon: <FaPython className="text-yellow-500 text-4xl" />,
+            },
+            {
+                name: "Django",
+                icon: <SiDjango className="text-green-700 text-4xl" />,
+            },
+            {
+                name: "Django REST Framework",
+                icon: <SiDjango className="text-red-600 text-4xl" />,
+            },
+        ],
     },
+
     {
-        icon: <FaPython size={24} className="text-yellow-400" />,
-        name: "Python",
-        level: 90,
+        title: "Database",
+        technologies: [
+            {
+                name: "PostgreSQL",
+                icon: <SiPostgresql className="text-blue-600 text-4xl" />,
+            },
+        ],
     },
+
     {
-        icon: <SiPostgresql size={24} className="text-blue-400" />,
-        name: "PostgreSQL",
-        level: 80,
-    },
-    {
-        icon: <SiJavascript size={24} className="text-yellow-300" />,
-        name: "JavaScript",
-        level: 60,
-    },
-    {
-        icon: <SiTailwindcss size={24} className="text-sky-400" />,
-        name: "Tailwind CSS",
-        level: 70,
-    },
-    {
-        icon: <FaHtml5 size={24} className="text-orange-500" />,
-        name: "HTML",
-        level: 95,
-    },
-    {
-        icon: <FaCss3Alt size={24} className="text-blue-500" />,
-        name: "CSS",
-        level: 90,
-    },
-    {
-        icon: <FaGitAlt size={24} className="text-orange-500" />,
-        name: "Git",
-        level: 80,
-    },
-    {
-        icon: <FaNodeJs size={24} className="text-green-400" />,
-        name: "Node.js",
-        level: 60,
+        title: "Tools & Technologies",
+        technologies: [
+            {
+                name: "Git",
+                icon: <FaGitAlt className="text-orange-500 text-4xl" />,
+            },
+            {
+                name: "GitHub",
+                icon: <SiGithub className="text-slate-800 text-4xl" />,
+            },
+            {
+                name: "Postman",
+                icon: <SiPostman className="text-orange-600 text-4xl" />,
+            },
+        ],
     },
 ];
 
@@ -72,94 +95,120 @@ const Skills = () => {
     return (
         <section
             id="skills"
-            className="scroll-mt-32 bg-[#070B1A] py-24 text-white"
+            className="bg-gradient-to-b from-blue-50 to-white py-28"
         >
             <div className="mx-auto max-w-7xl px-6">
+                {/* TITLE */}
 
-                {/* Heading */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }}
-                    viewport={{ once: true }}
-                    className="mb-16 text-center"
+                    initial={{
+                        opacity: 0,
+                        y: 40,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    transition={{
+                        duration: 0.8,
+                    }}
+                    viewport={{
+                        once: true,
+                    }}
+                    className="text-center"
                 >
-                    <span className="rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm font-semibold uppercase tracking-[3px] text-violet-400">
-                        My Skills
-                    </span>
+                    <p className="text-sm font-bold uppercase tracking-[6px] text-violet-600">
+                        SKILLS
+                    </p>
 
-                    <h2 className="mt-6 text-4xl font-bold lg:text-5xl">
-                        Technologies I Use
+                    <h2 className="mt-5 text-4xl font-extrabold text-slate-900 md:text-6xl">
+                        Technologies I Work With
                     </h2>
 
-                    <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-400">
-                        These are the technologies I use most often while building
-                        full stack web applications and personal projects.
+                    <p className="mx-auto mt-8 max-w-4xl text-lg leading-9 text-slate-600">
+                        I enjoy building modern full stack web applications using
+                        technologies that prioritize scalability, maintainability and
+                        excellent user experiences.
                     </p>
                 </motion.div>
 
-                {/* Skills Grid */}
-                <div className="grid gap-8 md:grid-cols-2">
+                {/* SKILL CATEGORIES */}
 
-                    {skills.map((skill, index) => (
+                <div className="mt-20 space-y-10">
+                    {categories.map((category, index) => (
                         <motion.div
-                            key={skill.name}
+                            key={category.title}
                             initial={{
                                 opacity: 0,
-                                y: 30,
+                                y: 50,
                             }}
                             whileInView={{
                                 opacity: 1,
                                 y: 0,
                             }}
                             transition={{
-                                duration: 0.5,
-                                delay: index * 0.05,
+                                duration: 0.8,
+                                delay: index * 0.1,
                             }}
-                            viewport={{ once: true }}
-                            className="rounded-2xl border border-slate-800 bg-[#0B1220] p-6 transition hover:border-violet-500"
+                            viewport={{
+                                once: true,
+                            }}
+                            className="rounded-[40px] bg-white p-10 shadow-xl"
                         >
-                            <div className="mb-4 flex items-center justify-between">
+                            <h3 className="text-3xl font-bold text-slate-900">
+                                {category.title}
+                            </h3>
 
-                                <div className="flex items-center gap-3">
+                            <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+                                {category.technologies.map((tech) => (
+                                    <div
+                                        key={tech.name}
+                                        className="rounded-3xl bg-slate-50 p-8 text-center shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-xl"
+                                    >
+                                        <div className="flex justify-center">
+                                            {tech.icon}
+                                        </div>
 
-                                    {skill.icon}
-
-                                    <h3 className="text-lg font-semibold">
-                                        {skill.name}
-                                    </h3>
-
-                                </div>
-
-                                <span className="text-violet-400">
-                                    {skill.level}%
-                                </span>
-
+                                        <h4 className="mt-5 font-semibold text-slate-700">
+                                            {tech.name}
+                                        </h4>
+                                    </div>
+                                ))}
                             </div>
-
-                            <div className="h-3 overflow-hidden rounded-full bg-slate-800">
-
-                                <motion.div
-                                    initial={{
-                                        width: 0,
-                                    }}
-                                    whileInView={{
-                                        width: `${skill.level}%`,
-                                    }}
-                                    transition={{
-                                        duration: 1,
-                                    }}
-                                    viewport={{ once: true }}
-                                    className="h-full rounded-full bg-gradient-to-r from-violet-500 to-blue-500"
-                                />
-
-                            </div>
-
                         </motion.div>
                     ))}
-
                 </div>
 
+                {/* EXTRA INFORMATION */}
+
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                        y: 40,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    transition={{
+                        duration: 0.8,
+                    }}
+                    viewport={{
+                        once: true,
+                    }}
+                    className="mt-20 rounded-[40px] bg-violet-50 p-10 text-center"
+                >
+                    <h2 className="text-4xl font-bold text-slate-900">
+                        Always Learning
+                    </h2>
+
+                    <p className="mx-auto mt-8 max-w-4xl text-lg leading-9 text-slate-700">
+                        I believe that technology evolves every day. I continuously learn
+                        new concepts, improve my problem-solving abilities and explore
+                        modern software development practices to become a better Full Stack
+                        Developer.
+                    </p>
+                </motion.div>
             </div>
         </section>
     );

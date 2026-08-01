@@ -1,24 +1,21 @@
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronUp } from "lucide-react";
 
 const ScrollTop = () => {
-    const [show, setShow] = useState(false);
+    const [visible, setVisible] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            setShow(window.scrollY > 500);
+            setVisible(window.scrollY > 400);
         };
 
         window.addEventListener("scroll", handleScroll);
 
-        return () =>
-            window.removeEventListener(
-                "scroll",
-                handleScroll
-            );
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const scrollTop = () => {
+    const scrollToTop = () => {
         window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -26,16 +23,35 @@ const ScrollTop = () => {
     };
 
     return (
-        <button
-            onClick={scrollTop}
-            className={`fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-violet-600 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:bg-violet-700 ${show
-                ? "translate-y-0 opacity-100"
-                : "pointer-events-none translate-y-10 opacity-0"
-                }`}
-            aria-label="Scroll to top"
-        >
-            <ChevronUp size={24} />
-        </button>
+        <AnimatePresence>
+            {visible && (
+                <motion.button
+                    initial={{
+                        opacity: 0,
+                        scale: 0.5,
+                        y: 30,
+                    }}
+                    animate={{
+                        opacity: 1,
+                        scale: 1,
+                        y: 0,
+                    }}
+                    exit={{
+                        opacity: 0,
+                        scale: 0.5,
+                        y: 30,
+                    }}
+                    transition={{
+                        duration: 0.3,
+                    }}
+                    onClick={scrollToTop}
+                    className="fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-indigo-600 text-white shadow-xl transition hover:scale-110 hover:bg-indigo-700"
+                    aria-label="Scroll to top"
+                >
+                    <ChevronUp size={26} />
+                </motion.button>
+            )}
+        </AnimatePresence>
     );
 };
 

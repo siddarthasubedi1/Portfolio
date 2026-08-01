@@ -1,48 +1,69 @@
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
+
+import Hero from "../components/sections/Hero";
+import FeaturedProject from "../components/sections/FeaturedProject";
+import WhatIBuild from "../components/sections/WhatIBuild";
+import Projects from "../components/sections/Projects";
+import MyJourney from "../components/sections/MyJourney";
+import LetsBuildTogether from "../components/sections/LetsBuildTogether";
+import Contact from "../components/sections/Contact";
+
 import ScrollProgress from "../components/layout/ScrollProgress";
 import ScrollTop from "../components/layout/ScrollTop";
 
-import Hero from "../components/sections/Hero";
-import Projects from "../components/sections/Projects";
-import WhyHireMe from "../components/sections/WhyHireMe";
-import About from "../components/sections/About";
-import Education from "../components/sections/Education";
-import Certificates from "../components/sections/Certificates";
-import Contact from "../components/sections/Contact";
-import Skills from "../components/sections/Skills"
-
-function Home() {
+const Home = () => {
     return (
         <>
+            {/* Progress Bar */}
+
             <ScrollProgress />
+
+            {/* Navigation */}
 
             <Navbar />
 
-            <main>
+            {/* Main */}
+
+            <main className="overflow-x-hidden">
+                {/* Hero */}
+
                 <Hero />
-                <About />
-                <Skills />
+
+                {/* Featured Project */}
+
+                <FeaturedProject />
+
+                {/* What I Build */}
+
+                <WhatIBuild />
+
+                {/* Other Projects */}
 
                 <Projects />
 
-                <Education />
+                {/* My Journey */}
 
-                <Certificates />
+                <MyJourney />
 
-                <WhyHireMe />
+                {/* Internship Opportunities */}
 
+                <LetsBuildTogether />
 
-
+                {/* Contact */}
 
                 <Contact />
-
-                <ScrollTop />
             </main>
+
+            {/* Scroll To Top */}
+
+            <ScrollTop />
+
+            {/* Footer */}
 
             <Footer />
         </>
     );
-}
+};
 
 export default Home;
