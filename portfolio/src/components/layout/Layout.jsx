@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import ScrollProgress from "./ScrollProgress";
 import ScrollTop from "./ScrollTop";
 
-const NAV_OFFSET = 96; // navbar height + small gap (h-20 = 80px)
+const NAV_OFFSET = 96;
 
 const Layout = () => {
     const location = useLocation();
@@ -21,7 +21,6 @@ const Layout = () => {
         window.scrollTo({ top, behavior: "smooth" });
     };
 
-    // 1) Handle refresh/open like /#contact AFTER components render
     useEffect(() => {
         if (!location.hash) return;
 
@@ -36,7 +35,6 @@ const Layout = () => {
         };
     }, [location.hash]);
 
-    // 2) Handle clicking any <a href="#..."> without editing Navbar.jsx
     useEffect(() => {
         const onClick = (e) => {
             const a = e.target.closest('a[href^="#"]');
@@ -49,11 +47,7 @@ const Layout = () => {
             if (!target) return;
 
             e.preventDefault();
-
-            // update URL hash
             window.history.pushState(null, "", hash);
-
-            // scroll with offset
             scrollToHash(hash);
         };
 
@@ -66,8 +60,7 @@ const Layout = () => {
             <ScrollProgress />
             <Navbar />
 
-            {/* Push content below fixed navbar */}
-            <main className="min-h-screen pt-20">
+            <main className="min-h-screen pt-20 overflow-x-hidden">
                 <Outlet />
             </main>
 
@@ -78,6 +71,3 @@ const Layout = () => {
 };
 
 export default Layout;
-
-
-

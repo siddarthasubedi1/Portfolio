@@ -57,7 +57,7 @@ const categories = [
 
 const Skills = () => {
     return (
-        <section id="skills" className="section section-gradient">
+        <section id="skills" className="section bg-white">
             <div className="container-custom">
 
                 <motion.div
@@ -66,16 +66,14 @@ const Skills = () => {
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                     className="text-center"
-                >
-                    <p className="text-sm font-bold uppercase tracking-[6px] text-indigo-600">
+                ><p className="text-sm font-bold uppercase tracking-[6px] text-indigo-600">
                         SKILLS
                     </p>
 
-                    <h2 className="heading-lg mt-5">
+                    <h2 className="heading-lg mt-6">
                         Technologies I Work With
                     </h2>
-
-                    <p className="text-muted mx-auto mt-8 max-w-3xl text-lg">
+                    <p className="mt-6 text-body max-w-3xl mx-auto">
                         I build scalable and maintainable full stack applications using modern technologies.
                     </p>
                 </motion.div>
@@ -93,11 +91,11 @@ const Skills = () => {
                                 {category.title}
                             </h3>
 
-                            <div className="mt-8 mb-5 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center">
+                            <div className="mt-8 mb-6 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                                 {category.technologies.map((tech) => (
                                     <div
                                         key={tech.name}
-                                        className="group rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-indigo-200"
+                                        className="group rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-indigo-200"
                                     >
                                         <div className="flex justify-center transition-transform duration-300 group-hover:scale-110">
                                             {tech.icon}

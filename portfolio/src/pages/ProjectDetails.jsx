@@ -2,7 +2,6 @@ import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
-
 import { projects } from "../constants/projectData";
 
 const ProjectDetails = () => {
@@ -11,16 +10,13 @@ const ProjectDetails = () => {
 
     if (!project) {
         return (
-            <section className="min-h-[60vh] bg-gradient-to-b from-white to-slate-50 py-28">
-                <div className="mx-auto w-full max-w-4xl px-6 text-center">
-                    <h1 className="text-4xl font-black text-slate-900">Project not found</h1>
-                    <p className="mt-4 text-slate-600">
+            <section className="section bg-white">
+                <div className="container-custom text-center">
+                    <h1 className="heading-lg">Project not found</h1>
+                    <p className="mt-4 text-body">
                         The project you’re looking for doesn’t exist.
                     </p>
-                    <Link
-                        to="/"
-                        className="mt-8 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 font-semibold text-white"
-                    >
+                    <Link to="/" className="btn-primary mt-8 inline-flex">
                         <ArrowLeft size={18} />
                         Back to Home
                     </Link>
@@ -30,15 +26,13 @@ const ProjectDetails = () => {
     }
 
     return (
-        <section className="bg-gradient-to-b from-white to-slate-50 py-28">
-            <div className="mx-auto w-full max-w-7xl px-6">
-                {/* Top bar */}
+        <section className="section bg-white">
+            <div className="container-custom">
+
+                {/* Top Bar */}
                 <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
-                    <Link
-                        to="/"
-                        className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-800 transition hover:border-slate-900"
-                    >
-                        <ArrowLeft size={18} />
+                    <Link to="/" className="btn-outline">
+                        <ArrowLeft size={16} />
                         Back
                     </Link>
 
@@ -48,9 +42,9 @@ const ProjectDetails = () => {
                                 href={project.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-3 font-semibold text-white transition hover:-translate-y-0.5"
+                                className="btn-primary"
                             >
-                                <FaGithub size={18} />
+                                <FaGithub size={16} />
                                 GitHub
                             </a>
                         )}
@@ -60,9 +54,9 @@ const ProjectDetails = () => {
                                 href={project.demo}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-indigo-700"
+                                className="btn-primary"
                             >
-                                <ExternalLink size={18} />
+                                <ExternalLink size={16} />
                                 Live Demo
                             </a>
                         )}
@@ -71,92 +65,86 @@ const ProjectDetails = () => {
 
                 {/* Title */}
                 <motion.div
-                    initial={{ opacity: 0, y: 18 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.45 }}
-                    className="mx-auto max-w-4xl text-center"
+                    transition={{ duration: 0.5 }}
+                    className="mx-auto max-w-3xl text-center"
                 >
-                    <p className="font-bold uppercase tracking-[6px] text-indigo-600">
+                    <p className="text-sm font-bold uppercase tracking-[6px] text-indigo-600">
                         PROJECT DETAILS
                     </p>
-                    <h1 className="mt-5 text-5xl font-black text-slate-900 md:text-6xl">
+
+                    <h1 className="mt-5 text-4xl md:text-6xl font-black tracking-tight">
                         {project.title}
                     </h1>
-                    <p className="mt-6 text-lg leading-9 text-slate-600">
+
+                    <p className="mt-6 text-body max-w-3xl mx-auto">
                         {project.description}
                     </p>
                 </motion.div>
 
-                {/* Main layout */}
-                <div className="mt-14 grid items-start gap-10 lg:grid-cols-2">
-                    {/* LEFT: Image + screenshots */}
+                {/* Layout */}
+                <div className="mt-16 grid gap-12 lg:grid-cols-2">
+
+                    {/* Left */}
                     <div className="space-y-6">
-                        {/* IMPORTANT: use project.image (NOT cover) */}
                         <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg">
-                            <div className="aspect-[16/9] w-full bg-slate-100">
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="block h-full w-full object-cover"
-                                    loading="lazy"
-                                />
-                            </div>
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                className="w-full object-cover"
+                            />
                         </div>
 
                         {project.screenshots?.length > 0 && (
                             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                                {project.screenshots.slice(0, 6).map((shot, idx) => (
+                                {project.screenshots.map((shot, i) => (
                                     <div
-                                        key={idx}
+                                        key={i}
                                         className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
                                     >
-                                        <div className="aspect-[16/10] w-full bg-slate-100">
-                                            <img
-                                                src={shot}
-                                                alt={`${project.title} screenshot ${idx + 1}`}
-                                                className="block h-full w-full object-cover"
-                                                loading="lazy"
-                                            />
-                                        </div>
+                                        <img
+                                            src={shot}
+                                            alt={`Screenshot ${i + 1}`}
+                                            className="w-full object-cover"
+                                        />
                                     </div>
                                 ))}
                             </div>
                         )}
                     </div>
 
-                    {/* RIGHT: Problem / Solution / Features / Tech */}
+                    {/* Right */}
                     <div className="space-y-6">
-                        {(project.problem || project.solution) && (
-                            <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-lg">
-                                {project.problem && (
-                                    <>
-                                        <h2 className="text-xl font-black text-slate-900">Problem</h2>
-                                        <p className="mt-3 leading-8 text-slate-600">
-                                            {project.problem}
-                                        </p>
-                                    </>
-                                )}
 
-                                {project.solution && (
-                                    <>
-                                        <div className="my-6 h-px w-full bg-slate-200" />
-                                        <h2 className="text-xl font-black text-slate-900">Solution</h2>
-                                        <p className="mt-3 leading-8 text-slate-600">
-                                            {project.solution}
-                                        </p>
-                                    </>
-                                )}
+                        {project.problem && (
+                            <div className="card">
+                                <h2 className="text-lg font-bold text-indigo-600 uppercase tracking-wide">
+                                    Problem
+                                </h2>
+                                <p className="mt-4 text-body">{project.problem}</p>
+                            </div>
+                        )}
+
+                        {project.solution && (
+                            <div className="card">
+                                <h2 className="text-lg font-bold text-indigo-600 uppercase tracking-wide">
+                                    Solution
+                                </h2>
+                                <p className="mt-4 text-body">{project.solution}</p>
                             </div>
                         )}
 
                         {project.features?.length > 0 && (
-                            <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-lg">
-                                <h2 className="text-xl font-black text-slate-900">Key Features</h2>
+                            <div className="card">
+                                <h2 className="text-lg font-bold text-indigo-600 uppercase tracking-wide">
+                                    Key Features
+                                </h2>
                                 <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                                     {project.features.map((f) => (
                                         <li
                                             key={f}
-                                            className="rounded-xl bg-emerald-50 px-4 py-3 font-semibold text-emerald-800"
+                                            className="flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700"
                                         >
                                             {f}
                                         </li>
@@ -166,13 +154,15 @@ const ProjectDetails = () => {
                         )}
 
                         {project.technologies?.length > 0 && (
-                            <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-lg">
-                                <h2 className="text-xl font-black text-slate-900">Technologies</h2>
-                                <div className="mt-5 flex flex-wrap gap-2">
+                            <div className="card">
+                                <h2 className="text-lg font-bold text-indigo-600 uppercase tracking-wide">
+                                    Technologies
+                                </h2>
+                                <div className="mt-5 flex flex-wrap gap-3">
                                     {project.technologies.map((t) => (
                                         <span
                                             key={t}
-                                            className="rounded-xl bg-indigo-50 px-3 py-2 text-sm font-semibold text-indigo-700"
+                                            className="rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-xs font-semibold text-indigo-700"
                                         >
                                             {t}
                                         </span>
@@ -181,45 +171,8 @@ const ProjectDetails = () => {
                             </div>
                         )}
 
-                        {(project.architecture?.length > 0 ||
-                            project.challenges?.length > 0 ||
-                            project.lessons?.length > 0) && (
-                                <div className="grid gap-6">
-                                    {project.architecture?.length > 0 && (
-                                        <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-lg">
-                                            <h2 className="text-xl font-black text-slate-900">Architecture</h2>
-                                            <ul className="mt-4 list-disc space-y-2 pl-5 text-slate-700">
-                                                {project.architecture.map((a) => (
-                                                    <li key={a}>{a}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
-
-                                    {project.challenges?.length > 0 && (
-                                        <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-lg">
-                                            <h2 className="text-xl font-black text-slate-900">Challenges</h2>
-                                            <ul className="mt-4 list-disc space-y-2 pl-5 text-slate-700">
-                                                {project.challenges.map((c) => (
-                                                    <li key={c}>{c}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
-
-                                    {project.lessons?.length > 0 && (
-                                        <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-lg">
-                                            <h2 className="text-xl font-black text-slate-900">Lessons</h2>
-                                            <ul className="mt-4 list-disc space-y-2 pl-5 text-slate-700">
-                                                {project.lessons.map((l) => (
-                                                    <li key={l}>{l}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
-                                </div>
-                            )}
                     </div>
+
                 </div>
             </div>
         </section>

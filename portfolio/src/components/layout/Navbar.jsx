@@ -56,9 +56,9 @@ const Navbar = () => {
                 initial={{ y: -80 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
-                className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled
-                    ? "border-b border-slate-200 bg-white/80 shadow-lg backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/80"
-                    : "bg-transparent"
+                className={`fixed inset-x-0 top-0 z-50 backdrop-blur-xl transition-all duration-300 ${scrolled
+                    ? "bg-white/80 shadow-md border-b border-slate-200"
+                    : "bg-white/60"
                     }`}
             >
                 <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-6 lg:px-8">
@@ -71,7 +71,7 @@ const Navbar = () => {
                     </a>
 
                     {/* Desktop Menu */}
-                    {/* Desktop Menu */}
+
                     <nav className="hidden items-center gap-8 lg:flex">
                         {navLinks.map((item) => (
                             <a
@@ -79,7 +79,7 @@ const Navbar = () => {
                                 href={item.href}
                                 className={`relative font-medium transition-all duration-300 ${active === item.href
                                     ? "text-indigo-600"
-                                    : "text-slate-600 hover:text-indigo-600 hover:-translate-y-0.5 dark:text-slate-300"
+                                    : "text-slate-600 hover:text-indigo-600 hover:-translate-y-0.5"
                                     }`}
                             >
                                 {item.title}
@@ -87,7 +87,7 @@ const Navbar = () => {
                                 {active === item.href && (
                                     <motion.span
                                         layoutId="navbar-indicator"
-                                        className="absolute -bottom-2 left-0 h-[2px] w-full rounded bg-indigo-600"
+                                        className="absolute -bottom-2 left-0 h-[3px] w-full rounded-full bg-gradient-to-r from-indigo-600 to-purple-600"
                                     />
                                 )}
                             </a>
@@ -173,7 +173,16 @@ const Navbar = () => {
                                     href={profile.resume}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 font-semibold text-white"
+                                    className="
+                                    inline-flex items-center gap-2
+                                    rounded-full
+                                    bg-gradient-to-r from-indigo-600 to-purple-600
+                                    px-6 py-3
+                                    font-semibold text-white
+                                    transition-all duration-300
+                                    hover:scale-105
+                                    hover:shadow-lg
+                                  "
                                 >
                                     <Download size={18} />
                                     Download Resume

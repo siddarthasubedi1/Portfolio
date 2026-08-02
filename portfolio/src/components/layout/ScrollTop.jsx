@@ -45,10 +45,22 @@ const ScrollTop = () => {
                         duration: 0.3,
                     }}
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-indigo-600 text-white shadow-xl transition hover:scale-110 hover:bg-indigo-700"
+                    className="
+  fixed bottom-8 right-8
+  flex h-14 w-14 items-center justify-center
+  rounded-full
+  bg-gradient-to-r from-indigo-600 to-purple-600
+  text-white
+  shadow-[0_15px_40px_rgba(79,70,229,0.35)]
+  backdrop-blur-md
+  transition-all duration-300 ease-out
+  hover:-translate-y-2
+  hover:shadow-[0_25px_60px_rgba(79,70,229,0.45)]
+  active:scale-95
+"
                     aria-label="Scroll to top"
                 >
-                    <ChevronUp size={26} />
+                    <ChevronUp size={22} />
                 </motion.button>
             )}
         </AnimatePresence>

@@ -5,13 +5,14 @@ import profile from "../../constants/profile";
 
 const Contact = () => {
     return (
-        <section id="contact" className="section section-gradient">
+        <section id="contact" className="section bg-slate-50">
             <div className="container-custom">
-                {/* Heading */}
+
+                {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }}
+                    transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
                     className="text-center"
                 >
@@ -23,67 +24,43 @@ const Contact = () => {
                         Let's Work Together
                     </h2>
 
-                    <p className="text-muted mx-auto mt-8 max-w-3xl text-lg">
-                        I'm currently looking for internship opportunities and exciting
-                        projects. Feel free to contact me anytime.
+                    <p className="mt-6 text-body max-w-3xl mx-auto">                        I’m currently looking for internship opportunities and meaningful projects.
+                        Feel free to reach out.
                     </p>
                 </motion.div>
 
                 {/* Grid */}
-                <div className="mt-20 grid gap-12 lg:grid-cols-2 items-start">
+                <div className="mt-24 grid gap-20 lg:grid-cols-2 items-start">
 
-                    {/* Left Side */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.7 }}
-                        viewport={{ once: true }}
-                        className="space-y-6"
-                    >
-                        {/* Email */}
-                        <div className="card p-6 flex items-center gap-5">
-                            <Mail className="text-indigo-600" size={26} />
-                            <div>
-                                <h3 className="font-semibold text-lg">Email</h3>
-                                <a
-                                    href={`mailto:${profile.email}`}
-                                    className="text-muted hover:text-indigo-600 transition"
+                    {/* Left Info */}
+                    <div className="space-y-6">
+                        {[
+                            { icon: Mail, label: "Email", value: profile.email },
+                            { icon: Phone, label: "Phone", value: profile.phone },
+                            { icon: MapPin, label: "Location", value: profile.location },
+                        ].map((item, i) => {
+                            const Icon = item.icon;
+                            return (
+                                <div
+                                    key={i}
+                                    className="flex items-center gap-5 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                                 >
-                                    {profile.email}
-                                </a>
-                            </div>
-                        </div>
+                                    <Icon className="text-indigo-600" size={24} />
+                                    <div>
+                                        <p className="text-sm text-slate-500">{item.label}</p>
+                                        <p className="font-semibold text-slate-800">{item.value}</p>
+                                    </div>
+                                </div>
+                            );
+                        })}
 
-                        {/* Phone */}
-                        <div className="card p-6 flex items-center gap-5">
-                            <Phone className="text-indigo-600" size={26} />
-                            <div>
-                                <h3 className="font-semibold text-lg">Phone</h3>
-                                <a
-                                    href={`tel:${profile.phone}`}
-                                    className="text-muted hover:text-indigo-600 transition"
-                                >
-                                    {profile.phone}
-                                </a>
-                            </div>
-                        </div>
-
-                        {/* Location */}
-                        <div className="card p-6 flex items-center gap-5">
-                            <MapPin className="text-indigo-600" size={26} />
-                            <div>
-                                <h3 className="font-semibold text-lg">Location</h3>
-                                <p className="text-muted">{profile.location}</p>
-                            </div>
-                        </div>
-
-                        {/* Social Links */}
-                        <div className="flex gap-4 pt-4">
+                        {/* Social */}
+                        <div className="flex gap-4 pt-6">
                             <a
                                 href={profile.github}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="card p-4 transition hover:bg-indigo-600 hover:text-white"
+                                className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:text-indigo-600 hover:shadow-lg"
                             >
                                 <FaGithub size={20} />
                             </a>
@@ -92,35 +69,35 @@ const Contact = () => {
                                 href={profile.linkedin}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="card p-4 transition hover:bg-indigo-600 hover:text-white"
+                                className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:text-indigo-600 hover:shadow-lg"
                             >
                                 <FaLinkedin size={20} />
                             </a>
                         </div>
-                    </motion.div>
+                    </div>
 
-                    {/* Right Side - Form */}
-                    <motion.form
-                        initial={{ opacity: 0, x: 40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.7 }}
-                        viewport={{ once: true }}
-                        action={`mailto:${profile.email}`}
-                        method="POST"
-                        encType="text/plain"
-                        className="card p-8 space-y-5"
+                    {/* Form */}
+                    <form
+                        className="rounded-3xl border border-slate-200 bg-white p-8 shadow-lg"
                     >
-                        <input type="text" placeholder="Your Name" required />
-                        <input type="email" placeholder="Your Email" required />
-                        <input type="text" placeholder="Subject" required />
-                        <textarea rows={6} placeholder="Your Message" required />
+                        <div className="space-y-6">
+                            <input type="text" placeholder="Your Name" required />
+                            <input type="email" placeholder="Your Email" required />
+                            <input type="text" placeholder="Subject" required />
+                            <textarea rows={5} placeholder="Your Message" required />
 
-                        <button type="submit" className="btn-primary px-8 py-4 w-full sm:w-auto">
-                            Send Message
-                            <Send size={18} />
-                        </button>
-                    </motion.form>
+                            <button
+                                type="submit"
+                                className="btn-primary w-full py-4 text-lg"
+                            >
+                                Send Message
+                                <Send size={18} />
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
+
             </div>
         </section>
     );

@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
-
 import { Link } from "react-router-dom";
-
 import {
     Home,
     Rocket,
@@ -14,140 +12,111 @@ import {
 const suggestions = [
     {
         title: "View My Projects",
-        icon: <Briefcase size={25} />,
+        icon: Briefcase,
         link: "/#projects",
     },
-
     {
         title: "My Journey",
-        icon: <User size={25} />,
-        link: "/#my-journey",
+        icon: User,
+        link: "/#journey",
     },
-
     {
         title: "Internship Opportunities",
-        icon: <Rocket size={25} />,
+        icon: Rocket,
         link: "/#lets-build-together",
     },
-
     {
         title: "Contact Me",
-        icon: <Mail size={25} />,
+        icon: Mail,
         link: "/#contact",
     },
 ];
 
 const NotFound = () => {
     return (
-        <section className="flex min-h-screen items-center overflow-hidden bg-gradient-to-b from-white to-blue-50 px-6 py-20">
-            <div className="mx-auto max-w-7xl">
-                {/* -------------------------------- */}
+        <section className="section bg-white flex items-center">
+            <div className="container-custom">
 
-                {/* HERO */}
-
-                {/* -------------------------------- */}
-
+                {/* Hero */}
                 <motion.div
-                    initial={{
-                        opacity: 0,
-                        y: 30,
-                    }}
-                    animate={{
-                        opacity: 1,
-                        y: 0,
-                    }}
-                    transition={{
-                        duration: 0.8,
-                    }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
                     className="text-center"
                 >
-                    <p className="font-bold uppercase tracking-[6px] text-indigo-600">
-                        OOPS!
+                    <p className="text-sm font-bold uppercase tracking-[6px] text-indigo-600">
+                        404 ERROR
                     </p>
 
-                    <h1 className="mt-8 text-6xl font-extrabold text-slate-900 md:text-8xl">
-                        Lost Somewhere?
+                    <h1 className="mt-6 text-5xl md:text-7xl font-black tracking-tight text-slate-900">
+                        Page Not Found
                     </h1>
 
-                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-600">
-                        The page you're looking for doesn't exist,
-                        but there's still plenty to explore.
+                    <p className="mt-6 text-body max-w-2xl mx-auto">
+                        The page you’re looking for doesn’t exist.
+                        But there’s still plenty to explore.
                     </p>
 
                     <Link
                         to="/"
-                        className="mt-12 inline-flex items-center gap-3 rounded-full bg-indigo-600 px-8 py-5 text-lg font-semibold text-white transition duration-300 hover:scale-105"
+                        className="btn-primary mt-10 inline-flex"
                     >
-                        <Home size={22} />
+                        <Home size={18} />
                         Back To Home
                     </Link>
                 </motion.div>
 
-                {/* -------------------------------- */}
+                {/* Suggestions */}
+                <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    {suggestions.map((item, index) => {
+                        const Icon = item.icon;
+                        return (
+                            <motion.a
+                                key={item.title}
+                                href={item.link}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: index * 0.08 }}
+                                className="card text-center"
+                            >
+                                <div className="flex justify-center">
+                                    <div className="rounded-xl bg-indigo-100 p-3">
+                                        <Icon size={20} className="text-indigo-600" />
+                                    </div>
+                                </div>
 
-                {/* CARDS */}
+                                <h2 className="mt-5 text-sm font-semibold text-slate-900">
+                                    {item.title}
+                                </h2>
 
-                {/* -------------------------------- */}
-
-                <div className="mt-28 grid gap-8 md:grid-cols-2">
-                    {suggestions.map((item) => (
-                        <motion.a
-                            key={item.title}
-                            href={item.link}
-                            whileHover={{
-                                y: -5,
-                            }}
-                            className="rounded-[35px] border border-slate-200 bg-white p-10 shadow-xl transition duration-300"
-                        >
-                            <div className="text-indigo-600">
-                                {item.icon}
-                            </div>
-
-                            <h2 className="mt-6 text-2xl font-bold text-slate-900">
-                                {item.title}
-                            </h2>
-
-                            <div className="mt-6 flex items-center gap-3 font-semibold text-indigo-600">
-                                Explore
-                                <ArrowRight size={18} />
-                            </div>
-                        </motion.a>
-                    ))}
+                                <div className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-indigo-600">
+                                    Explore
+                                    <ArrowRight size={14} />
+                                </div>
+                            </motion.a>
+                        );
+                    })}
                 </div>
 
-                {/* -------------------------------- */}
-
-                {/* MESSAGE */}
-
-                {/* -------------------------------- */}
-
+                {/* Bottom Message */}
                 <motion.div
-                    initial={{
-                        opacity: 0,
-                    }}
-                    animate={{
-                        opacity: 1,
-                    }}
-                    transition={{
-                        duration: 1,
-                    }}
-                    className="mt-28 rounded-[40px] bg-white p-14 text-center shadow-xl"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6 }}
+                    className="mt-24 text-center"
                 >
-                    <Rocket
-                        size={50}
-                        className="mx-auto text-indigo-600"
-                    />
+                    <Rocket size={32} className="mx-auto text-indigo-600" />
 
-                    <h2 className="mt-8 text-4xl font-extrabold text-slate-900">
-                        Let's Build Something Meaningful
+                    <h2 className="mt-6 text-2xl font-bold text-slate-900">
+                        Let’s Build Something Meaningful
                     </h2>
 
-                    <p className="mx-auto mt-8 max-w-4xl text-lg leading-9 text-slate-600">
-                        Thanks for visiting my portfolio. I'm always
-                        excited to connect with developers, recruiters
-                        and people building meaningful products.
+                    <p className="mt-4 text-body max-w-2xl mx-auto">
+                        Thanks for visiting my portfolio. I’m always open to collaboration,
+                        learning opportunities and meaningful projects.
                     </p>
                 </motion.div>
+
             </div>
         </section>
     );

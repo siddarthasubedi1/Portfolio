@@ -13,7 +13,7 @@ const certificates = [
         organization: "ISMT College",
         year: "2025",
         description:
-            "Completed a 5-day UI/UX Design workshop covering wireframing, prototyping, design principles and user experience fundamentals.",
+            "Completed a 5-day workshop covering wireframing, prototyping, design principles and user experience fundamentals.",
         icon: Award,
         link: "#",
     },
@@ -22,7 +22,7 @@ const certificates = [
         organization: "Personal Learning",
         year: "Ongoing",
         description:
-            "Building full-stack applications using React, Django REST Framework, PostgreSQL and REST APIs through hands-on projects.",
+            "Building full-stack applications using React, Django REST Framework and PostgreSQL through real-world projects.",
         icon: GraduationCap,
         link: "#",
     },
@@ -31,7 +31,7 @@ const certificates = [
         organization: "Self Learning",
         year: "Current",
         description:
-            "Expanding knowledge in authentication, deployment, Docker, Git, testing and modern software engineering practices.",
+            "Expanding knowledge in authentication, deployment, Docker, Git, testing and software engineering practices.",
         icon: BookOpen,
         link: "#",
     },
@@ -50,71 +50,59 @@ const currentlyLearning = [
 
 const Certificates = () => {
     return (
-        <section
-            id="certificates"
-            className="bg-slate-50 py-28"
-        >
-            <div className="mx-auto max-w-7xl px-6">
+        <section id="certificates" className="section bg-slate-50">
+            <div className="container-custom">
 
-                {/* Heading */}
-
+                {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }}
+                    transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
                     className="text-center"
                 >
-                    <p className="font-bold uppercase tracking-[6px] text-indigo-600">
+                    <p className="text-sm font-bold uppercase tracking-[6px] text-indigo-600">
                         CERTIFICATES & LEARNING
                     </p>
 
-                    <h2 className="mt-6 text-5xl font-extrabold text-slate-900 md:text-6xl">
+                    <h2 className="heading-lg mt-6">
                         Continuous Growth
                     </h2>
 
-                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-600">
-                        I believe the best developers never stop learning. Alongside my
-                        academic studies, I continuously improve my skills through
-                        hands-on projects, workshops and self-learning.
+                    <p className="mt-6 text-body max-w-3xl mx-auto">
+                        I continuously improve my skills through structured learning,
+                        hands-on projects and exploration of modern software engineering practices.
                     </p>
                 </motion.div>
 
-                {/* Certificates */}
-
-                <div className="mt-20 grid gap-8 lg:grid-cols-3">
+                {/* Certificates Grid */}
+                <div className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {certificates.map((item, index) => {
                         const Icon = item.icon;
-
                         return (
                             <motion.div
                                 key={item.title}
-                                initial={{ opacity: 0, y: 40 }}
+                                initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{
-                                    duration: 0.6,
-                                    delay: index * 0.1,
-                                }}
+                                transition={{ duration: 0.5, delay: index * 0.08 }}
                                 viewport={{ once: true }}
-                                whileHover={{ y: -8 }}
-                                className="rounded-3xl border border-slate-200 bg-white p-8 shadow-lg transition hover:shadow-2xl"
+                                className="card text-center"
                             >
-                                <div className="inline-flex rounded-2xl bg-indigo-100 p-4">
-                                    <Icon
-                                        size={30}
-                                        className="text-indigo-600"
-                                    />
+                                <div className="flex justify-center">
+                                    <div className="rounded-xl bg-indigo-100 p-4">
+                                        <Icon size={24} className="text-indigo-600" />
+                                    </div>
                                 </div>
 
-                                <h3 className="mt-6 text-2xl font-bold text-slate-900">
+                                <h3 className="mt-6 text-lg font-bold text-slate-900">
                                     {item.title}
                                 </h3>
 
-                                <p className="mt-2 font-medium text-indigo-600">
+                                <p className="mt-2 text-sm font-medium text-indigo-600">
                                     {item.organization} • {item.year}
                                 </p>
 
-                                <p className="mt-6 leading-8 text-slate-600">
+                                <p className="mt-5 text-slate-600 leading-relaxed">
                                     {item.description}
                                 </p>
 
@@ -123,10 +111,10 @@ const Certificates = () => {
                                         href={item.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="mt-8 inline-flex items-center gap-2 font-semibold text-indigo-600 hover:text-indigo-700"
+                                        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
                                     >
                                         View Certificate
-                                        <ArrowUpRight size={18} />
+                                        <ArrowUpRight size={16} />
                                     </a>
                                 )}
                             </motion.div>
@@ -135,40 +123,60 @@ const Certificates = () => {
                 </div>
 
                 {/* Currently Learning */}
-
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="mt-24 rounded-3xl bg-white p-10 shadow-lg"
+                    className="mt-24 card text-center"
                 >
-                    <div className="flex items-center gap-3">
-                        <BadgeCheck
-                            className="text-indigo-600"
-                            size={30}
-                        />
-
-                        <h3 className="text-3xl font-bold text-slate-900">
+                    <div className="flex items-center justify-center gap-3">
+                        <BadgeCheck size={26} className="text-indigo-600" />
+                        <h3 className="text-xl font-bold text-slate-900">
                             Currently Learning
                         </h3>
                     </div>
 
-                    <div className="mt-8 flex flex-wrap gap-4">
-                        {currentlyLearning.map((item) => (
-                            <span
-                                key={item}
-                                className="rounded-full bg-indigo-50 px-5 py-3 font-medium text-indigo-700"
-                            >
-                                {item}
-                            </span>
-                        ))}
+                    {/* Colorful Tech Tags */}
+                    <div className="mt-10 flex flex-wrap justify-center gap-4">
+
+                        <span className="rounded-full border border-blue-200 bg-blue-100 px-5 py-2 text-sm font-semibold text-blue-700">
+                            Docker
+                        </span>
+
+                        <span className="rounded-full border border-purple-200 bg-purple-100 px-5 py-2 text-sm font-semibold text-purple-700">
+                            CI/CD
+                        </span>
+
+                        <span className="rounded-full border border-emerald-200 bg-emerald-100 px-5 py-2 text-sm font-semibold text-emerald-700">
+                            Testing
+                        </span>
+
+                        <span className="rounded-full border border-red-200 bg-red-100 px-5 py-2 text-sm font-semibold text-red-700">
+                            Redis
+                        </span>
+
+                        <span className="rounded-full border border-orange-200 bg-orange-100 px-5 py-2 text-sm font-semibold text-orange-700">
+                            Celery
+                        </span>
+
+                        <span className="rounded-full border border-yellow-200 bg-yellow-100 px-5 py-2 text-sm font-semibold text-yellow-700">
+                            AWS Basics
+                        </span>
+
+                        <span className="rounded-full border border-indigo-200 bg-indigo-100 px-5 py-2 text-sm font-semibold text-indigo-700">
+                            System Design
+                        </span>
+
+                        <span className="rounded-full border border-sky-200 bg-sky-100 px-5 py-2 text-sm font-semibold text-sky-700">
+                            Clean Architecture
+                        </span>
+
                     </div>
 
-                    <p className="mt-8 leading-8 text-slate-600">
-                        My goal is to become a skilled Full Stack Developer by mastering
-                        modern backend technologies, deployment, cloud services, software
-                        architecture and scalable application development.
+                    <p className="mt-8 text-body max-w-2xl mx-auto">
+                        My goal is to master backend architecture, cloud deployment,
+                        scalable systems and clean software design principles.
                     </p>
                 </motion.div>
 

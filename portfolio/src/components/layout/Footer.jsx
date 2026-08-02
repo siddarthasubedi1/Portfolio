@@ -14,7 +14,7 @@ const quickLinks = [
 
 const Footer = () => {
     return (
-        <footer className="section section-gradient border-t border-slate-200 dark:border-slate-800">
+        <footer className="section bg-slate-100 border-t border-slate-200">
             <div className="container-custom">
 
                 {/* Top Branding */}
@@ -25,15 +25,15 @@ const Footer = () => {
                     viewport={{ once: true }}
                     className="text-center"
                 >
-                    <h2 className="heading-lg">
+                    <h2 className="text-4xl font-black tracking-tight text-slate-900 md:text-5xl">
                         SIDDARTHA.DEV
                     </h2>
 
-                    <h3 className="mt-4 text-xl font-semibold text-indigo-600">
+                    <h3 className="mt-3 text-lg font-semibold text-indigo-600">
                         Full Stack Developer
                     </h3>
 
-                    <p className="text-muted mx-auto mt-6 max-w-3xl text-lg">
+                    <p className="mt-6 max-w-2xl mx-auto text-slate-600 leading-relaxed">
                         Building secure, scalable and modern web applications using
                         Django REST Framework, React and PostgreSQL while continuously
                         learning modern software engineering practices.
@@ -41,7 +41,7 @@ const Footer = () => {
                 </motion.div>
 
                 {/* Middle Sections */}
-                <div className="mt-20 grid gap-12 text-center md:grid-cols-3">
+                <div className="mt-24 grid gap-16 text-center md:grid-cols-3">
 
                     {/* Quick Links */}
                     <div>
@@ -131,8 +131,7 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom */}
-                <div className="mt-20 border-t border-slate-200 pt-10 text-center dark:border-slate-800">
-
+                <div className="mt-24 border-t border-slate-200 pt-8 text-center">
                     <p className="text-muted">
                         Let's build something meaningful together.
                     </p>
