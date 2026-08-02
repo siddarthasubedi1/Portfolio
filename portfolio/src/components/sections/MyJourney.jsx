@@ -51,13 +51,9 @@ const journey = [
 
 const MyJourney = () => {
     return (
-        <section
-            id="journey"
-            className="bg-white py-28"
-        >
-            <div className="mx-auto max-w-6xl px-6">
+        <section id="journey" className="section section-gradient">
+            <div className="container-custom">
                 {/* Heading */}
-
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -65,65 +61,46 @@ const MyJourney = () => {
                     viewport={{ once: true }}
                     className="text-center"
                 >
-                    <p className="font-bold uppercase tracking-[6px] text-indigo-600">
+                    <p className="text-sm font-bold uppercase tracking-[6px] text-indigo-600">
                         MY JOURNEY
                     </p>
 
-                    <h2 className="mt-6 text-5xl font-extrabold text-slate-900 md:text-6xl">
+                    <h2 className="heading-lg mt-6">
                         Learning Through Experience
                     </h2>
 
-                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-600">
+                    <p className="text-muted mx-auto mt-8 max-w-3xl text-lg">
                         Every project, course and challenge has helped shape my journey
                         toward becoming a Full Stack Developer.
                     </p>
                 </motion.div>
 
                 {/* Timeline */}
-
-                <div className="relative mt-24">
-
+                <div className="relative mx-auto mt-24 max-w-5xl">
                     {/* Center Line */}
-
                     <div className="absolute left-6 top-0 h-full w-1 rounded bg-indigo-100 md:left-1/2 md:-translate-x-1/2"></div>
 
                     <div className="space-y-16">
                         {journey.map((item, index) => {
                             const Icon = item.icon;
-
-                            const left = index % 2 === 0;
+                            const isLeft = index % 2 === 0;
 
                             return (
                                 <motion.div
                                     key={item.title}
-                                    initial={{
-                                        opacity: 0,
-                                        y: 50,
-                                    }}
-                                    whileInView={{
-                                        opacity: 1,
-                                        y: 0,
-                                    }}
-                                    transition={{
-                                        duration: 0.6,
-                                        delay: index * 0.1,
-                                    }}
+                                    initial={{ opacity: 0, y: 40 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: index * 0.1 }}
                                     viewport={{ once: true }}
-                                    className={`relative flex ${left
-                                        ? "md:justify-start"
-                                        : "md:justify-end"
+                                    className={`relative flex ${isLeft ? "md:justify-start" : "md:justify-end"
                                         }`}
                                 >
-                                    {/* Card */}
-
-                                    <div className="ml-16 w-full md:ml-0 md:w-[45%]">
-                                        <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-lg transition hover:-translate-y-2 hover:shadow-2xl">
+                                    {/* Card Wrapper */}
+                                    <div className="ml-16 w-full md:ml-0 md:w-1/2 md:px-10">
+                                        <div className="card p-8 transition hover:-translate-y-2 hover:shadow-xl">
                                             <div className="flex items-center gap-4">
-                                                <div className="rounded-2xl bg-indigo-100 p-3">
-                                                    <Icon
-                                                        size={28}
-                                                        className="text-indigo-600"
-                                                    />
+                                                <div className="rounded-2xl bg-indigo-100 p-3 dark:bg-indigo-500/10">
+                                                    <Icon size={26} className="text-indigo-600" />
                                                 </div>
 
                                                 <div>
@@ -131,25 +108,24 @@ const MyJourney = () => {
                                                         {item.year}
                                                     </p>
 
-                                                    <h3 className="text-2xl font-bold text-slate-900">
+                                                    <h3 className="text-xl font-bold">
                                                         {item.title}
                                                     </h3>
 
-                                                    <p className="text-slate-500">
+                                                    <p className="text-sm text-slate-500 dark:text-slate-400">
                                                         {item.subtitle}
                                                     </p>
                                                 </div>
                                             </div>
 
-                                            <p className="mt-6 leading-8 text-slate-600">
+                                            <p className="text-muted mt-6">
                                                 {item.description}
                                             </p>
                                         </div>
                                     </div>
 
-                                    {/* Timeline Dot */}
-
-                                    <div className="absolute left-6 top-10 h-5 w-5 -translate-x-1/2 rounded-full border-4 border-white bg-indigo-600 md:left-1/2"></div>
+                                    {/* Dot */}
+                                    <div className="absolute left-6 top-10 h-5 w-5 -translate-x-1/2 rounded-full border-4 border-white bg-indigo-600 md:left-1/2 md:-translate-x-1/2"></div>
                                 </motion.div>
                             );
                         })}

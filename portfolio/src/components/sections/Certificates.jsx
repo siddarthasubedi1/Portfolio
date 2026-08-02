@@ -50,7 +50,10 @@ const currentlyLearning = [
 
 const Certificates = () => {
     return (
-        <section id="certificates" className="bg-slate-50 py-28">
+        <section
+            id="certificates"
+            className="bg-slate-50 py-28"
+        >
             <div className="mx-auto max-w-7xl px-6">
 
                 {/* Heading */}
@@ -97,14 +100,17 @@ const Certificates = () => {
                                 className="rounded-3xl border border-slate-200 bg-white p-8 shadow-lg transition hover:shadow-2xl"
                             >
                                 <div className="inline-flex rounded-2xl bg-indigo-100 p-4">
-                                    <Icon size={30} className="text-indigo-600" />
+                                    <Icon
+                                        size={30}
+                                        className="text-indigo-600"
+                                    />
                                 </div>
 
                                 <h3 className="mt-6 text-2xl font-bold text-slate-900">
                                     {item.title}
                                 </h3>
 
-                                <p className="mt-2 text-indigo-600 font-medium">
+                                <p className="mt-2 font-medium text-indigo-600">
                                     {item.organization} • {item.year}
                                 </p>
 
@@ -138,7 +144,11 @@ const Certificates = () => {
                     className="mt-24 rounded-3xl bg-white p-10 shadow-lg"
                 >
                     <div className="flex items-center gap-3">
-                        <BadgeCheck className="text-indigo-600" size={30} />
+                        <BadgeCheck
+                            className="text-indigo-600"
+                            size={30}
+                        />
+
                         <h3 className="text-3xl font-bold text-slate-900">
                             Currently Learning
                         </h3>
@@ -155,7 +165,7 @@ const Certificates = () => {
                         ))}
                     </div>
 
-                    <p className="mt-8 text-slate-600 leading-8">
+                    <p className="mt-8 leading-8 text-slate-600">
                         My goal is to become a skilled Full Stack Developer by mastering
                         modern backend technologies, deployment, cloud services, software
                         architecture and scalable application development.

@@ -24,7 +24,7 @@ const HeroStats = () => {
                         y: -6,
                         scale: 1.05,
                     }}
-                    className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-md transition-all hover:border-indigo-300 hover:shadow-xl"
+                    className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-lg transition-all hover:-translate-y-1 hover:border-indigo-300 hover:shadow-xl"
                 >
                     <h3 className="text-3xl font-black text-indigo-600">
                         {stat.number}

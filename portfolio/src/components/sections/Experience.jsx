@@ -5,12 +5,9 @@ import SectionHeading from "../ui/SectionHeading";
 function Experience() {
     return (
         <section
-            className="
-      py-32
-      px-8
-      "
+            className="bg-slate-50 py-28"
         >
-            <div className="max-w-6xl mx-auto">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
                 <SectionHeading
                     title="Experience"
@@ -18,11 +15,7 @@ function Experience() {
                 />
 
                 <div
-                    className="
-          border
-          rounded-2xl
-          p-10
-          "
+                    className="rounded-3xl border border-slate-200 bg-white p-10 shadow-lg"
                 >
                     <h2 className="text-2xl font-bold">
                         Driving Instructor

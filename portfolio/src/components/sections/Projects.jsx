@@ -1,95 +1,83 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import {
-    ArrowRight,
-    ExternalLink,
-} from "lucide-react";
+import { ArrowRight, ExternalLink, FolderOpen } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+
 import { projects } from "../../constants/projectData";
+import profile from "../../constants/profile";
 
 const Projects = () => {
     return (
-        <section
-            id="projects"
-            className="bg-slate-50 py-28"
-        >
-            <div className="mx-auto max-w-7xl px-6">
+        <section id="projects" className="section section-gradient">
+            <div className="container-custom">
                 {/* Heading */}
-
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.7 }}
                     viewport={{ once: true }}
-                    className="text-center"
+                    className="mx-auto max-w-3xl text-center"
                 >
-                    <p className="font-bold uppercase tracking-[6px] text-indigo-600">
+                    <p className="text-sm font-bold uppercase tracking-[6px] text-indigo-600">
                         PROJECTS
                     </p>
 
-                    <h2 className="mt-6 text-5xl font-extrabold text-slate-900 md:text-6xl">
+                    <h2 className="heading-lg mt-6">
                         Things I've Built
                     </h2>
 
-                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-600">
-                        These projects demonstrate my experience building full-stack web
-                        applications with React, Django REST Framework and PostgreSQL while
-                        applying modern software engineering practices.
+                    <p className="text-muted mt-8 text-lg">
+                        Every project represents practical experience solving real-world
+                        problems using modern technologies such as React, Django REST
+                        Framework and PostgreSQL.
                     </p>
                 </motion.div>
 
-                {/* Cards */}
-
-                <div className="mt-20 grid gap-10 lg:grid-cols-2 xl:grid-cols-3">
+                {/* Cards Grid */}
+                <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                     {projects.map((project, index) => (
                         <motion.article
                             key={project.slug}
-                            initial={{
-                                opacity: 0,
-                                y: 40,
-                            }}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            transition={{
-                                duration: 0.6,
-                                delay: index * 0.1,
-                            }}
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: index * 0.08 }}
                             viewport={{ once: true }}
-                            whileHover={{
-                                y: -10,
-                            }}
-                            className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg transition-all hover:shadow-2xl"
+                            whileHover={{ y: -6 }}
+                            className="card group flex flex-col overflow-hidden transition duration-300"
                         >
                             {/* Image */}
-
-                            <div className="overflow-hidden">
+                            <div className="relative h-52 w-full overflow-hidden bg-slate-100">
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="h-60 w-full object-cover transition duration-500 hover:scale-110"
+                                    loading="lazy"
+                                    className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                                 />
+
+                                <div className="absolute left-5 top-5 rounded-full bg-white/90 px-4 py-2 text-sm font-bold shadow">
+                                    0{index + 1}
+                                </div>
                             </div>
 
                             {/* Content */}
+                            <div className="flex flex-1 flex-col p-8">
+                                <div className="flex items-center gap-3">
+                                    <FolderOpen size={20} className="text-indigo-600" />
+                                    <h3 className="text-xl font-bold">
+                                        {project.title}
+                                    </h3>
+                                </div>
 
-                            <div className="p-8">
-                                <h3 className="text-2xl font-bold text-slate-900">
-                                    {project.title}
-                                </h3>
-
-                                <p className="mt-4 line-clamp-4 leading-8 text-slate-600">
+                                <p className="text-muted mt-5 flex-1">
                                     {project.description}
                                 </p>
 
                                 {/* Technologies */}
-
                                 <div className="mt-6 flex flex-wrap gap-2">
                                     {project.technologies.slice(0, 5).map((tech) => (
                                         <span
                                             key={tech}
-                                            className="rounded-full bg-indigo-50 px-3 py-1 text-sm font-medium text-indigo-700"
+                                            className="rounded-xl bg-indigo-50 px-3 py-2 text-sm font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-400"
                                         >
                                             {tech}
                                         </span>
@@ -97,23 +85,22 @@ const Projects = () => {
                                 </div>
 
                                 {/* Buttons */}
-
                                 <div className="mt-8 flex flex-wrap gap-3">
                                     <Link
                                         to={`/project/${project.slug}`}
-                                        className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-3 font-semibold text-white transition hover:scale-105 hover:bg-indigo-700"
+                                        className="btn-primary text-sm px-5 py-3"
                                     >
                                         Details
-                                        <ArrowRight size={18} />
+                                        <ArrowRight size={16} />
                                     </Link>
 
                                     <a
                                         href={project.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-5 py-3 font-semibold transition hover:border-slate-900"
+                                        className="btn-outline text-sm px-5 py-3"
                                     >
-                                        <FaGithub size={20} />
+                                        <FaGithub size={16} />
                                         GitHub
                                     </a>
 
@@ -122,9 +109,9 @@ const Projects = () => {
                                             href={project.demo}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 rounded-full border border-indigo-300 px-5 py-3 font-semibold text-indigo-600 transition hover:bg-indigo-50"
+                                            className="btn-outline text-sm px-5 py-3 border-indigo-300 text-indigo-600 hover:bg-indigo-50"
                                         >
-                                            <ExternalLink size={18} />
+                                            <ExternalLink size={16} />
                                             Demo
                                         </a>
                                     )}
@@ -134,23 +121,22 @@ const Projects = () => {
                     ))}
                 </div>
 
-                {/* Bottom CTA */}
-
+                {/* Bottom Button */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="mt-20 text-center"
+                    className="mt-24 text-center"
                 >
                     <a
-                        href="https://github.com/YOUR_GITHUB_USERNAME"
+                        href={profile.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-3 rounded-full bg-slate-900 px-8 py-4 font-semibold text-white transition hover:scale-105"
+                        className="btn-primary px-8 py-4"
                     >
-                        <FaGithub size={20} />
-                        View More on GitHub
+                        <FaGithub size={18} />
+                        Explore More Projects
                     </a>
                 </motion.div>
             </div>

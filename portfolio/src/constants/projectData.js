@@ -26,10 +26,10 @@ export const projects = [
         title: "Simple Ecommerce Website",
 
         shortDescription:
-            "Full Stack Ecommerce application built using React, Django REST Framework and PostgreSQL.",
+            "Full Stack Ecommerce application built using Bootstrap, Django REST Framework and DBSqlite.",
 
         description:
-            "A modern ecommerce platform featuring authentication, product management, CRUD operations and responsive design built with React and Django REST Framework.",
+            "A modern ecommerce platform featuring authentication, product management, CRUD operations and responsive design built with Bootstrap, DBSqlite and Django.",
 
         image: ecommerceCover,
 
@@ -99,9 +99,9 @@ export const projects = [
             pages: "10+",
         },
 
-        github: "https://github.com/YOUR_USERNAME",
+        github: "https://github.com/siddarthasubedi1",
 
-        demo: "",
+        demo: "https://electro-ecommerce-rho.vercel.app/",
     },
 
     {

@@ -21,9 +21,9 @@ const profile = {
     // Contact
     email: "siddarthasubedi1@email.com",
 
-    phone: "+977-98XXXXXXXX",
+    phone: "+977-9826606151",
 
-    website: "https://yourportfolio.com",
+    website: "https://portfolio-mu-nine-bgdnhhss9f.vercel.app/",
 
     // Social
     github: "https://github.com/siddarthasubedi1",

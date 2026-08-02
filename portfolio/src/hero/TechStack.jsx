@@ -5,7 +5,7 @@ import heroData from "../constants/heroData";
 const TechStack = () => {
     return (
         <div className="pt-8">
-            <h3 className="mb-6 text-lg font-bold text-slate-800">
+            <h3 className="mb-6 text-sm font-semibold uppercase tracking-[0.3em] text-slate-600">
                 Technologies I Use
             </h3>
 
@@ -32,7 +32,7 @@ const TechStack = () => {
                                 y: -6,
                                 scale: 1.08,
                             }}
-                            className="flex items-center gap-3 rounded-full border border-slate-200 bg-white px-5 py-3 shadow-md transition-all hover:border-indigo-300 hover:shadow-xl"
+                            className="flex items-center gap-3 rounded-full border border-slate-200 bg-white px-5 py-3 shadow-lg transition-all hover:border-indigo-300 hover:bg-slate-50"
                         >
                             <Icon
                                 size={22}
