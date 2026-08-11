@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import HeroContent from "../../hero/HeroContent";
 import HeroImage from "../../hero/HeroImage";
 
@@ -5,23 +6,51 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden"
+            className="relative overflow-hidden bg-gradient-primary pt-32 pb-20 lg:pt-40 lg:pb-28"
         >
-            {/* Background Glow */}
-            <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[900px] rounded-full bg-indigo-200/40 blur-3xl"></div>
+            {/* Background Grid */}
+            <div className="absolute inset-0 bg-grid opacity-60" />
 
-            <div className="container-custom text-center relative z-10">
-                <HeroContent />
+            {/* Green Glow */}
+            <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-green-200/30 blur-3xl" />
 
-                <div className="mt-20 flex justify-center">
-                    <HeroImage />
+            <div className="container-custom relative z-10">
+                <div className="flex flex-col items-center">
+
+                    {/* Hero Content */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                            duration: 0.8,
+                            ease: "easeOut",
+                        }}
+                        className="w-full"
+                    >
+                        <HeroContent />
+                    </motion.div>
+
+                    {/* Hero Image */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 60 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                            delay: 0.3,
+                            duration: 0.8,
+                        }}
+                        className="mt-16 flex w-full justify-center lg:mt-20"
+                    >
+                        <div className="w-full max-w-6xl ">
+                            <HeroImage />
+                        </div>
+                    </motion.div>
+
                 </div>
             </div>
-
-            {/* Bottom divider */}
-            <div className="absolute bottom-0 left-0 w-full border-t border-slate-200"></div>
         </section>
     );
 };
 
 export default Hero;
+
+

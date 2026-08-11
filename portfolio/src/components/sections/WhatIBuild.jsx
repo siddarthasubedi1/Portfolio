@@ -8,100 +8,210 @@ import {
     Rocket,
 } from "lucide-react";
 
+
+
 const services = [
     {
         icon: Globe,
         title: "Frontend Development",
         description:
-            "Modern and responsive interfaces built using React, Vite and Tailwind CSS.",
+            "Build responsive, fast, and interactive user interfaces using React, Tailwind CSS, and modern frontend best practices.",
     },
     {
         icon: Server,
         title: "Backend Development",
         description:
-            "Scalable REST APIs using Django REST Framework with secure authentication.",
+            "Develop secure and scalable REST APIs with Django REST Framework, authentication, permissions, and business logic.",
     },
     {
         icon: Database,
         title: "Database Design",
         description:
-            "Efficient PostgreSQL schemas with optimized queries and relationships.",
+            "Design efficient PostgreSQL databases with optimized relationships, queries, and scalable data structures.",
     },
     {
         icon: ShieldCheck,
-        title: "Authentication",
+        title: "Authentication & Security",
         description:
-            "JWT-based authentication, authorization and protected route systems.",
+            "Implement JWT authentication, role-based authorization, protected routes, and secure user management.",
     },
     {
         icon: Smartphone,
-        title: "Responsive Design",
+        title: "Responsive Web Design",
         description:
-            "Applications optimized for desktop, tablet and mobile experiences.",
+            "Create websites that look and perform beautifully across desktop, tablet, and mobile devices.",
     },
     {
         icon: Rocket,
-        title: "Deployment",
+        title: "Deployment & Optimization",
         description:
-            "Deploying full-stack applications using modern hosting platforms.",
+            "Deploy full-stack applications with optimized performance, production-ready configuration, and modern hosting platforms.",
     },
 ];
+
+
 
 const WhatIBuild = () => {
     return (
         <section id="what-i-build" className="section bg-white">
             <div className="container-custom">
 
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="text-center"
-                >
-                    <p className="text-sm font-bold uppercase tracking-[6px] text-indigo-600">
-                        WHAT I BUILD
-                    </p>
+                {/* ================= Header ================= */}
 
-                    <h2 className="heading-lg mt-6">
-                        Building Modern Web Applications
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: .6 }}
+                    className="mx-auto max-w-4xl text-center"
+                >
+
+                    <span className="inline-flex rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-semibold text-green-700">
+                        What I Build
+                    </span>
+
+                    <h2 className="mt-8 text-4xl font-black text-slate-900 md:text-6xl">
+
+                        Full Stack Solutions
+                        <span className="block bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
+                            Designed For Real Businesses
+                        </span>
+
                     </h2>
 
-                    <p className="mt-6 text-body max-w-3xl mx-auto">
-                        I focus on creating scalable, secure and maintainable full stack
-                        systems using modern technologies.
+                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-600">
+
+                        I build complete web applications from frontend to backend,
+                        focusing on performance, scalability, security, and an excellent
+                        user experience.
+
                     </p>
+
                 </motion.div>
 
                 {/* Service Cards */}
-                <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="mt-24 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
                     {services.map((service, index) => {
                         const Icon = service.icon;
                         return (
                             <motion.div
                                 key={service.title}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: index * 0.08 }}
                                 viewport={{ once: true }}
-                                className="card"
+                                transition={{
+                                    duration: .5,
+                                    delay: index * .08,
+                                }}
+                                whileHover={{
+                                    y: -12,
+                                }}
+                                className="
+                                group
+                                relative
+                                flex
+                                h-full
+                                flex-col
+                                overflow-hidden
+                                rounded-[32px]
+                                border
+                                border-green-100
+                                bg-white
+                                p-8
+                                shadow-md
+                                transition-all
+                                duration-300
+                                hover:border-green-300
+                                hover:shadow-[0_25px_70px_rgba(34,197,94,.15)]
+                            "
                             >
-                                <div className="rounded-xl bg-indigo-100 p-4 w-fit">
-                                    <Icon size={28} className="text-indigo-600" />
+
+                                {/* Hover Background */}
+
+                                <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+
+                                {/* Glow */}
+
+                                <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-green-100 blur-[70px] opacity-0 transition duration-300 group-hover:opacity-100" />
+
+                                <div className="relative z-10 flex h-full flex-col">
+
+                                    {/* Icon */}
+
+                                    <div
+                                        className="
+                                        flex
+                                        h-16
+                                        w-16
+                                        items-center
+                                        justify-center
+                                        rounded-2xl
+                                        bg-gradient-to-br
+                                        from-green-500
+                                        to-emerald-600
+                                        text-white
+                                        shadow-lg
+                                        transition-all
+                                        duration-300
+                                        group-hover:scale-110
+                                        group-hover:rotate-6
+                                    "
+                                    >
+                                        <Icon size={28} />
+                                    </div>
+
+                                    {/* Title */}
+
+                                    <h3 className="mt-8 text-xl font-bold text-slate-900">
+                                        {service.title}
+                                    </h3>
+
+                                    {/* Badge */}
+
+                                    <span className="mt-4 inline-flex w-fit rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700">
+                                        Service
+                                    </span>
+
+                                    {/* Description */}
+
+                                    <p className="mt-5 flex-1 leading-8 text-slate-600">
+                                        {service.description}
+                                    </p>
+
                                 </div>
 
-                                <h3 className="mt-6 text-xl font-bold text-slate-900">
-                                    {service.title}
-                                </h3>
-
-                                <p className="mt-4 text-slate-600 leading-relaxed">
-                                    {service.description}
-                                </p>
                             </motion.div>
                         );
                     })}
                 </div>
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: .6 }}
+                    className="mt-24 rounded-[36px] border border-green-100 bg-gradient-to-r from-green-600 to-emerald-600 px-8 py-16 text-center text-white shadow-xl"
+                >
+
+                    <h3 className="text-3xl font-black">
+
+                        Have a Project in Mind?
+
+                    </h3>
+
+                    <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-green-100">
+
+                        Whether it's a business website, an e-commerce platform, or a custom web application, I'm ready to help transform your ideas into reliable, modern digital solutions.
+
+                    </p>
+
+                    <a
+                        href="#contact"
+                        className="mt-10 inline-flex rounded-full bg-green-600 px-8 py-4 font-semibold text-white transition border-amber-600 hover:-translate-y-1 hover:shadow-xl"
+                    >
+                        Start a Conversation
+                    </a>
+
+                </motion.div>
 
             </div>
         </section>

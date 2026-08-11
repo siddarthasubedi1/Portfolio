@@ -6,6 +6,7 @@ import {
     FaPython,
     FaGitAlt,
 } from "react-icons/fa";
+
 import {
     SiJavascript,
     SiDjango,
@@ -16,100 +17,481 @@ import {
     SiVercel,
 } from "react-icons/si";
 
+import {
+    Code2,
+    Database,
+    Wrench,
+    ArrowUpRight,
+} from "lucide-react";
+
+
 const categories = [
     {
-        title: "Frontend Development",
+        title: "Frontend",
+        description: "Building responsive and interactive user interfaces.",
+        icon: Code2,
         technologies: [
-            { name: "HTML5", icon: <FaHtml5 className="text-orange-500 text-4xl" /> },
-            { name: "CSS3", icon: <FaCss3Alt className="text-blue-500 text-4xl" /> },
-            { name: "JavaScript", icon: <SiJavascript className="text-yellow-400 text-4xl" /> },
-            { name: "React", icon: <FaReact className="text-cyan-500 text-4xl" /> },
-            { name: "Tailwind CSS", icon: <SiTailwindcss className="text-sky-500 text-4xl" /> },
+            {
+                name: "HTML5",
+                icon: <FaHtml5 />,
+            },
+            {
+                name: "CSS3",
+                icon: <FaCss3Alt />,
+            },
+            {
+                name: "JavaScript",
+                icon: <SiJavascript />,
+            },
+            {
+                name: "React",
+                icon: <FaReact />,
+            },
+            {
+                name: "Tailwind CSS",
+                icon: <SiTailwindcss />,
+            },
         ],
     },
+
     {
-        title: "Backend Development",
+        title: "Backend",
+        description: "Developing APIs, databases and server-side systems.",
+        icon: Database,
         technologies: [
-            { name: "Python", icon: <FaPython className="text-yellow-500 text-4xl" /> },
-            { name: "Django", icon: <SiDjango className="text-green-700 text-4xl" /> },
-            { name: "Django REST", icon: <SiDjango className="text-red-600 text-4xl" /> },
+            {
+                name: "Python",
+                icon: <FaPython />,
+            },
+            {
+                name: "Django",
+                icon: <SiDjango />,
+            },
+            {
+                name: "PostgreSQL",
+                icon: <SiPostgresql />,
+            },
         ],
     },
+
     {
-        title: "Database",
+        title: "Tools",
+        description: "Tools I use for development, testing and deployment.",
+        icon: Wrench,
         technologies: [
-            { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-600 text-4xl" /> },
-        ],
-    },
-    {
-        title: "Tools & Technologies",
-        technologies: [
-            { name: "Git", icon: <FaGitAlt className="text-orange-500 text-4xl" /> },
-            { name: "GitHub", icon: <SiGithub className="text-slate-800 text-4xl" /> },
-            { name: "Postman", icon: <SiPostman className="text-orange-600 text-4xl" /> },
+            {
+                name: "Git",
+                icon: <FaGitAlt />,
+            },
+            {
+                name: "GitHub",
+                icon: <SiGithub />,
+            },
+            {
+                name: "Postman",
+                icon: <SiPostman />,
+            },
             {
                 name: "Vercel",
-                icon: <SiVercel className="text-black text-4xl" />,
+                icon: <SiVercel />,
             },
         ],
     },
 ];
 
+
 const Skills = () => {
     return (
-        <section id="skills" className="section bg-white">
-            <div className="container-custom">
+        <section
+            id="skills"
+            className="
+                relative
+                overflow-hidden
+                bg-white
+                py-28
+                lg:py-36
+            "
+        >
+
+            {/* =====================================================
+                BACKGROUND
+            ====================================================== */}
+
+            <div className="pointer-events-none absolute inset-0 -z-10">
+
+                <div
+                    className="
+                        absolute
+                        left-0
+                        top-20
+                        h-80
+                        w-80
+                        rounded-full
+                        bg-green-100/60
+                        blur-[120px]
+                    "
+                />
+
+                <div
+                    className="
+                        absolute
+                        bottom-0
+                        right-0
+                        h-96
+                        w-96
+                        rounded-full
+                        bg-emerald-100/50
+                        blur-[140px]
+                    "
+                />
+
+            </div>
+
+
+            <div className="container-custom relative z-10">
+
+                {/* =================================================
+                    HEADER
+                ================================================== */}
 
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="text-center"
-                ><p className="text-sm font-bold uppercase tracking-[6px] text-indigo-600">
-                        SKILLS
-                    </p>
+                    initial={{
+                        opacity: 0,
+                        y: 40,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    transition={{
+                        duration: 0.7,
+                    }}
+                    viewport={{
+                        once: true,
+                    }}
+                    className="mx-auto max-w-4xl text-center"
+                >
 
-                    <h2 className="heading-lg mt-6">
+                    {/* Label */}
+
+                    <span
+                        className="
+                            inline-flex
+                            rounded-full
+                            border
+                            border-green-200
+                            bg-green-50
+                            px-5
+                            py-2
+                            text-sm
+                            font-semibold
+                            text-green-700
+                        "
+                    >
+                        Technical Skills
+                    </span>
+
+
+                    {/* Heading */}
+
+                    <h2
+                        className="
+                            mt-8
+                            text-4xl
+                            font-black
+                            tracking-tight
+                            text-slate-900
+                            sm:text-5xl
+                            lg:text-6xl
+                        "
+                    >
                         Technologies I Work With
                     </h2>
-                    <p className="mt-6 text-body max-w-3xl mx-auto">
-                        I build scalable and maintainable full stack applications using modern technologies.
+
+
+                    {/* Description */}
+
+                    <p
+                        className="
+                            mx-auto
+                            mt-7
+                            max-w-3xl
+                            text-lg
+                            leading-8
+                            text-slate-600
+                        "
+                    >
+                        A growing toolkit of technologies I use to build
+                        responsive interfaces, scalable backend systems and
+                        practical full-stack applications.
                     </p>
+
                 </motion.div>
 
-                <div className="mt-24 space-y-16">
-                    {categories.map((category, index) => (
-                        <motion.div
-                            key={category.title}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                        >
-                            <h3 className="text-2xl font-bold text-slate-900 text-center">
-                                {category.title}
-                            </h3>
 
-                            <div className="mt-8 mb-6 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                                {category.technologies.map((tech) => (
-                                    <div
-                                        key={tech.name}
-                                        className="group rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-indigo-200"
-                                    >
-                                        <div className="flex justify-center transition-transform duration-300 group-hover:scale-110">
-                                            {tech.icon}
-                                        </div>
+                {/* =================================================
+                    SKILL CATEGORIES
+                ================================================== */}
 
-                                        <h4 className="mt-5 font-semibold text-slate-700 transition group-hover:text-indigo-600">
-                                            {tech.name}
-                                        </h4>
-                                    </div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    ))}
+                <div
+                    className="
+                        mt-20
+                        grid
+                        gap-8
+                        md:grid-cols-2
+                        lg:grid-cols-3
+                    "
+                >
+
+                    {categories.map((category, index) => {
+
+                        const CategoryIcon = category.icon;
+
+                        return (
+                            <motion.div
+                                key={category.title}
+                                initial={{
+                                    opacity: 0,
+                                    y: 40,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                transition={{
+                                    duration: 0.6,
+                                    delay: index * 0.1,
+                                }}
+                                viewport={{
+                                    once: true,
+                                    amount: 0.2,
+                                }}
+                                className="
+                                    group
+                                    relative
+                                    overflow-hidden
+                                    rounded-[32px]
+                                    border
+                                    border-slate-200
+                                    bg-white
+                                    p-8
+                                    shadow-[0_10px_40px_rgba(15,23,42,0.05)]
+                                    transition-all
+                                    duration-500
+                                    hover:-translate-y-2
+                                    hover:border-green-200
+                                    hover:shadow-[0_25px_70px_rgba(34,197,94,0.10)]
+                                "
+                            >
+
+                                {/* Card Glow */}
+
+                                <div
+                                    className="
+                                        pointer-events-none
+                                        absolute
+                                        -right-16
+                                        -top-16
+                                        h-32
+                                        w-32
+                                        rounded-full
+                                        bg-green-100/70
+                                        blur-3xl
+                                        transition-all
+                                        duration-500
+                                        group-hover:bg-green-200/70
+                                    "
+                                />
+
+
+                                {/* Category Icon */}
+
+                                <div
+                                    className="
+                                        relative
+                                        flex
+                                        h-14
+                                        w-14
+                                        items-center
+                                        justify-center
+                                        rounded-2xl
+                                        bg-green-50
+                                        text-green-600
+                                        transition-all
+                                        duration-300
+                                        group-hover:scale-110
+                                        group-hover:bg-green-600
+                                        group-hover:text-white
+                                    "
+                                >
+                                    <CategoryIcon size={25} />
+                                </div>
+
+
+                                {/* Category Title */}
+
+                                <h3
+                                    className="
+                                        relative
+                                        mt-7
+                                        text-2xl
+                                        font-bold
+                                        text-slate-900
+                                    "
+                                >
+                                    {category.title}
+                                </h3>
+
+
+                                {/* Description */}
+
+                                <p
+                                    className="
+                                        relative
+                                        mt-3
+                                        text-sm
+                                        leading-7
+                                        text-slate-600
+                                    "
+                                >
+                                    {category.description}
+                                </p>
+
+
+                                {/* Divider */}
+
+                                <div
+                                    className="
+                                        my-7
+                                        h-px
+                                        bg-slate-100
+                                    "
+                                />
+
+
+                                {/* Technologies */}
+
+                                <div className="relative space-y-3">
+
+                                    {category.technologies.map(
+                                        (technology) => (
+                                            <div
+                                                key={technology.name}
+                                                className="
+                                                    group/tech
+                                                    flex
+                                                    items-center
+                                                    justify-between
+                                                    rounded-2xl
+                                                    border
+                                                    border-slate-100
+                                                    bg-slate-50/70
+                                                    px-4
+                                                    py-3
+                                                    transition-all
+                                                    duration-300
+                                                    hover:border-green-100
+                                                    hover:bg-green-50
+                                                "
+                                            >
+
+                                                <div className="flex items-center gap-3">
+
+                                                    {/* Technology Icon */}
+
+                                                    <span
+                                                        className="
+                                                            flex
+                                                            h-9
+                                                            w-9
+                                                            items-center
+                                                            justify-center
+                                                            rounded-xl
+                                                            bg-white
+                                                            text-lg
+                                                            text-slate-700
+                                                            shadow-sm
+                                                            transition-all
+                                                            duration-300
+                                                            group-hover/tech:text-green-600
+                                                        "
+                                                    >
+                                                        {technology.icon}
+                                                    </span>
+
+
+                                                    {/* Technology Name */}
+
+                                                    <span
+                                                        className="
+                                                            text-sm
+                                                            font-semibold
+                                                            text-slate-700
+                                                        "
+                                                    >
+                                                        {technology.name}
+                                                    </span>
+
+                                                </div>
+
+
+                                                {/* Arrow */}
+
+                                                <ArrowUpRight
+                                                    size={16}
+                                                    className="
+                                                        text-slate-300
+                                                        transition-all
+                                                        duration-300
+                                                        group-hover/tech:-translate-y-0.5
+                                                        group-hover/tech:translate-x-0.5
+                                                        group-hover/tech:text-green-600
+                                                    "
+                                                />
+
+                                            </div>
+                                        )
+                                    )}
+
+                                </div>
+
+                            </motion.div>
+                        );
+                    })}
+
                 </div>
+
+
+                {/* =================================================
+                    BOTTOM MESSAGE
+                ================================================== */}
+
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                        y: 30,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    transition={{
+                        duration: 0.7,
+                    }}
+                    viewport={{
+                        once: true,
+                    }}
+                    className="mt-16 text-center"
+                >
+
+                    <p className="text-sm text-slate-500">
+                        Always learning, experimenting and adding new
+                        technologies to my toolkit.
+                    </p>
+
+                    <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-green-500 to-emerald-500" />
+
+                </motion.div>
 
             </div>
         </section>

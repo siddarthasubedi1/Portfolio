@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -6,142 +7,217 @@ import { projects } from "../../constants/projectData";
 
 const FeaturedProject = () => {
     const featuredProject = projects[0];
+    const sectionRef = useRef(null);
+
     if (!featuredProject) return null;
 
-    const techColors = {
-        React: "bg-cyan-100 text-cyan-700 border-cyan-200",
-        Vite: "bg-purple-100 text-purple-700 border-purple-200",
-        Python: "bg-yellow-100 text-yellow-700 border-yellow-200",
-        Django: "bg-green-100 text-green-700 border-green-200",
-        PostgreSQL: "bg-blue-100 text-blue-700 border-blue-200",
-        "Tailwind CSS": "bg-sky-100 text-sky-700 border-sky-200",
-        "Django REST Framework": "bg-emerald-100 text-emerald-700 border-emerald-200",
-    };
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    });
+
+    // ✅ Reduced parallax intensity (better performance)
+    const imageY = useTransform(scrollYProgress, [0, 1], [20, -20]);
+    const contentY = useTransform(scrollYProgress, [0, 1], [10, -10]);
 
     return (
-        <section id="featured-project" className="section bg-slate-50">
-            <div className="container-custom">
+        <section
+            ref={sectionRef}
+            id="featured-project"
+            className="relative overflow-hidden py-32 lg:py-40 "
+        >
+            <div className="container-custom relative z-10">
 
-                {/* Header */}
+                {/* ================= Header ================= */}
+
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-center max-w-3xl mx-auto"
+                    transition={{ duration: .6 }}
+                    className="mx-auto max-w-4xl text-center"
                 >
-                    <p className="text-sm font-bold uppercase tracking-[6px] text-indigo-600">
-                        FEATURED PROJECT
-                    </p>
 
-                    <h2 className="heading-lg mt-6">
+                    <span className="inline-flex rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-semibold text-green-700 ">
+                        Featured Project
+                    </span>
+
+                    <h2 className="mt-8 text-4xl font-black text-slate-900 md:text-6xl">
+
                         {featuredProject.title}
+
                     </h2>
 
-                    <p className="mt-6 text-body">
+                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-600">
+
                         {featuredProject.description}
+
                     </p>
+
                 </motion.div>
 
                 {/* Layout */}
-                <div className="mt-16 grid gap-12 lg:grid-cols-2 items-start">
+                <div className="mt-24 grid items-center gap-20 lg:grid-cols-[1.1fr_.9fr]">
+                    {/* ✅ Optimized Image */}
+                    <motion.div style={{ y: imageY }} className="relative">
 
-                    {/* Image */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                    >
-                        <div className="card overflow-hidden hover:shadow-xl">
+                        <div
+                            className="
+        group
+        relative
+        overflow-hidden
+        rounded-[36px]
+        border
+        border-green-100
+        bg-white
+        p-4
+        shadow-[0_25px_70px_rgba(34,197,94,.10)]
+    "
+                        >
+
                             <img
                                 src={featuredProject.image}
                                 alt={featuredProject.title}
-                                className="w-full object-cover"
+                                loading="lazy"
+                                decoding="async"
+                                className="
+        aspect-[16/10]
+        w-full
+        rounded-[24px]
+        object-cover
+        transition-all
+        duration-700
+        group-hover:scale-105
+    "
                             />
+
                         </div>
                     </motion.div>
 
-                    {/* Details */}
+                    {/* ✅ Content */}
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                        className="space-y-8"
+                        style={{ y: contentY }}
+                        className="
+        rounded-[36px]
+        border
+        border-green-100
+        bg-white
+        p-10
+        shadow-[0_25px_70px_rgba(34,197,94,.08)]
+    "
                     >
-
                         {featuredProject.problem && (
-                            <div className="card">
+                            <div className="rounded-3xl border border-red-100 bg-red-50 p-7">
                                 <h3 className="text-sm font-bold uppercase tracking-[4px] text-indigo-600">
                                     Problem
                                 </h3>
-                                <p className="mt-4 text-body">{featuredProject.problem}</p>
+                                <p className="mt-4 text-slate-600 leading-relaxed">
+                                    {featuredProject.problem}
+                                </p>
                             </div>
                         )}
 
                         {featuredProject.solution && (
-                            <div className="card">
-                                <h3 className="text-sm font-bold uppercase tracking-[4px] text-indigo-600">
+                            <div className="mt-8 rounded-3xl border border-green-100 bg-green-50 p-7">
+                                <h3 className="text-sm font-bold uppercase tracking-[4px] text-green-700">
                                     Solution
                                 </h3>
-                                <p className="mt-4 text-body">{featuredProject.solution}</p>
+                                <p className="mt-4 leading-8 text-slate-600">
+                                    {featuredProject.solution}
+                                </p>
                             </div>
                         )}
 
-                        {/* Technologies */}
-                        <div>
-                            <h3 className="text-lg font-bold text-slate-900 text-center">
-                                Technologies
-                            </h3>
-
-                            <div className="mt-6 flex flex-wrap justify-center gap-3">
-                                {featuredProject.technologies.map((tech) => (
-                                    <span
-                                        key={tech}
-                                        className={`rounded-full border px-4 py-2 text-xs font-semibold ${techColors[tech] ||
-                                            "bg-slate-100 text-slate-700 border-slate-200"
-                                            }`}
-                                    >
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-
                         {/* Buttons */}
-                        <div className="flex flex-wrap justify-center gap-4 pt-6 border-t border-slate-200">
+                        <div className="mt-12 flex flex-wrap gap-5">
+
+                            {featuredProject.tech && (
+                                <div className="mt-10">
+
+                                    <h3 className="text-lg font-bold text-slate-900">
+                                        Technologies Used
+                                    </h3>
+
+                                    <div className="mt-5 flex flex-wrap gap-3">
+
+                                        {featuredProject.tech.map((tech) => (
+                                            <span
+                                                key={tech}
+                                                className="
+                        rounded-full
+                        border
+                        border-green-200
+                        bg-green-50
+                        px-4
+                        py-2
+                        text-sm
+                        font-semibold
+                        text-green-700
+                    "
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+
+                                    </div>
+
+                                </div>
+                            )}
+
                             {featuredProject.github && (
                                 <a
                                     href={featuredProject.github}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="btn-outline"
+                                    className="
+                                    inline-flex
+                                    items-center
+                                    gap-3
+                                    rounded-full
+                                    border
+                                    border-green-200
+                                    bg-white
+                                    px-8
+                                    py-4
+                                    font-semibold
+                                    text-slate-700
+                                    transition-all
+                                    duration-300
+                                    hover:border-green-500
+                                    hover:text-green-600
+                                    hover:shadow-lg
+                                    "
                                 >
                                     <FaGithub size={16} />
                                     GitHub
                                 </a>
                             )}
 
-                            {featuredProject.demo && (
-                                <a
-                                    href={featuredProject.demo}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="btn-primary"
-                                >
-                                    <ExternalLink size={16} />
-                                    Live Demo
-                                </a>
-                            )}
-
                             <Link
                                 to={`/project/${featuredProject.slug}`}
-                                className="btn-outline"
+                                className="
+                                inline-flex
+                                items-center
+                                gap-3
+                                rounded-full
+                                border
+                                border-green-200
+                                bg-white
+                                px-8
+                                py-4
+                                font-semibold
+                                text-slate-700
+                                transition-all
+                                duration-300
+                                hover:border-green-500
+                                hover:text-green-600
+                                hover:shadow-lg
+                                "
                             >
                                 View Details
                                 <ArrowRight size={16} />
                             </Link>
+
                         </div>
 
                     </motion.div>

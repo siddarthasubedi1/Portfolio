@@ -52,7 +52,7 @@ const Footer = () => {
                                 <a
                                     key={item.title}
                                     href={item.link}
-                                    className="block text-muted transition hover:text-indigo-600"
+                                    className="block text-slate-600 transition hover:text-indigo-600"
                                 >
                                     {item.title}
                                 </a>
@@ -70,7 +70,7 @@ const Footer = () => {
                                 href={profile.github}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="flex items-center justify-center gap-2 text-muted transition hover:text-indigo-600"
+                                className="flex items-center justify-center gap-2 text-slate-600 transition hover:text-indigo-600"
                             >
                                 <FaGithub size={18} />
                                 GitHub
@@ -80,7 +80,7 @@ const Footer = () => {
                                 href={profile.linkedin}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="flex items-center justify-center gap-2 text-muted transition hover:text-indigo-600"
+                                className="flex items-center justify-center gap-2 text-slate-600 transition hover:text-indigo-600"
                             >
                                 <FaLinkedin size={18} />
                                 LinkedIn
@@ -88,7 +88,7 @@ const Footer = () => {
 
                             <a
                                 href={`mailto:${profile.email}`}
-                                className="flex items-center justify-center gap-2 text-muted transition hover:text-indigo-600"
+                                className="flex items-center justify-center gap-2 text-slate-600 transition hover:text-indigo-600"
                             >
                                 <Mail size={18} />
                                 Email
@@ -98,7 +98,7 @@ const Footer = () => {
                                 href={profile.resume}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="flex items-center justify-center gap-2 text-muted transition hover:text-indigo-600"
+                                className="flex items-center justify-center gap-2 text-slate-600 transition hover:text-indigo-600"
                             >
                                 <Download size={18} />
                                 Resume
@@ -113,7 +113,7 @@ const Footer = () => {
                             Open For Opportunities
                         </h3>
 
-                        <p className="text-muted mt-6">
+                        <p className="text-slate-600 mt-6">
                             I'm currently open to Full Stack Developer internship
                             opportunities, collaborative projects, and meaningful
                             learning experiences.
@@ -121,7 +121,7 @@ const Footer = () => {
 
                         <a
                             href="#contact"
-                            className="btn-primary mt-8 inline-flex px-6 py-3"
+                            className="mt-8 inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-3 font-semibold text-white shadow-md transition hover:-translate-y-1 hover:bg-indigo-700 hover:shadow-lg"
                         >
                             Say Hello
                             <ArrowUpRight size={16} />
@@ -132,7 +132,7 @@ const Footer = () => {
 
                 {/* Bottom */}
                 <div className="mt-24 border-t border-slate-200 pt-8 text-center">
-                    <p className="text-muted">
+                    <p className="text-slate-600">
                         Let's build something meaningful together.
                     </p>
 
