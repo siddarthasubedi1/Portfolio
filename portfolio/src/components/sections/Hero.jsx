@@ -6,7 +6,7 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className="relative overflow-hidden bg-gradient-primary pt-32 pb-20 lg:pt-40 lg:pb-28"
+            className="section relative overflow-hidden bg-gradient-primary"
         >
             {/* Background Grid */}
             <div className="absolute inset-0 bg-grid opacity-60" />

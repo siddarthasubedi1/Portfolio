@@ -10,7 +10,7 @@ const Projects = () => {
     return (
         <section
             id="projects"
-            className="relative overflow-hidden bg-white py-28 lg:py-36"
+            className="section relative overflow-hidden bg-white"
         >
             {/* =====================================================
                 BACKGROUND
@@ -64,7 +64,7 @@ const Projects = () => {
                     PROJECT GRID
                 ====================================================== */}
 
-                <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+                <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3 lg:gap-10">
 
                     {projects.map((project, index) => (
                         <motion.div
@@ -112,7 +112,7 @@ const Projects = () => {
                     viewport={{
                         once: true,
                     }}
-                    className="mt-24"
+                    className="mt-20"
                 >
                     <div
                         className="

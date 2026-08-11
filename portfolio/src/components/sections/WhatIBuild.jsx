@@ -1,14 +1,13 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import {
-    Globe,
+    ArrowRight,
     Database,
+    Globe,
+    Rocket,
+    Server,
     ShieldCheck,
     Smartphone,
-    Server,
-    Rocket,
 } from "lucide-react";
-
-
 
 const services = [
     {
@@ -49,170 +48,96 @@ const services = [
     },
 ];
 
-
-
 const WhatIBuild = () => {
     return (
-        <section id="what-i-build" className="section bg-white">
+        <section id="what-i-build" className="section relative overflow-hidden bg-[radial-gradient(circle_at_top_right,_rgba(16,185,129,0.12),_transparent_38%)]">
             <div className="container-custom">
-
-                {/* ================= Header ================= */}
-
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: .6 }}
-                    className="mx-auto max-w-4xl text-center"
+                    transition={{ duration: 0.6 }}
+                    className="relative overflow-hidden rounded-[36px] border border-emerald-100 bg-white/90 p-6 shadow-[0_20px_60px_rgba(16,185,129,0.08)] sm:p-8 lg:p-10"
                 >
+                    <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-emerald-500/15 via-transparent to-green-500/15" />
+                    <div className="relative grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+                        <div className="max-w-2xl">
+                            <span className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-5 py-2 text-sm font-semibold text-emerald-700">
+                                What I Build
+                            </span>
 
-                    <span className="inline-flex rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-semibold text-green-700">
-                        What I Build
-                    </span>
+                            <h2 className="mt-6 text-4xl font-black text-slate-900 sm:text-5xl lg:text-6xl">
+                                Full stack solutions
+                                <span className="mt-3 block bg-gradient-to-r from-emerald-600 to-green-500 bg-clip-text text-transparent">
+                                    built for real products
+                                </span>
+                            </h2>
 
-                    <h2 className="mt-8 text-4xl font-black text-slate-900 md:text-6xl">
+                            <p className="mt-6 text-lg leading-8 text-slate-600">
+                                I create modern, scalable web experiences from the first screen to the final deployment, with a focus on performance, clarity, and long-term reliability.
+                            </p>
 
-                        Full Stack Solutions
-                        <span className="block bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
-                            Designed For Real Businesses
-                        </span>
+                            <div className="mt-8 flex flex-wrap gap-3">
+                                <a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 transition hover:-translate-y-1 hover:bg-emerald-700">
+                                    Start a conversation
+                                    <ArrowRight size={18} />
+                                </a>
+                                <a href="#why-hire-me" className="inline-flex items-center justify-center rounded-full border border-emerald-200 bg-white px-6 py-3.5 text-sm font-semibold text-emerald-700 transition hover:-translate-y-1 hover:border-emerald-400 hover:text-emerald-800">
+                                    Why work with me
+                                </a>
+                            </div>
+                        </div>
 
-                    </h2>
-
-                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-600">
-
-                        I build complete web applications from frontend to backend,
-                        focusing on performance, scalability, security, and an excellent
-                        user experience.
-
-                    </p>
-
+                        <div className="rounded-[28px] border border-emerald-100 bg-slate-900 p-6 text-white shadow-[0_20px_50px_rgba(15,23,42,0.18)]">
+                            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-emerald-300">
+                                Project focus
+                            </p>
+                            <div className="mt-4 space-y-3 text-sm text-slate-300">
+                                <div className="rounded-2xl border border-white/10 bg-white/10 p-3">
+                                    Sleek business websites with polished layouts and strong conversion paths.
+                                </div>
+                                <div className="rounded-2xl border border-white/10 bg-white/10 p-3">
+                                    Secure dashboards and web apps with smooth interactions and clean architecture.
+                                </div>
+                                <div className="rounded-2xl border border-white/10 bg-white/10 p-3">
+                                    Scalable products that are easy to maintain and ready to grow.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </motion.div>
 
-                {/* Service Cards */}
-                <div className="mt-24 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+                <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                     {services.map((service, index) => {
                         const Icon = service.icon;
                         return (
-                            <motion.div
+                            <motion.article
                                 key={service.title}
-                                initial={{ opacity: 0, y: 40 }}
+                                initial={{ opacity: 0, y: 28 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{
-                                    duration: .5,
-                                    delay: index * .08,
-                                }}
-                                whileHover={{
-                                    y: -12,
-                                }}
-                                className="
-                                group
-                                relative
-                                flex
-                                h-full
-                                flex-col
-                                overflow-hidden
-                                rounded-[32px]
-                                border
-                                border-green-100
-                                bg-white
-                                p-8
-                                shadow-md
-                                transition-all
-                                duration-300
-                                hover:border-green-300
-                                hover:shadow-[0_25px_70px_rgba(34,197,94,.15)]
-                            "
+                                transition={{ duration: 0.45, delay: index * 0.08 }}
+                                whileHover={{ y: -8, scale: 1.01 }}
+                                className="group relative flex h-full flex-col overflow-hidden rounded-[30px] border border-emerald-100 bg-white p-7 shadow-sm transition-all duration-300 hover:border-emerald-300 hover:shadow-[0_25px_70px_rgba(34,197,94,.12)]"
                             >
-
-                                {/* Hover Background */}
-
-                                <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-
-                                {/* Glow */}
-
-                                <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-green-100 blur-[70px] opacity-0 transition duration-300 group-hover:opacity-100" />
-
+                                <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
                                 <div className="relative z-10 flex h-full flex-col">
-
-                                    {/* Icon */}
-
-                                    <div
-                                        className="
-                                        flex
-                                        h-16
-                                        w-16
-                                        items-center
-                                        justify-center
-                                        rounded-2xl
-                                        bg-gradient-to-br
-                                        from-green-500
-                                        to-emerald-600
-                                        text-white
-                                        shadow-lg
-                                        transition-all
-                                        duration-300
-                                        group-hover:scale-110
-                                        group-hover:rotate-6
-                                    "
-                                    >
-                                        <Icon size={28} />
+                                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 text-white shadow-lg transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
+                                        <Icon size={24} />
                                     </div>
 
-                                    {/* Title */}
+                                    <h3 className="mt-6 text-xl font-bold text-slate-900">{service.title}</h3>
 
-                                    <h3 className="mt-8 text-xl font-bold text-slate-900">
-                                        {service.title}
-                                    </h3>
-
-                                    {/* Badge */}
-
-                                    <span className="mt-4 inline-flex w-fit rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700">
+                                    <span className="mt-4 inline-flex w-fit rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
                                         Service
                                     </span>
 
-                                    {/* Description */}
-
-                                    <p className="mt-5 flex-1 leading-8 text-slate-600">
-                                        {service.description}
-                                    </p>
-
+                                    <p className="mt-5 flex-1 leading-8 text-slate-600">{service.description}</p>
                                 </div>
-
-                            </motion.div>
+                            </motion.article>
                         );
                     })}
                 </div>
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: .6 }}
-                    className="mt-24 rounded-[36px] border border-green-100 bg-gradient-to-r from-green-600 to-emerald-600 px-8 py-16 text-center text-white shadow-xl"
-                >
-
-                    <h3 className="text-3xl font-black">
-
-                        Have a Project in Mind?
-
-                    </h3>
-
-                    <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-green-100">
-
-                        Whether it's a business website, an e-commerce platform, or a custom web application, I'm ready to help transform your ideas into reliable, modern digital solutions.
-
-                    </p>
-
-                    <a
-                        href="#contact"
-                        className="mt-10 inline-flex rounded-full bg-green-600 px-8 py-4 font-semibold text-white transition border-amber-600 hover:-translate-y-1 hover:shadow-xl"
-                    >
-                        Start a Conversation
-                    </a>
-
-                </motion.div>
-
             </div>
         </section>
     );

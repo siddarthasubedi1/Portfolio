@@ -47,8 +47,8 @@ const Navbar = () => {
     return (
         <>
             {/* ===== Navbar ===== */}
-            <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-white border-b border-slate-200 ">
-                <div className="container flex h-full items-center justify-between">
+            <header className="fixed top-0 left-0 right-0 z-50 h-20 border-b border-slate-200 bg-white">
+                <div className="container-custom flex h-full items-center justify-between">
 
                     {/* Logo */}
                     <a href="#hero" className="text-xl font-bold text-slate-900">

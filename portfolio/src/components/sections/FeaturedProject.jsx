@@ -24,9 +24,9 @@ const FeaturedProject = () => {
         <section
             ref={sectionRef}
             id="featured-project"
-            className="relative overflow-hidden py-32 lg:py-40 mb-20 "
+            className="section relative overflow-hidden"
         >
-            <div className="container-custom relative z-1 ">
+            <div className="container-custom relative z-10">
 
                 {/* ================= Header ================= */}
 
@@ -57,7 +57,7 @@ const FeaturedProject = () => {
                 </motion.div>
 
                 {/* Layout */}
-                <div className="mt-24 grid items-center gap-20 lg:grid-cols-[1.1fr_.9fr]">
+                <div className="mt-16 grid items-center gap-16 lg:mt-20 lg:grid-cols-[1.1fr_.9fr] lg:gap-20">
                     {/* ✅ Optimized Image */}
                     <motion.div style={{ y: imageY }} className="relative">
 
@@ -102,8 +102,9 @@ const FeaturedProject = () => {
         border
         border-green-100
         bg-white
-        p-10
+        p-8
         shadow-[0_25px_70px_rgba(34,197,94,.08)]
+        md:p-10
     "
                     >
                         {featuredProject.problem && (

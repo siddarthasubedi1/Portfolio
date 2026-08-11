@@ -148,11 +148,15 @@ LAYOUT
 ======================================================= */
 
 .section {
-  @apply py-20 md:py-28 lg:py-32;
+  @apply py-20 md:py-24 lg:py-28;
 }
 
 .container-custom {
   @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+}
+
+.section-tight {
+  @apply py-16 md:py-20 lg:py-24;
 }
 
 .section-clip {

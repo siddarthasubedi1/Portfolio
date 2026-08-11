@@ -5,8 +5,8 @@ import profile from "../../constants/profile";
 
 const Contact = () => {
     return (
-        <section id="contact" className="bg-white py-32">
-            <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <section id="contact" className="section bg-white">
+            <div className="container-custom">
 
                 {/* Header */}
                 <motion.div
