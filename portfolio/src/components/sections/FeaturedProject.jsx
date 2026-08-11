@@ -24,9 +24,9 @@ const FeaturedProject = () => {
         <section
             ref={sectionRef}
             id="featured-project"
-            className="relative overflow-hidden py-32 lg:py-40 "
+            className="relative overflow-hidden py-32 lg:py-40 mb-20 "
         >
-            <div className="container-custom relative z-10">
+            <div className="container-custom relative z-1 ">
 
                 {/* ================= Header ================= */}
 
@@ -38,7 +38,7 @@ const FeaturedProject = () => {
                     className="mx-auto max-w-4xl text-center"
                 >
 
-                    <span className="inline-flex rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-semibold text-green-700 ">
+                    <span className="inline-flex rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-semibold text-green-700">
                         Featured Project
                     </span>
 
@@ -48,7 +48,7 @@ const FeaturedProject = () => {
 
                     </h2>
 
-                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-600">
+                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-600 ">
 
                         {featuredProject.description}
 
