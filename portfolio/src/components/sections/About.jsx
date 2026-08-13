@@ -1,40 +1,39 @@
 import { motion } from "framer-motion";
 import {
-    GraduationCap,
+    ArrowRight,
     BriefcaseBusiness,
-    MapPin,
     Code2,
-    Laptop,
-    Target,
-    Award,
+    GraduationCap,
+    MapPin,
     Rocket,
     Sparkles,
+    Target,
 } from "lucide-react";
 
-const cards = [
+const highlights = [
     {
         icon: GraduationCap,
         title: "Education",
         description:
-            "Currently pursuing BSc (Hons) Computer System Engineering at ISMT College with a strong focus on software engineering, system design, and modern web technologies.",
+            "Currently pursuing BSc (Hons) Computer System Engineering at ISMT College, with a focus on software engineering, databases and modern web development.",
     },
     {
         icon: Code2,
-        title: "Full Stack Development",
+        title: "Development",
         description:
-            "Building responsive, secure and scalable applications using React, Django REST Framework, PostgreSQL, REST APIs and modern development practices.",
+            "Focused on building full stack applications with React, Django REST Framework, REST APIs and PostgreSQL.",
     },
     {
         icon: BriefcaseBusiness,
-        title: "Career Goal",
+        title: "Career Direction",
         description:
-            "Seeking a Full Stack Developer Internship where I can contribute to real-world projects while growing as a professional software engineer.",
+            "Seeking a Full Stack Developer internship where I can contribute to real projects and grow within a professional team.",
     },
     {
         icon: MapPin,
-        title: "Based In",
+        title: "Location",
         description:
-            "Pokhara, Nepal • Available for remote, hybrid and on-site internship opportunities.",
+            "Based in Pokhara, Nepal and open to suitable remote, hybrid and on-site opportunities.",
     },
 ];
 
@@ -47,7 +46,7 @@ const stats = [
     {
         number: "15+",
         label: "Technologies",
-        icon: Award,
+        icon: Code2,
     },
     {
         number: "2+",
@@ -56,132 +55,333 @@ const stats = [
     },
 ];
 
-export default function About() {
+const About = () => {
     return (
-        <section id="about" className="section relative overflow-hidden">
-            <div className="absolute inset-0 -z-10 overflow-hidden">
-                <div className="absolute left-[-8%] top-20 h-72 w-72 rounded-full bg-emerald-200/25 blur-3xl"></div>
-                <div className="absolute right-[-4%] bottom-10 h-80 w-80 rounded-full bg-sky-200/20 blur-3xl"></div>
-            </div>
+        <section
+            id="about"
+            className="
+                relative overflow-hidden
+                bg-slate-50/70
+                py-20 sm:py-24 lg:py-28
+            "
+        >
+            {/* BACKGROUND */}
+            <div
+                className="
+                    pointer-events-none
+                    absolute -left-40 top-20
+                    h-80 w-80
+                    rounded-full
+                    bg-green-100/60
+                    blur-[120px]
+                "
+            />
 
             <div className="container-custom relative z-10">
+
+                {/* HEADER */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="mx-auto max-w-4xl text-center"
+                    initial={{
+                        opacity: 0,
+                        y: 25,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    viewport={{
+                        once: true,
+                    }}
+                    transition={{
+                        duration: 0.5,
+                    }}
+                    className="mx-auto max-w-3xl text-center"
                 >
-                    <span className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-5 py-2 text-sm font-semibold text-emerald-700">
+                    <span className="section-badge">
+                        <Sparkles size={14} />
                         About Me
                     </span>
 
-                    <h2 className="mt-8 text-4xl font-black leading-tight text-slate-900 sm:text-5xl lg:text-6xl">
-                        Building digital experiences
-                        <span className="mt-3 block bg-gradient-to-r from-emerald-600 via-green-500 to-teal-500 bg-clip-text text-transparent">
-                            that feel polished and purposeful
+                    <h2 className="section-title">
+                        Developer focused on building
+                        <span className="text-green-600">
+                            {" "}
+                            useful digital products.
                         </span>
                     </h2>
 
-                    <p className="mx-auto mt-7 max-w-3xl text-lg leading-8 text-slate-600">
-                        I’m a Computer System Engineering student who loves turning ideas into
-                        fast, secure, and user-friendly web applications with a strong focus on
-                        clean code and thoughtful design.
+                    <p className="section-description">
+                        I&apos;m a Computer System Engineering student with a
+                        strong interest in Full Stack Development. I enjoy
+                        transforming ideas into practical web applications
+                        while continuing to improve my understanding of
+                        frontend, backend and software engineering.
                     </p>
                 </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 35 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }}
-                    viewport={{ once: true }}
-                    className="mt-16 rounded-[36px] border border-emerald-100 bg-white/85 p-8 shadow-[0_25px_70px_rgba(15,23,42,.06)] backdrop-blur-xl md:p-10 lg:p-12"
+                {/* MAIN CONTENT */}
+                <div
+                    className="
+                        mx-auto mt-12
+                        grid max-w-6xl
+                        gap-6
+                        lg:grid-cols-[1.15fr_.85fr]
+                    "
                 >
-                    <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-                        <div>
-                            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-700">
-                                <Sparkles size={16} />
-                                Crafting practical solutions
+                    {/* LEFT */}
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            x: -25,
+                        }}
+                        whileInView={{
+                            opacity: 1,
+                            x: 0,
+                        }}
+                        viewport={{
+                            once: true,
+                        }}
+                        transition={{
+                            duration: 0.5,
+                        }}
+                        className="
+                            portfolio-card
+                            relative overflow-hidden
+                            p-6 sm:p-8 lg:p-9
+                        "
+                    >
+                        <div
+                            className="
+                                absolute right-0 top-0
+                                h-40 w-40
+                                rounded-full
+                                bg-green-100/60
+                                blur-[70px]
+                            "
+                        />
+
+                        <div className="relative z-10">
+                            <div className="card-icon">
+                                <Target size={21} />
                             </div>
 
-                            <h3 className="mt-6 text-2xl font-bold text-slate-900 sm:text-3xl">
-                                From brainstorming to deployment, I focus on building products that are useful, reliable, and modern.
-                            </h3>
-
-                            <p className="mt-5 text-lg leading-8 text-slate-600">
-                                My goal is to grow into a well-rounded Full Stack Developer who can own both the user experience and the technical foundation behind it.
+                            <p
+                                className="
+                                    mt-6
+                                    text-xs font-bold
+                                    uppercase tracking-[0.17em]
+                                    text-green-600
+                                "
+                            >
+                                My Focus
                             </p>
 
-                            <div className="mt-8 flex flex-wrap gap-3">
+                            <h3
+                                className="
+                                    mt-2
+                                    text-2xl font-bold
+                                    tracking-tight
+                                    text-slate-900
+                                    sm:text-3xl
+                                "
+                            >
+                                Learning by building real applications.
+                            </h3>
+
+                            <p
+                                className="
+                                    mt-5
+                                    max-w-2xl
+                                    text-sm leading-7
+                                    text-slate-600
+                                    sm:text-[15px]
+                                "
+                            >
+                                My goal is to become a dependable Full Stack
+                                Developer who understands both the user-facing
+                                side of an application and the systems working
+                                behind it. I strengthen my skills through
+                                practical projects, debugging, API development
+                                and continuous learning.
+                            </p>
+
+                            {/* TECH */}
+                            <div className="mt-6 flex flex-wrap gap-2">
                                 {[
                                     "React",
-                                    "Django REST Framework",
+                                    "Django REST",
                                     "PostgreSQL",
-                                    "Responsive Design",
-                                ].map((skill) => (
+                                    "REST APIs",
+                                    "Responsive UI",
+                                ].map((item) => (
                                     <span
-                                        key={skill}
-                                        className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-700"
+                                        key={item}
+                                        className="
+                                            rounded-lg
+                                            border border-green-100
+                                            bg-green-50/70
+                                            px-3 py-2
+                                            text-xs font-semibold
+                                            text-green-700
+                                        "
                                     >
-                                        {skill}
+                                        {item}
                                     </span>
                                 ))}
                             </div>
-                        </div>
 
-                        <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-                            {stats.map((item) => {
-                                const Icon = item.icon;
-
-                                return (
-                                    <motion.div
-                                        key={item.label}
-                                        whileHover={{ y: -6, scale: 1.02 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="rounded-[24px] border border-emerald-100 bg-slate-50 p-5 text-center shadow-sm"
-                                    >
-                                        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 text-white shadow-lg">
-                                            <Icon size={22} />
-                                        </div>
-                                        <h3 className="mt-4 text-3xl font-black text-slate-900">
-                                            {item.number}
-                                        </h3>
-                                        <p className="mt-2 text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-                                            {item.label}
-                                        </p>
-                                    </motion.div>
-                                );
-                            })}
-                        </div>
-                    </div>
-                </motion.div>
-
-                <div className="mt-10 grid gap-6 lg:grid-cols-2">
-                    {cards.map((item, index) => {
-                        const Icon = item.icon;
-                        return (
-                            <motion.article
-                                key={item.title}
-                                initial={{ opacity: 0, y: 24 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.45, delay: index * 0.08 }}
-                                viewport={{ once: true }}
-                                whileHover={{ y: -6, scale: 1.01 }}
-                                className="group rounded-[28px] border border-emerald-100 bg-white/80 p-7 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-emerald-300 hover:shadow-[0_20px_60px_rgba(34,197,94,.12)]"
+                            <a
+                                href="#projects"
+                                className="
+                                    hover-link
+                                    mt-7
+                                    text-sm font-bold
+                                    text-green-700
+                                "
                             >
-                                <div className="flex items-start gap-4">
-                                    <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 text-white shadow-md">
-                                        <Icon size={24} />
+                                Explore my projects
+                                <ArrowRight size={16} />
+                            </a>
+                        </div>
+                    </motion.div>
+
+                    {/* STATS */}
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            x: 25,
+                        }}
+                        whileInView={{
+                            opacity: 1,
+                            x: 0,
+                        }}
+                        viewport={{
+                            once: true,
+                        }}
+                        transition={{
+                            duration: 0.5,
+                        }}
+                        className="
+                            grid grid-cols-3 gap-3
+                            lg:grid-cols-1
+                        "
+                    >
+                        {stats.map((stat) => {
+                            const Icon = stat.icon;
+
+                            return (
+                                <div
+                                    key={stat.label}
+                                    className="
+                                        portfolio-card
+                                        flex flex-col
+                                        items-center justify-center
+                                        p-4
+                                        text-center
+                                        sm:p-6
+                                        lg:flex-row
+                                        lg:justify-start
+                                        lg:gap-5
+                                        lg:text-left
+                                    "
+                                >
+                                    <div className="card-icon">
+                                        <Icon size={18} />
                                     </div>
-                                    <div>
-                                        <h3 className="text-xl font-bold text-slate-900">
-                                            {item.title}
-                                        </h3>
-                                        <p className="mt-3 leading-8 text-slate-600">
-                                            {item.description}
+
+                                    <div className="mt-3 lg:mt-0">
+                                        <p
+                                            className="
+                                                text-xl
+                                                font-extrabold
+                                                text-slate-900
+                                                sm:text-2xl
+                                            "
+                                        >
+                                            {stat.number}
+                                        </p>
+
+                                        <p
+                                            className="
+                                                mt-0.5
+                                                text-[10px]
+                                                font-semibold
+                                                uppercase
+                                                tracking-[0.08em]
+                                                text-slate-500
+                                                sm:text-xs
+                                            "
+                                        >
+                                            {stat.label}
                                         </p>
                                     </div>
                                 </div>
+                            );
+                        })}
+                    </motion.div>
+                </div>
+
+                {/* HIGHLIGHTS */}
+                <div
+                    className="
+                        mx-auto mt-6
+                        grid max-w-6xl
+                        gap-5
+                        sm:grid-cols-2
+                        lg:grid-cols-4
+                    "
+                >
+                    {highlights.map((item, index) => {
+                        const Icon = item.icon;
+
+                        return (
+                            <motion.article
+                                key={item.title}
+                                initial={{
+                                    opacity: 0,
+                                    y: 20,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                viewport={{
+                                    once: true,
+                                }}
+                                transition={{
+                                    duration: 0.4,
+                                    delay: index * 0.05,
+                                }}
+                                className="
+                                    portfolio-card
+                                    flex h-full
+                                    flex-col
+                                    p-5 sm:p-6
+                                "
+                            >
+                                <div className="card-icon">
+                                    <Icon size={18} />
+                                </div>
+
+                                <h3
+                                    className="
+                                        mt-5
+                                        text-base font-bold
+                                        text-slate-900
+                                    "
+                                >
+                                    {item.title}
+                                </h3>
+
+                                <p
+                                    className="
+                                        mt-2
+                                        text-sm leading-6
+                                        text-slate-600
+                                    "
+                                >
+                                    {item.description}
+                                </p>
                             </motion.article>
                         );
                     })}
@@ -189,4 +389,6 @@ export default function About() {
             </div>
         </section>
     );
-}
+};
+
+export default About;

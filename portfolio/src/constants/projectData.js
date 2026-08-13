@@ -167,7 +167,7 @@ export const projects = [
             "API Integration",
         ],
 
-        github: "https://github.com/YOUR_USERNAME",
+        github: "https://github.com/siddarthasubedi1",
 
         demo: "",
     },
@@ -233,7 +233,7 @@ export const projects = [
             "Accessibility",
         ],
 
-        github: "https://github.com/YOUR_USERNAME",
+        github: "https://github.com/siddarthasubedi1",
 
         demo: "",
     },

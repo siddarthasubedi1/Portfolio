@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
-import { ArrowUpRight, FolderGit2 } from "lucide-react";
+import {
+    ArrowRight,
+    FolderGit2,
+} from "lucide-react";
 
 import { projects } from "../../constants/projectData";
 import profile from "../../constants/profile";
@@ -10,53 +13,40 @@ const Projects = () => {
     return (
         <section
             id="projects"
-            className="section relative overflow-hidden bg-white"
+            className="relative overflow-hidden bg-white py-28 lg:py-36"
         >
-            {/* =====================================================
-                BACKGROUND
-            ====================================================== */}
+            {/* BACKGROUND */}
+            <div className="pointer-events-none absolute -left-40 top-20 h-80 w-80 rounded-full bg-green-100/50 blur-[120px]" />
 
-            <div className="pointer-events-none absolute inset-0 -z-10">
-                <div className="absolute left-0 top-20 h-80 w-80 rounded-full bg-green-100/60 blur-[120px]" />
-
-                <div className="absolute right-0 top-1/2 h-96 w-96 rounded-full bg-emerald-100/50 blur-[140px]" />
-
-                <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-teal-100/40 blur-[120px]" />
-            </div>
+            <div className="pointer-events-none absolute -right-40 bottom-20 h-96 w-96 rounded-full bg-emerald-100/40 blur-[130px]" />
 
             <div className="container-custom relative z-10">
 
-                {/* =====================================================
-                    HEADER
-                ====================================================== */}
-
+                {/* HEADER */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }}
                     viewport={{ once: true }}
-                    className="mx-auto max-w-4xl text-center"
+                    transition={{ duration: 0.55 }}
+                    className="mx-auto max-w-3xl text-center"
                 >
-                    {/* Small Label */}
-
-                    <span className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-semibold text-green-700">
-                        <FolderGit2 size={16} />
-
+                    <span className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-2 text-sm font-semibold text-green-700">
+                        <FolderGit2 size={15} />
                         My Projects
                     </span>
 
-                    {/* Heading */}
-
-                    <h2 className="mt-8 text-4xl font-black tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-                        Things I've Built
+                    <h2 className="mt-6 text-4xl font-black tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+                        Things I've
+                        <span className="text-green-600">
+                            {" "}
+                            Built
+                        </span>
                     </h2>
 
-                    {/* Description */}
-
-                    <p className="mx-auto mt-7 max-w-3xl text-lg leading-8 text-slate-600">
-                        A collection of practical web applications built using
-                        modern technologies, clean architecture and responsive
-                        design principles.
+                    <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
+                        A selection of projects where I have worked with
+                        frontend development, backend APIs, databases and
+                        responsive interfaces.
                     </p>
                 </motion.div>
 
@@ -64,39 +54,29 @@ const Projects = () => {
                     PROJECT GRID
                 ====================================================== */}
 
-                <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3 lg:gap-10">
+                <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
 
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.id}
-                            initial={{
-                                opacity: 0,
-                                y: 40,
-                            }}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            transition={{
-                                duration: 0.6,
-                                delay: index * 0.08,
-                            }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{
                                 once: true,
                                 amount: 0.15,
+                            }}
+                            transition={{
+                                duration: 0.45,
+                                delay: index * 0.07,
                             }}
                             className="h-full"
                         >
                             <ProjectCard project={project} />
                         </motion.div>
                     ))}
-
                 </div>
 
-                {/* =====================================================
-                    BOTTOM CTA
-                ====================================================== */}
-
+                {/* GITHUB CTA */}
                 <motion.div
                     initial={{
                         opacity: 0,
@@ -112,7 +92,7 @@ const Projects = () => {
                     viewport={{
                         once: true,
                     }}
-                    className="mt-20"
+                    className="mt-24"
                 >
                     <div
                         className="
@@ -154,67 +134,46 @@ const Projects = () => {
                                 Want to see more?
                             </h3>
 
-                            {/* Description */}
-
-                            <p className="mx-auto mt-4 max-w-2xl text-slate-600">
-                                Explore my GitHub profile to see more projects,
-                                experiments, source code and ongoing development work.
+                            <p className="mt-1 text-sm leading-6 text-slate-600">
+                                Visit my GitHub profile to explore more source
+                                code and development work.
                             </p>
-
-                            {/* Button */}
-
-                            <a
-                                href={profile.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="
-                                    group
-                                    mt-8
-                                    inline-flex
-                                    items-center
-                                    gap-4
-                                    rounded-full
-                                    bg-gradient-to-r
-                                    from-green-600
-                                    to-emerald-600
-                                    px-7
-                                    py-4
-                                    font-semibold
-                                    text-white
-                                    shadow-[0_12px_30px_rgba(34,197,94,0.25)]
-                                    transition-all
-                                    duration-300
-                                    hover:-translate-y-1
-                                    hover:shadow-[0_18px_40px_rgba(34,197,94,0.35)]
-                                "
-                            >
-                                <FaGithub size={19} />
-
-                                Explore More Projects
-
-                                <span
-                                    className="
-                                        flex
-                                        h-8
-                                        w-8
-                                        items-center
-                                        justify-center
-                                        rounded-full
-                                        bg-white
-                                        text-green-600
-                                        transition-transform
-                                        duration-300
-                                        group-hover:translate-x-1
-                                    "
-                                >
-                                    <ArrowUpRight size={16} />
-                                </span>
-                            </a>
-
                         </div>
                     </div>
-                </motion.div>
 
+                    <a
+                        href={profile.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="
+                            group
+                            inline-flex
+                            shrink-0
+                            items-center
+                            justify-center
+                            gap-2.5
+                            rounded-xl
+                            bg-green-600
+                            px-6
+                            py-3.5
+                            text-sm
+                            font-semibold
+                            text-white
+                            transition-all
+                            duration-300
+                            hover:bg-green-700
+                        "
+                    >
+                        <FaGithub size={17} />
+
+                        View GitHub
+
+                        <ArrowRight
+                            size={16}
+                            className="transition-transform group-hover:translate-x-1"
+                        />
+                    </a>
+                </motion.div>
             </div>
         </section>
     );

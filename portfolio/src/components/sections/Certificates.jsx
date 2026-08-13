@@ -1,11 +1,18 @@
 import { motion } from "framer-motion";
 import {
     Award,
-    BookOpen,
-    GraduationCap,
     BadgeCheck,
-    ArrowUpRight,
+    BookOpen,
+    Boxes,
+    Cloud,
+    Code2,
+    Database,
+    GraduationCap,
+    Layers3,
+    Rocket,
     Sparkles,
+    TestTube2,
+    Workflow,
 } from "lucide-react";
 
 const certificates = [
@@ -16,197 +23,528 @@ const certificates = [
         description:
             "Completed a 5-day workshop covering wireframing, prototyping, design principles and user experience fundamentals.",
         icon: Award,
-        link: "#",
+        type: "Training",
+        status: "Completed",
     },
     {
         title: "Full Stack Web Development",
         organization: "Personal Learning",
         year: "Ongoing",
         description:
-            "Building full-stack applications using React, Django REST Framework and PostgreSQL through real-world projects.",
+            "Building full stack applications using React, Django REST Framework and PostgreSQL through practical projects.",
         icon: GraduationCap,
-        link: "#",
+        type: "Development",
+        status: "In Progress",
     },
     {
         title: "Continuous Learning",
         organization: "Self Learning",
         year: "Current",
         description:
-            "Expanding knowledge in authentication, deployment, Docker, Git, testing and modern software engineering practices.",
+            "Expanding my knowledge in deployment, Docker, Git, testing, backend architecture and modern software engineering.",
         icon: BookOpen,
-        link: "#",
+        type: "Self Learning",
+        status: "Active",
     },
 ];
 
 const currentlyLearning = [
     {
         name: "Docker",
-        color: "border-sky-200 bg-sky-50 text-sky-700 hover:bg-sky-100",
+        icon: Boxes,
+        description: "Containers & deployment",
     },
     {
         name: "CI/CD",
-        color: "border-violet-200 bg-violet-50 text-violet-700 hover:bg-violet-100",
+        icon: Workflow,
+        description: "Automated delivery",
     },
     {
         name: "Testing",
-        color: "border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100",
+        icon: TestTube2,
+        description: "Reliable applications",
     },
     {
         name: "Redis",
-        color: "border-red-200 bg-red-50 text-red-700 hover:bg-red-100",
+        icon: Database,
+        description: "Caching & performance",
     },
     {
         name: "Celery",
-        color: "border-orange-200 bg-orange-50 text-orange-700 hover:bg-orange-100",
+        icon: Rocket,
+        description: "Background tasks",
     },
     {
         name: "AWS Basics",
-        color: "border-yellow-200 bg-yellow-50 text-yellow-700 hover:bg-yellow-100",
+        icon: Cloud,
+        description: "Cloud fundamentals",
     },
     {
         name: "System Design",
-        color: "border-teal-200 bg-teal-50 text-teal-700 hover:bg-teal-100",
+        icon: Layers3,
+        description: "Scalable architecture",
     },
     {
         name: "Clean Architecture",
-        color: "border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100",
+        icon: Code2,
+        description: "Maintainable software",
     },
 ];
 
 const Certificates = () => {
     return (
-        <section id="certificates" className="section relative overflow-hidden bg-slate-50">
-            <div className="pointer-events-none absolute left-0 top-20 h-72 w-72 rounded-full bg-emerald-200/20 blur-3xl" />
-            <div className="pointer-events-none absolute bottom-20 right-0 h-80 w-80 rounded-full bg-teal-200/20 blur-3xl" />
+        <section
+            id="certificates"
+            className="
+                relative overflow-hidden
+                bg-slate-50/70
+                py-20 sm:py-24 lg:py-28
+            "
+        >
+            {/* BACKGROUND */}
+            <div
+                className="
+                    pointer-events-none
+                    absolute -left-32 top-28
+                    h-80 w-80
+                    rounded-full
+                    bg-emerald-100/60
+                    blur-[120px]
+                "
+            />
+
+            <div
+                className="
+                    pointer-events-none
+                    absolute -right-40 bottom-16
+                    h-96 w-96
+                    rounded-full
+                    bg-green-100/50
+                    blur-[130px]
+                "
+            />
 
             <div className="container-custom relative z-10">
+
+                {/* HEADER */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }}
-                    viewport={{ once: true }}
+                    initial={{
+                        opacity: 0,
+                        y: 30,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    viewport={{
+                        once: true,
+                    }}
+                    transition={{
+                        duration: 0.55,
+                    }}
                     className="mx-auto max-w-3xl text-center"
                 >
-                    <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-5 py-2 text-sm font-semibold text-emerald-700">
-                        <Sparkles size={16} />
+                    <span className="section-badge">
+                        <Sparkles size={15} />
                         Certificates & Learning
-                    </div>
+                    </span>
 
-                    <h2 className="mt-7 text-4xl font-black tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-                        Continuous
-                        <span className="mt-2 block bg-gradient-to-r from-emerald-600 via-teal-500 to-sky-500 bg-clip-text text-transparent">
-                            growth
+                    <h2 className="section-title">
+                        Growing Through
+                        <span className="text-green-600">
+                            {" "}
+                            Continuous Learning.
                         </span>
                     </h2>
 
-                    <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-                        I continuously improve my skills through structured learning, hands-on projects and exploration of modern software engineering practices.
+                    <p className="section-description">
+                        I continue strengthening my technical skills through
+                        training, self-learning and hands-on development
+                        projects.
                     </p>
                 </motion.div>
 
-                <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {/* CERTIFICATES */}
+                <div
+                    className="
+                        mx-auto mt-14
+                        grid max-w-6xl
+                        gap-5
+                        md:grid-cols-2
+                        xl:grid-cols-3
+                    "
+                >
                     {certificates.map((item, index) => {
                         const Icon = item.icon;
 
                         return (
                             <motion.article
                                 key={item.title}
-                                initial={{ opacity: 0, y: 35 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.55, delay: index * 0.1 }}
-                                viewport={{ once: true }}
-                                whileHover={{ y: -8, scale: 1.01 }}
-                                className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:border-emerald-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.10)] sm:p-8"
+                                initial={{
+                                    opacity: 0,
+                                    y: 30,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                viewport={{
+                                    once: true,
+                                    amount: 0.2,
+                                }}
+                                transition={{
+                                    duration: 0.45,
+                                    delay: index * 0.07,
+                                }}
+                                className="
+                                    portfolio-card
+                                    group
+                                    relative
+                                    flex h-full
+                                    min-h-[315px]
+                                    flex-col
+                                    overflow-hidden
+                                    p-6
+                                "
                             >
-                                <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-sky-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                                {/* TOP ACCENT */}
+                                <div
+                                    className="
+                                        absolute inset-x-0 top-0
+                                        h-[3px]
+                                        origin-left
+                                        scale-x-0
+                                        bg-gradient-to-r
+                                        from-green-500
+                                        to-emerald-400
+                                        transition-transform
+                                        duration-300
+                                        group-hover:scale-x-100
+                                    "
+                                />
 
-                                <div className="flex items-center justify-between">
-                                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 transition-all duration-300 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white">
-                                        <Icon size={24} />
+                                <div className="flex items-start justify-between gap-4">
+                                    <div className="card-icon">
+                                        <Icon
+                                            size={21}
+                                            strokeWidth={2}
+                                        />
                                     </div>
 
-                                    <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-500">
+                                    <span
+                                        className="
+                                            rounded-full
+                                            border border-slate-200
+                                            bg-slate-50
+                                            px-3 py-1.5
+                                            text-[11px]
+                                            font-bold
+                                            text-slate-500
+                                        "
+                                    >
                                         {item.year}
                                     </span>
                                 </div>
 
-                                <div className="mt-7 flex-1">
-                                    <h3 className="text-xl font-bold leading-snug text-slate-900 transition-colors duration-300 group-hover:text-emerald-600">
-                                        {item.title}
-                                    </h3>
-
-                                    <p className="mt-2 text-sm font-semibold text-emerald-600">
-                                        {item.organization}
-                                    </p>
-
-                                    <p className="mt-5 text-sm leading-7 text-slate-600">
-                                        {item.description}
-                                    </p>
+                                <div className="mt-6">
+                                    <span
+                                        className="
+                                            text-[11px]
+                                            font-bold
+                                            uppercase
+                                            tracking-[0.16em]
+                                            text-green-600
+                                        "
+                                    >
+                                        {item.type}
+                                    </span>
                                 </div>
 
-                                {item.link !== "#" && (
-                                    <a
-                                        href={item.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="mt-7 inline-flex w-fit items-center gap-2 text-sm font-bold text-emerald-600 transition-colors hover:text-emerald-700"
+                                <h3
+                                    className="
+                                        mt-2
+                                        text-xl font-bold
+                                        leading-7
+                                        text-slate-900
+                                    "
+                                >
+                                    {item.title}
+                                </h3>
+
+                                <p
+                                    className="
+                                        mt-1.5
+                                        text-sm font-semibold
+                                        text-slate-500
+                                    "
+                                >
+                                    {item.organization}
+                                </p>
+
+                                <p
+                                    className="
+                                        mt-4
+                                        flex-1
+                                        text-sm leading-7
+                                        text-slate-600
+                                    "
+                                >
+                                    {item.description}
+                                </p>
+
+                                <div
+                                    className="
+                                        mt-6
+                                        flex items-center
+                                        justify-between
+                                        border-t
+                                        border-slate-100
+                                        pt-4
+                                    "
+                                >
+                                    <span
+                                        className="
+                                            inline-flex
+                                            items-center
+                                            gap-1.5
+                                            text-xs
+                                            font-semibold
+                                            text-green-600
+                                        "
                                     >
-                                        View Certificate
-                                        <ArrowUpRight
-                                            size={16}
-                                            className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                                        />
-                                    </a>
-                                )}
+                                        <BadgeCheck size={14} />
+                                        {item.status}
+                                    </span>
+
+                                    <span
+                                        className="
+                                            text-[11px]
+                                            font-medium
+                                            text-slate-400
+                                        "
+                                    >
+                                        Learning Record
+                                    </span>
+                                </div>
                             </motion.article>
                         );
                     })}
                 </div>
 
+                {/* CURRENTLY LEARNING */}
                 <motion.div
-                    initial={{ opacity: 0, y: 35 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }}
-                    viewport={{ once: true }}
-                    className="relative mt-16 overflow-hidden rounded-[32px] border border-slate-200 bg-white p-7 shadow-sm sm:p-10 lg:p-12"
+                    initial={{
+                        opacity: 0,
+                        y: 30,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    viewport={{
+                        once: true,
+                    }}
+                    transition={{
+                        duration: 0.55,
+                    }}
+                    className="
+                        portfolio-card
+                        relative
+                        mx-auto mt-14
+                        max-w-6xl
+                        overflow-hidden
+                        p-6
+                        sm:p-8
+                        lg:p-10
+                    "
                 >
-                    <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-emerald-100/50 blur-3xl" />
+                    <div
+                        className="
+                            pointer-events-none
+                            absolute -right-20 -top-20
+                            h-64 w-64
+                            rounded-full
+                            bg-green-100/60
+                            blur-[90px]
+                        "
+                    />
 
-                    <div className="relative z-10 text-center">
-                        <div className="flex items-center justify-center gap-3">
-                            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600">
-                                <BadgeCheck size={23} />
+                    <div className="relative z-10">
+
+                        {/* HEADER */}
+                        <div
+                            className="
+                                flex flex-col
+                                items-start
+                                justify-between
+                                gap-5
+                                md:flex-row
+                                md:items-center
+                            "
+                        >
+                            <div className="flex items-start gap-4">
+                                <div
+                                    className="
+                                        flex
+                                        h-12 w-12
+                                        shrink-0
+                                        items-center
+                                        justify-center
+                                        rounded-xl
+                                        bg-green-600
+                                        text-white
+                                        shadow-[0_8px_22px_rgba(34,197,94,0.2)]
+                                    "
+                                >
+                                    <BadgeCheck size={21} />
+                                </div>
+
+                                <div>
+                                    <p
+                                        className="
+                                            text-xs
+                                            font-bold
+                                            uppercase
+                                            tracking-[0.17em]
+                                            text-green-600
+                                        "
+                                    >
+                                        Development Focus
+                                    </p>
+
+                                    <h3
+                                        className="
+                                            mt-1
+                                            text-xl font-bold
+                                            text-slate-900
+                                            sm:text-2xl
+                                        "
+                                    >
+                                        Currently Learning
+                                    </h3>
+
+                                    <p
+                                        className="
+                                            mt-2
+                                            max-w-2xl
+                                            text-sm leading-6
+                                            text-slate-600
+                                        "
+                                    >
+                                        Technologies and concepts I am
+                                        exploring to improve backend
+                                        development, deployment and software
+                                        architecture.
+                                    </p>
+                                </div>
                             </div>
 
-                            <h3 className="text-2xl font-bold text-slate-900">
-                                Currently Learning
-                            </h3>
+                            <span
+                                className="
+                                    shrink-0
+                                    rounded-full
+                                    bg-green-50
+                                    px-4 py-2
+                                    text-xs
+                                    font-bold
+                                    text-green-700
+                                "
+                            >
+                                Always Improving
+                            </span>
                         </div>
 
-                        <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-                            Technologies and concepts I am currently exploring to strengthen my backend, deployment and software engineering skills.
-                        </p>
+                        {/* LEARNING GRID */}
+                        <div
+                            className="
+                                mt-8
+                                grid gap-3
+                                sm:grid-cols-2
+                                lg:grid-cols-4
+                            "
+                        >
+                            {currentlyLearning.map((item, index) => {
+                                const Icon = item.icon;
 
-                        <div className="mt-8 flex flex-wrap justify-center gap-3">
-                            {currentlyLearning.map((item, index) => (
-                                <motion.span
-                                    key={item.name}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    transition={{ duration: 0.35, delay: index * 0.05 }}
-                                    viewport={{ once: true }}
-                                    whileHover={{ y: -3 }}
-                                    className={`cursor-default rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-200 ${item.color}`}
-                                >
-                                    {item.name}
-                                </motion.span>
-                            ))}
-                        </div>
+                                return (
+                                    <motion.div
+                                        key={item.name}
+                                        initial={{
+                                            opacity: 0,
+                                            scale: 0.96,
+                                        }}
+                                        whileInView={{
+                                            opacity: 1,
+                                            scale: 1,
+                                        }}
+                                        viewport={{
+                                            once: true,
+                                        }}
+                                        transition={{
+                                            duration: 0.35,
+                                            delay: index * 0.04,
+                                        }}
+                                        whileHover={{
+                                            y: -3,
+                                        }}
+                                        className="
+                                            group
+                                            flex items-center
+                                            gap-3
+                                            rounded-xl
+                                            border
+                                            border-slate-200
+                                            bg-slate-50/60
+                                            p-4
+                                            transition-all
+                                            duration-300
+                                            hover:border-green-200
+                                            hover:bg-green-50/60
+                                        "
+                                    >
+                                        <span
+                                            className="
+                                                flex
+                                                h-9 w-9
+                                                shrink-0
+                                                items-center
+                                                justify-center
+                                                rounded-lg
+                                                bg-white
+                                                text-green-600
+                                                shadow-sm
+                                                transition
+                                                group-hover:bg-green-600
+                                                group-hover:text-white
+                                            "
+                                        >
+                                            <Icon size={16} />
+                                        </span>
 
-                        <div className="mx-auto mt-10 max-w-2xl rounded-2xl border border-emerald-100 bg-emerald-50/70 p-5">
-                            <p className="text-sm leading-7 text-emerald-800 sm:text-base">
-                                My goal is to master backend architecture, cloud deployment, scalable systems and clean software design principles.
-                            </p>
+                                        <div>
+                                            <p
+                                                className="
+                                                    text-sm
+                                                    font-bold
+                                                    text-slate-800
+                                                "
+                                            >
+                                                {item.name}
+                                            </p>
+
+                                            <p
+                                                className="
+                                                    mt-0.5
+                                                    text-[11px]
+                                                    text-slate-500
+                                                "
+                                            >
+                                                {item.description}
+                                            </p>
+                                        </div>
+                                    </motion.div>
+                                );
+                            })}
                         </div>
                     </div>
                 </motion.div>

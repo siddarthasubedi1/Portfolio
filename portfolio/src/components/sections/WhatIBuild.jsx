@@ -2,142 +2,312 @@
 import {
     ArrowRight,
     Database,
-    Globe,
-    Rocket,
+    Globe2,
+    Layers3,
+    LockKeyhole,
     Server,
-    ShieldCheck,
     Smartphone,
 } from "lucide-react";
 
 const services = [
     {
-        icon: Globe,
-        title: "Frontend Development",
+        number: "01",
+        icon: Globe2,
+        title: "Frontend Interfaces",
         description:
-            "Build responsive, fast, and interactive user interfaces using React, Tailwind CSS, and modern frontend best practices.",
+            "Responsive interfaces built with reusable React components, clear layouts and accessible user interactions.",
+        skills: ["React", "JavaScript", "Tailwind CSS"],
     },
     {
+        number: "02",
         icon: Server,
-        title: "Backend Development",
+        title: "Backend APIs",
         description:
-            "Develop secure and scalable REST APIs with Django REST Framework, authentication, permissions, and business logic.",
+            "REST APIs using Django REST Framework with validation, authentication and structured application logic.",
+        skills: ["Python", "Django", "DRF"],
     },
     {
+        number: "03",
         icon: Database,
-        title: "Database Design",
+        title: "Database Integration",
         description:
-            "Design efficient PostgreSQL databases with optimized relationships, queries, and scalable data structures.",
+            "Relational database integration with structured models, relationships and application data management.",
+        skills: ["PostgreSQL", "SQL", "ORM"],
     },
     {
-        icon: ShieldCheck,
-        title: "Authentication & Security",
+        number: "04",
+        icon: LockKeyhole,
+        title: "Authentication",
         description:
-            "Implement JWT authentication, role-based authorization, protected routes, and secure user management.",
+            "Registration, login, JWT authentication, protected routes and permission-based application behaviour.",
+        skills: ["JWT", "Auth", "Security"],
     },
     {
+        number: "05",
         icon: Smartphone,
-        title: "Responsive Web Design",
+        title: "Responsive Design",
         description:
-            "Create websites that look and perform beautifully across desktop, tablet, and mobile devices.",
+            "Interfaces designed to remain clear and usable across desktop, tablet and mobile screen sizes.",
+        skills: ["Mobile", "Tablet", "Desktop"],
     },
     {
-        icon: Rocket,
-        title: "Deployment & Optimization",
+        number: "06",
+        icon: Layers3,
+        title: "Full Stack Integration",
         description:
-            "Deploy full-stack applications with optimized performance, production-ready configuration, and modern hosting platforms.",
+            "Connecting frontend interfaces, APIs and databases into complete working web application flows.",
+        skills: ["Frontend", "API", "Database"],
     },
 ];
 
 const WhatIBuild = () => {
     return (
-        <section id="what-i-build" className="section relative overflow-hidden bg-[radial-gradient(circle_at_top_right,_rgba(16,185,129,0.12),_transparent_38%)]">
-            <div className="container-custom">
+        <section
+            id="what-i-build"
+            className="
+                relative overflow-hidden
+                bg-white
+                py-20 sm:py-24 lg:py-28
+            "
+        >
+            {/* BACKGROUND */}
+            <div
+                className="
+                    pointer-events-none
+                    absolute -right-40 top-24
+                    h-96 w-96
+                    rounded-full
+                    bg-green-100/50
+                    blur-[130px]
+                "
+            />
+
+            <div className="container-custom relative z-10">
+
+                {/* HEADER */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="relative overflow-hidden rounded-[36px] border border-emerald-100 bg-white/90 p-6 shadow-[0_20px_60px_rgba(16,185,129,0.08)] sm:p-8 lg:p-10"
+                    initial={{
+                        opacity: 0,
+                        y: 25,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    viewport={{
+                        once: true,
+                    }}
+                    transition={{
+                        duration: 0.5,
+                    }}
+                    className="mx-auto max-w-3xl text-center"
                 >
-                    <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-emerald-500/15 via-transparent to-green-500/15" />
-                    <div className="relative grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-                        <div className="max-w-2xl">
-                            <span className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-5 py-2 text-sm font-semibold text-emerald-700">
-                                What I Build
-                            </span>
+                    <span className="section-badge">
+                        <Layers3 size={14} />
+                        What I Build
+                    </span>
 
-                            <h2 className="mt-6 text-4xl font-black text-slate-900 sm:text-5xl lg:text-6xl">
-                                Full stack solutions
-                                <span className="mt-3 block bg-gradient-to-r from-emerald-600 to-green-500 bg-clip-text text-transparent">
-                                    built for real products
-                                </span>
-                            </h2>
+                    <h2 className="section-title">
+                        From interface to API to
+                        <span className="text-green-600">
+                            {" "}
+                            database.
+                        </span>
+                    </h2>
 
-                            <p className="mt-6 text-lg leading-8 text-slate-600">
-                                I create modern, scalable web experiences from the first screen to the final deployment, with a focus on performance, clarity, and long-term reliability.
-                            </p>
-
-                            <div className="mt-8 flex flex-wrap gap-3">
-                                <a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 transition hover:-translate-y-1 hover:bg-emerald-700">
-                                    Start a conversation
-                                    <ArrowRight size={18} />
-                                </a>
-                                <a href="#why-hire-me" className="inline-flex items-center justify-center rounded-full border border-emerald-200 bg-white px-6 py-3.5 text-sm font-semibold text-emerald-700 transition hover:-translate-y-1 hover:border-emerald-400 hover:text-emerald-800">
-                                    Why work with me
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className="rounded-[28px] border border-emerald-100 bg-slate-900 p-6 text-white shadow-[0_20px_50px_rgba(15,23,42,0.18)]">
-                            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-emerald-300">
-                                Project focus
-                            </p>
-                            <div className="mt-4 space-y-3 text-sm text-slate-300">
-                                <div className="rounded-2xl border border-white/10 bg-white/10 p-3">
-                                    Sleek business websites with polished layouts and strong conversion paths.
-                                </div>
-                                <div className="rounded-2xl border border-white/10 bg-white/10 p-3">
-                                    Secure dashboards and web apps with smooth interactions and clean architecture.
-                                </div>
-                                <div className="rounded-2xl border border-white/10 bg-white/10 p-3">
-                                    Scalable products that are easy to maintain and ready to grow.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <p className="section-description">
+                        My projects focus on the main parts of modern full stack
+                        development, including responsive interfaces, backend
+                        APIs, authentication and database integration.
+                    </p>
                 </motion.div>
 
-                <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {/* SERVICES */}
+                <div
+                    className="
+                        mx-auto mt-12
+                        grid max-w-6xl
+                        gap-5
+                        md:grid-cols-2
+                        xl:grid-cols-3
+                    "
+                >
                     {services.map((service, index) => {
                         const Icon = service.icon;
+
                         return (
                             <motion.article
                                 key={service.title}
-                                initial={{ opacity: 0, y: 28 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.45, delay: index * 0.08 }}
-                                whileHover={{ y: -8, scale: 1.01 }}
-                                className="group relative flex h-full flex-col overflow-hidden rounded-[30px] border border-emerald-100 bg-white p-7 shadow-sm transition-all duration-300 hover:border-emerald-300 hover:shadow-[0_25px_70px_rgba(34,197,94,.12)]"
+                                initial={{
+                                    opacity: 0,
+                                    y: 25,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                viewport={{
+                                    once: true,
+                                }}
+                                transition={{
+                                    duration: 0.45,
+                                    delay: index * 0.05,
+                                }}
+                                className="
+                                    group
+                                    portfolio-card
+                                    relative
+                                    flex min-h-[280px]
+                                    flex-col
+                                    overflow-hidden
+                                    p-6
+                                "
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-                                <div className="relative z-10 flex h-full flex-col">
-                                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 text-white shadow-lg transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
-                                        <Icon size={24} />
-                                    </div>
+                                {/* NUMBER */}
+                                <div
+                                    className="
+                                        absolute
+                                        right-5 top-3
+                                        text-5xl font-black
+                                        text-slate-50
+                                        transition-colors
+                                        group-hover:text-green-50
+                                    "
+                                >
+                                    {service.number}
+                                </div>
 
-                                    <h3 className="mt-6 text-xl font-bold text-slate-900">{service.title}</h3>
+                                {/* ICON */}
+                                <div className="card-icon relative z-10">
+                                    <Icon size={19} />
+                                </div>
 
-                                    <span className="mt-4 inline-flex w-fit rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-                                        Service
-                                    </span>
+                                <h3
+                                    className="
+                                        relative z-10
+                                        mt-5
+                                        text-lg font-bold
+                                        text-slate-900
+                                    "
+                                >
+                                    {service.title}
+                                </h3>
 
-                                    <p className="mt-5 flex-1 leading-8 text-slate-600">{service.description}</p>
+                                <p
+                                    className="
+                                        relative z-10
+                                        mt-3 flex-1
+                                        text-sm leading-7
+                                        text-slate-600
+                                    "
+                                >
+                                    {service.description}
+                                </p>
+
+                                {/* SKILLS */}
+                                <div
+                                    className="
+                                        relative z-10
+                                        mt-5
+                                        flex flex-wrap gap-2
+                                    "
+                                >
+                                    {service.skills.map((skill) => (
+                                        <span
+                                            key={skill}
+                                            className="
+                                                rounded-lg
+                                                bg-slate-50
+                                                px-2.5 py-1.5
+                                                text-[11px]
+                                                font-semibold
+                                                text-slate-500
+                                            "
+                                        >
+                                            {skill}
+                                        </span>
+                                    ))}
                                 </div>
                             </motion.article>
                         );
                     })}
                 </div>
+
+                {/* CTA */}
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                        y: 25,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    viewport={{
+                        once: true,
+                    }}
+                    transition={{
+                        duration: 0.5,
+                    }}
+                    className="
+                        mx-auto mt-12
+                        flex max-w-6xl
+                        flex-col
+                        items-center justify-between
+                        gap-6
+                        rounded-[24px]
+                        bg-slate-900
+                        px-6 py-8
+                        text-center
+                        sm:px-8
+                        lg:flex-row
+                        lg:text-left
+                    "
+                >
+                    <div>
+                        <p
+                            className="
+                                text-xs font-bold
+                                uppercase tracking-[0.16em]
+                                text-green-400
+                            "
+                        >
+                            Let&apos;s Work Together
+                        </p>
+
+                        <h3
+                            className="
+                                mt-2
+                                text-xl font-bold
+                                text-white
+                                sm:text-2xl
+                            "
+                        >
+                            Have an opportunity or project to discuss?
+                        </h3>
+
+                        <p
+                            className="
+                                mt-2
+                                max-w-2xl
+                                text-sm leading-6
+                                text-slate-300
+                            "
+                        >
+                            I&apos;m interested in practical development
+                            opportunities where I can contribute and continue
+                            improving my skills.
+                        </p>
+                    </div>
+
+                    <a
+                        href="#contact"
+                        className="btn-primary btn-arrow shrink-0"
+                    >
+                        Contact Me
+                        <ArrowRight size={16} />
+                    </a>
+                </motion.div>
             </div>
         </section>
     );

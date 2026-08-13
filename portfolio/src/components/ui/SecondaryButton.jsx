@@ -1,28 +1,61 @@
-import { motion } from "framer-motion";
-
 const SecondaryButton = ({
     children,
     href,
     icon,
     className = "",
+    download,
+    target,
+    rel,
 }) => {
-    const baseStyle =
-        "group inline-flex items-center justify-between gap-6 rounded-full border border-slate-300 bg-white px-10 py-4 text-base font-semibold text-slate-700 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500 hover:text-indigo-600 hover:shadow-xl";
+    const baseStyle = `
+        group
+        inline-flex
+        items-center
+        justify-center
+        gap-3
+        rounded-xl
+        border
+        border-slate-200
+        bg-white
+        px-5
+        py-3
+        text-sm
+        font-bold
+        text-slate-700
+        shadow-sm
+        transition-all
+        duration-300
+        hover:-translate-y-0.5
+        hover:border-green-300
+        hover:bg-green-50
+        hover:text-green-700
+        hover:shadow-[0_10px_24px_rgba(22,163,74,0.10)]
+    `;
 
-    const content = (
-        <>
-            <span>{children}</span>
+    return (
+        <a
+            href={href}
+            download={download}
+            target={target}
+            rel={rel}
+            className={`${baseStyle} ${className}`}
+        >
             {icon && (
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition-all duration-300 group-hover:bg-indigo-600 group-hover:text-white">
+                <span
+                    className="
+                        flex
+                        items-center
+                        justify-center
+                        transition-transform
+                        duration-300
+                        group-hover:scale-110
+                    "
+                >
                     {icon}
                 </span>
             )}
-        </>
-    );
 
-    return (
-        <a href={href} className={`${baseStyle} ${className}`}>
-            {content}
+            <span>{children}</span>
         </a>
     );
 };

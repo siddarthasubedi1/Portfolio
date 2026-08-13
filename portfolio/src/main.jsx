@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import Lenis from "@studio-freight/lenis";
 
 import router from "./routes/Router";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -20,7 +19,7 @@ function AppWrapper() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, []);
@@ -47,20 +46,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <AppWrapper />
   </React.StrictMode>
 );
-
-/* ==========================================
-   Lenis Smooth Scroll
-========================================== */
-
-const lenis = new Lenis({
-  duration: 1.2,
-  smoothWheel: true,
-  smoothTouch: false,
-});
-
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-
-requestAnimationFrame(raf);

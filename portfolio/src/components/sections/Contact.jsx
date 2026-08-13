@@ -1,144 +1,444 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import {
+    ArrowUpRight,
+    Mail,
+    MapPin,
+    Phone,
+    Send,
+} from "lucide-react";
+
+import {
+    FaGithub,
+    FaLinkedinIn,
+} from "react-icons/fa";
+
 import profile from "../../constants/profile";
 
 const Contact = () => {
     return (
-        <section id="contact" className="section bg-white">
-            <div className="container-custom">
+        <section id="contact" className="bg-white py-32">
+            <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 
-                {/* Header */}
+                {/* HEADER */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 25 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-center max-w-3xl mx-auto"
+                    transition={{ duration: 0.5 }}
+                    className="mx-auto max-w-3xl text-center"
                 >
-                    <p className="text-sm font-bold uppercase tracking-[6px] text-indigo-600">
-                        CONTACT
-                    </p>
+                    <span className="section-badge">
+                        <Mail size={14} />
+                        Contact
+                    </span>
 
-                    <h2 className="mt-6 text-4xl sm:text-5xl font-bold text-slate-900">
-                        Let’s Build Something Meaningful
+                    <h2 className="section-title">
+                        Have an opportunity?
+                        <span className="text-green-600">
+                            {" "}
+                            Let's talk.
+                        </span>
                     </h2>
 
-                    <p className="mt-6 text-lg text-slate-600">
-                        I’m currently seeking internship opportunities where I can
-                        contribute, learn and grow as a Full Stack Developer.
-                        Let’s connect and create something impactful.
+                    <p className="section-description">
+                        I'm currently interested in Full Stack Developer
+                        internship opportunities, collaborative development
+                        projects and opportunities to gain practical industry
+                        experience.
                     </p>
                 </motion.div>
 
-                {/* Grid */}
-                <div className="mt-24 grid gap-20 lg:grid-cols-2 items-start">
+                <div
+                    className="
+                        mx-auto mt-12
+                        grid max-w-6xl
+                        gap-6
+                        lg:grid-cols-[0.8fr_1.2fr]
+                    "
+                >
 
-                    {/* Left Info */}
-                    <div className="space-y-8">
+                    {/* LEFT INFORMATION */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="
+                            relative overflow-hidden
+                            rounded-[24px]
+                            bg-slate-900
+                            p-6
+                            text-white
+                            sm:p-8
+                        "
+                    >
+                        <div
+                            className="
+                                absolute -right-16 -top-16
+                                h-56 w-56
+                                rounded-full
+                                bg-green-500/15
+                                blur-[70px]
+                            "
+                        />
 
-                        {[
-                            { icon: Mail, label: "Email", value: profile.email },
-                            { icon: Phone, label: "Phone", value: profile.phone },
-                            { icon: MapPin, label: "Location", value: profile.location },
-                        ].map((item, i) => {
-                            const Icon = item.icon;
-                            return (
-                                <div
-                                    key={i}
-                                    className="flex items-center gap-6 rounded-3xl bg-slate-50 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                        <div className="relative z-10">
+
+                            <p
+                                className="
+                                    text-xs font-bold
+                                    uppercase tracking-[0.17em]
+                                    text-green-400
+                                "
+                            >
+                                Get In Touch
+                            </p>
+
+                            <h3
+                                className="
+                                    mt-3
+                                    text-2xl font-bold
+                                    text-white
+                                "
+                            >
+                                Let's connect.
+                            </h3>
+
+                            <p
+                                className="
+                                    mt-3
+                                    text-sm leading-7
+                                    text-slate-300
+                                "
+                            >
+                                The easiest way to reach me is by email or
+                                LinkedIn. I'll respond when I'm available.
+                            </p>
+
+                            {/* DETAILS */}
+                            <div className="mt-8 space-y-3">
+
+                                <a
+                                    href={`mailto:${profile.email}`}
+                                    className="
+                                        group
+                                        flex items-center
+                                        gap-3
+                                        rounded-xl
+                                        border border-white/10
+                                        bg-white/5
+                                        p-4
+                                        transition
+                                        hover:border-green-500/30
+                                        hover:bg-white/10
+                                    "
                                 >
-                                    <div className="rounded-2xl bg-indigo-100 p-4">
-                                        <Icon className="text-indigo-600" size={22} />
-                                    </div>
+                                    <span
+                                        className="
+                                            flex h-10 w-10
+                                            shrink-0
+                                            items-center justify-center
+                                            rounded-lg
+                                            bg-white
+                                            text-green-600
+                                        "
+                                    >
+                                        <Mail size={17} />
+                                    </span>
 
-                                    <div>
-                                        <p className="text-sm text-slate-500">
-                                            {item.label}
+                                    <div className="min-w-0">
+                                        <p className="text-[11px] text-slate-400">
+                                            Email
                                         </p>
 
-                                        <p className="font-semibold text-slate-800">
-                                            {item.value}
+                                        <p
+                                            className="
+                                                truncate
+                                                text-sm
+                                                font-semibold
+                                                text-white
+                                            "
+                                        >
+                                            {profile.email}
+                                        </p>
+                                    </div>
+
+                                    <ArrowUpRight
+                                        size={15}
+                                        className="
+                                            ml-auto shrink-0
+                                            text-slate-400
+                                            transition-colors
+                                            group-hover:text-green-400
+                                        "
+                                    />
+                                </a>
+
+                                <a
+                                    href={`tel:${profile.phone}`}
+                                    className="
+                                        flex items-center
+                                        gap-3
+                                        rounded-xl
+                                        border border-white/10
+                                        bg-white/5
+                                        p-4
+                                        transition
+                                        hover:bg-white/10
+                                    "
+                                >
+                                    <span
+                                        className="
+                                            flex h-10 w-10
+                                            shrink-0
+                                            items-center justify-center
+                                            rounded-lg
+                                            bg-white
+                                            text-green-600
+                                        "
+                                    >
+                                        <Phone size={17} />
+                                    </span>
+
+                                    <div>
+                                        <p className="text-[11px] text-slate-400">
+                                            Phone
+                                        </p>
+
+                                        <p className="text-sm font-semibold text-white">
+                                            {profile.phone}
+                                        </p>
+                                    </div>
+                                </a>
+
+                                <div
+                                    className="
+                                        flex items-center
+                                        gap-3
+                                        rounded-xl
+                                        border border-white/10
+                                        bg-white/5
+                                        p-4
+                                    "
+                                >
+                                    <span
+                                        className="
+                                            flex h-10 w-10
+                                            shrink-0
+                                            items-center justify-center
+                                            rounded-lg
+                                            bg-white
+                                            text-green-600
+                                        "
+                                    >
+                                        <MapPin size={17} />
+                                    </span>
+
+                                    <div>
+                                        <p className="text-[11px] text-slate-400">
+                                            Location
+                                        </p>
+
+                                        <p className="text-sm font-semibold text-white">
+                                            {profile.location}
                                         </p>
                                     </div>
                                 </div>
-                            );
-                        })}
 
-                        {/* Social */}
-                        <div className="flex gap-6 pt-6">
-                            <a
-                                href={profile.github}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="flex h-14 w-14 items-center justify-center rounded-full bg-slate-100 shadow-sm transition hover:-translate-y-1 hover:bg-indigo-600 hover:text-white"
-                            >
-                                <FaGithub size={20} />
-                            </a>
+                            </div>
 
-                            <a
-                                href={profile.linkedin}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="flex h-14 w-14 items-center justify-center rounded-full bg-slate-100 shadow-sm transition hover:-translate-y-1 hover:bg-indigo-600 hover:text-white"
+                            {/* SOCIAL */}
+                            <div
+                                className="
+                                    mt-7
+                                    flex items-center gap-2
+                                "
                             >
-                                <FaLinkedin size={20} />
-                            </a>
+                                <a
+                                    href={profile.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="GitHub"
+                                    className="
+                                        flex h-10 w-10
+                                        items-center justify-center
+                                        rounded-xl
+                                        border border-white/10
+                                        bg-white/5
+                                        text-white
+                                        transition
+                                        hover:border-green-500
+                                        hover:bg-green-600
+                                    "
+                                >
+                                    <FaGithub size={17} />
+                                </a>
+
+                                <a
+                                    href={profile.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="LinkedIn"
+                                    className="
+                                        flex h-10 w-10
+                                        items-center justify-center
+                                        rounded-xl
+                                        border border-white/10
+                                        bg-white/5
+                                        text-white
+                                        transition
+                                        hover:border-green-500
+                                        hover:bg-green-600
+                                    "
+                                >
+                                    <FaLinkedinIn size={17} />
+                                </a>
+                            </div>
+
                         </div>
+                    </motion.div>
 
-                    </div>
-
-                    {/* Form */}
-                    <motion.form
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
+                    {/* RIGHT CONTACT */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="rounded-[36px] bg-slate-50 p-10 shadow-sm"
+                        transition={{ duration: 0.5 }}
+                        className="
+                            portfolio-card
+                            p-6 sm:p-8
+                        "
                     >
-                        <div className="space-y-6">
+                        <p
+                            className="
+                                text-xs font-bold
+                                uppercase
+                                tracking-[0.16em]
+                                text-green-600
+                            "
+                        >
+                            Send a Message
+                        </p>
 
-                            <input
-                                type="text"
-                                placeholder="Your Name"
-                                required
-                                className="w-full rounded-2xl border border-slate-300 px-6 py-4 text-sm focus:border-indigo-600 focus:outline-none"
-                            />
+                        <h3
+                            className="
+                                mt-2
+                                text-xl font-bold
+                                text-slate-900
+                                sm:text-2xl
+                            "
+                        >
+                            Tell me what you'd like to discuss.
+                        </h3>
 
-                            <input
-                                type="email"
-                                placeholder="Your Email"
-                                required
-                                className="w-full rounded-2xl border border-slate-300 px-6 py-4 text-sm focus:border-indigo-600 focus:outline-none"
-                            />
+                        <p
+                            className="
+                                mt-2
+                                text-sm leading-6
+                                text-slate-500
+                            "
+                        >
+                            This button opens your email application with my
+                            email address ready.
+                        </p>
 
-                            <input
-                                type="text"
-                                placeholder="Subject"
-                                required
-                                className="w-full rounded-2xl border border-slate-300 px-6 py-4 text-sm focus:border-indigo-600 focus:outline-none"
-                            />
+                        <div
+                            className="
+                                mt-7
+                                grid gap-4
+                                sm:grid-cols-2
+                            "
+                        >
+                            <div>
+                                <label
+                                    htmlFor="contact-name"
+                                    className="
+                                        mb-2 block
+                                        text-xs font-bold
+                                        text-slate-700
+                                    "
+                                >
+                                    Name
+                                </label>
 
-                            <textarea
-                                rows={5}
-                                placeholder="Your Message"
-                                required
-                                className="w-full rounded-2xl border border-slate-300 px-6 py-4 text-sm focus:border-indigo-600 focus:outline-none"
-                            />
+                                <input
+                                    id="contact-name"
+                                    type="text"
+                                    placeholder="Your name"
+                                />
+                            </div>
 
-                            <button
-                                type="submit"
-                                className="group inline-flex w-full items-center justify-center gap-4 rounded-full bg-gradient-to-r from-indigo-600 to-blue-600 px-8 py-4 text-sm font-semibold text-white shadow-md transition hover:-translate-y-1 hover:shadow-xl"
-                            >
-                                Send Message
-                                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-indigo-600 group-hover:translate-x-1 transition">
-                                    <Send size={16} />
-                                </span>
-                            </button>
+                            <div>
+                                <label
+                                    htmlFor="contact-email"
+                                    className="
+                                        mb-2 block
+                                        text-xs font-bold
+                                        text-slate-700
+                                    "
+                                >
+                                    Email
+                                </label>
 
+                                <input
+                                    id="contact-email"
+                                    type="email"
+                                    placeholder="your@email.com"
+                                />
+                            </div>
+
+                            <div className="sm:col-span-2">
+                                <label
+                                    htmlFor="contact-subject"
+                                    className="
+                                        mb-2 block
+                                        text-xs font-bold
+                                        text-slate-700
+                                    "
+                                >
+                                    Subject
+                                </label>
+
+                                <input
+                                    id="contact-subject"
+                                    type="text"
+                                    placeholder="Internship opportunity"
+                                />
+                            </div>
+
+                            <div className="sm:col-span-2">
+                                <label
+                                    htmlFor="contact-message"
+                                    className="
+                                        mb-2 block
+                                        text-xs font-bold
+                                        text-slate-700
+                                    "
+                                >
+                                    Message
+                                </label>
+
+                                <textarea
+                                    id="contact-message"
+                                    rows="5"
+                                    placeholder="Write your message..."
+                                />
+                            </div>
                         </div>
-                    </motion.form>
 
+                        <a
+                            href={`mailto:${profile.email}`}
+                            className="
+                                btn-primary
+                                mt-5 w-full
+                                sm:w-auto
+                            "
+                        >
+                            <Send size={16} />
+                            Email Me
+                        </a>
+
+                    </motion.div>
                 </div>
 
             </div>

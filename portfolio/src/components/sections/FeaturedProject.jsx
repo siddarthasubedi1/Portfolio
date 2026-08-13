@@ -1,230 +1,360 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { projects } from "../../constants/projectData";
+import {
+    ArrowRight,
+    ExternalLink,
+    Sparkles,
+} from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+import { featuredProject } from "../../constants/projectData";
 
 const FeaturedProject = () => {
-    const featuredProject = projects[0];
-    const sectionRef = useRef(null);
-
-    if (!featuredProject) return null;
-
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start end", "end start"],
-    });
-
-    // ✅ Reduced parallax intensity (better performance)
-    const imageY = useTransform(scrollYProgress, [0, 1], [20, -20]);
-    const contentY = useTransform(scrollYProgress, [0, 1], [10, -10]);
+    if (!featuredProject) {
+        return null;
+    }
 
     return (
         <section
-            ref={sectionRef}
             id="featured-project"
-            className="section relative overflow-hidden"
+            className="relative overflow-hidden py-24 sm:py-28 lg:py-32"
         >
+            {/* BACKGROUND DECORATION */}
+            <div className="pointer-events-none absolute inset-0">
+                <div
+                    className="
+                        absolute -left-40 top-20
+                        h-[350px] w-[350px]
+                        rounded-full
+                        bg-green-100/40
+                        blur-[120px]
+                    "
+                />
+
+                <div
+                    className="
+                        absolute -right-40 bottom-10
+                        h-[400px] w-[400px]
+                        rounded-full
+                        bg-emerald-100/30
+                        blur-[130px]
+                    "
+                />
+            </div>
+
             <div className="container-custom relative z-10">
 
-                {/* ================= Header ================= */}
-
+                {/* HEADER */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: .6 }}
-                    className="mx-auto max-w-4xl text-center"
+                    transition={{ duration: 0.5 }}
+                    className="mx-auto max-w-3xl text-center"
                 >
-
-                    <span className="inline-flex rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-semibold text-green-700">
+                    <span className="section-badge">
+                        <Sparkles size={14} />
                         Featured Project
                     </span>
 
-                    <h2 className="mt-8 text-4xl font-black text-slate-900 md:text-6xl">
-
-                        {featuredProject.title}
-
+                    <h2 className="section-title">
+                        A closer look at one of my{" "}
+                        <span className="text-green-600">
+                            full stack projects.
+                        </span>
                     </h2>
-
-                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-600 ">
-
-                        {featuredProject.description}
-
-                    </p>
-
                 </motion.div>
 
-                {/* Layout */}
-                <div className="mt-16 grid items-center gap-16 lg:mt-20 lg:grid-cols-[1.1fr_.9fr] lg:gap-20">
-                    {/* ✅ Optimized Image */}
-                    <motion.div style={{ y: imageY }} className="relative">
-
+                {/* PROJECT LAYOUT */}
+                <div
+                    className="
+                        mt-14
+                        grid
+                        items-center
+                        gap-10
+                        lg:mt-20
+                        lg:grid-cols-[1.1fr_.9fr]
+                        lg:gap-14
+                    "
+                >
+                    {/* IMAGE */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="relative"
+                    >
                         <div
                             className="
-        group
-        relative
-        overflow-hidden
-        rounded-[36px]
-        border
-        border-green-100
-        bg-white
-        p-4
-        shadow-[0_25px_70px_rgba(34,197,94,.10)]
-    "
+                                group
+                                relative
+                                overflow-hidden
+                                rounded-[28px]
+                                border
+                                border-green-100
+                                bg-white
+                                p-3
+                                shadow-[0_25px_70px_rgba(34,197,94,.10)]
+                                sm:rounded-[36px]
+                                sm:p-4
+                            "
                         >
+                            <div className="overflow-hidden rounded-[20px] sm:rounded-[24px]">
+                                <img
+                                    src={featuredProject.image}
+                                    alt={featuredProject.title}
+                                    loading="lazy"
+                                    decoding="async"
+                                    className="
+                                        aspect-[16/10]
+                                        w-full
+                                        object-cover
+                                        transition-transform
+                                        duration-700
+                                        ease-out
+                                        group-hover:scale-105
+                                    "
+                                />
+                            </div>
 
-                            <img
-                                src={featuredProject.image}
-                                alt={featuredProject.title}
-                                loading="lazy"
-                                decoding="async"
+                            {/* IMAGE BADGE */}
+                            <div
                                 className="
-        aspect-[16/10]
-        w-full
-        rounded-[24px]
-        object-cover
-        transition-all
-        duration-700
-        group-hover:scale-105
-    "
-                            />
-
+                                    absolute
+                                    bottom-6 left-6
+                                    rounded-full
+                                    border border-white/50
+                                    bg-white/90
+                                    px-3 py-1.5
+                                    text-[10px]
+                                    font-bold
+                                    uppercase
+                                    tracking-[0.12em]
+                                    text-green-700
+                                    shadow-sm
+                                    backdrop-blur-md
+                                    sm:bottom-8
+                                    sm:left-8
+                                "
+                            >
+                                Featured Work
+                            </div>
                         </div>
                     </motion.div>
 
-                    {/* ✅ Content */}
+                    {/* CONTENT */}
                     <motion.div
-                        style={{ y: contentY }}
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
                         className="
-        rounded-[36px]
-        border
-        border-green-100
-        bg-white
-        p-8
-        shadow-[0_25px_70px_rgba(34,197,94,.08)]
-        md:p-10
-    "
+                            portfolio-card
+                            rounded-[28px]
+                            p-6
+                            sm:p-8
+                            lg:rounded-[36px]
+                            lg:p-10
+                        "
                     >
-                        {featuredProject.problem && (
-                            <div className="rounded-3xl border border-red-100 bg-red-50 p-7">
-                                <h3 className="text-sm font-bold uppercase tracking-[4px] text-indigo-600">
-                                    Problem
-                                </h3>
-                                <p className="mt-4 text-slate-600 leading-relaxed">
-                                    {featuredProject.problem}
+                        <p
+                            className="
+                                text-xs
+                                font-bold
+                                uppercase
+                                tracking-[0.18em]
+                                text-green-600
+                            "
+                        >
+                            Full Stack Application
+                        </p>
+
+                        <h3
+                            className="
+                                mt-3
+                                text-2xl
+                                font-bold
+                                tracking-tight
+                                text-slate-900
+                                sm:text-3xl
+                            "
+                        >
+                            {featuredProject.title}
+                        </h3>
+
+                        <p
+                            className="
+                                mt-4
+                                text-sm
+                                leading-7
+                                text-slate-600
+                                sm:text-[15px]
+                            "
+                        >
+                            {featuredProject.description}
+                        </p>
+
+                        {/* TECHNOLOGIES */}
+                        <div className="mt-6 flex flex-wrap gap-2">
+                            {featuredProject.technologies
+                                ?.slice(0, 6)
+                                .map((technology) => (
+                                    <span
+                                        key={technology}
+                                        className="
+                                            rounded-lg
+                                            border
+                                            border-green-100
+                                            bg-green-50
+                                            px-2.5
+                                            py-1.5
+                                            text-[11px]
+                                            font-semibold
+                                            text-green-700
+                                            transition-all
+                                            duration-200
+                                            hover:-translate-y-0.5
+                                            hover:border-green-300
+                                            hover:bg-green-100
+                                        "
+                                    >
+                                        {technology}
+                                    </span>
+                                ))}
+                        </div>
+
+                        {/* PROJECT INFORMATION */}
+                        <div
+                            className="
+                                mt-7
+                                grid
+                                grid-cols-1
+                                gap-3
+                                sm:grid-cols-2
+                            "
+                        >
+                            <div
+                                className="
+                                    rounded-xl
+                                    border
+                                    border-slate-200
+                                    bg-white
+                                    p-4
+                                    transition-all
+                                    duration-300
+                                    hover:-translate-y-1
+                                    hover:border-green-200
+                                    hover:shadow-md
+                                "
+                            >
+                                <p
+                                    className="
+                                        text-[10px]
+                                        font-bold
+                                        uppercase
+                                        tracking-[0.12em]
+                                        text-slate-400
+                                    "
+                                >
+                                    Focus
+                                </p>
+
+                                <p
+                                    className="
+                                        mt-1
+                                        text-sm
+                                        font-bold
+                                        text-slate-800
+                                    "
+                                >
+                                    Full Stack
                                 </p>
                             </div>
-                        )}
 
-                        {featuredProject.solution && (
-                            <div className="mt-8 rounded-3xl border border-green-100 bg-green-50 p-7">
-                                <h3 className="text-sm font-bold uppercase tracking-[4px] text-green-700">
-                                    Solution
-                                </h3>
-                                <p className="mt-4 leading-8 text-slate-600">
-                                    {featuredProject.solution}
+                            <div
+                                className="
+                                    rounded-xl
+                                    border
+                                    border-slate-200
+                                    bg-white
+                                    p-4
+                                    transition-all
+                                    duration-300
+                                    hover:-translate-y-1
+                                    hover:border-green-200
+                                    hover:shadow-md
+                                "
+                            >
+                                <p
+                                    className="
+                                        text-[10px]
+                                        font-bold
+                                        uppercase
+                                        tracking-[0.12em]
+                                        text-slate-400
+                                    "
+                                >
+                                    Main Backend
+                                </p>
+
+                                <p
+                                    className="
+                                        mt-1
+                                        text-sm
+                                        font-bold
+                                        text-slate-800
+                                    "
+                                >
+                                    Django REST
                                 </p>
                             </div>
-                        )}
+                        </div>
 
-                        {/* Buttons */}
-                        <div className="mt-12 flex flex-wrap gap-5">
+                        {/* ACTIONS */}
+                        <div
+                            className="
+                                mt-7
+                                flex
+                                flex-col
+                                gap-3
+                                sm:flex-row
+                                sm:flex-wrap
+                            "
+                        >
+                            <Link
+                                to={`/project/${featuredProject.slug}`}
+                                className="btn-primary btn-arrow"
+                            >
+                                View Project
+                                <ArrowRight size={16} />
+                            </Link>
 
-                            {featuredProject.tech && (
-                                <div className="mt-10">
-
-                                    <h3 className="text-lg font-bold text-slate-900">
-                                        Technologies Used
-                                    </h3>
-
-                                    <div className="mt-5 flex flex-wrap gap-3">
-
-                                        {featuredProject.tech.map((tech) => (
-                                            <span
-                                                key={tech}
-                                                className="
-                        rounded-full
-                        border
-                        border-green-200
-                        bg-green-50
-                        px-4
-                        py-2
-                        text-sm
-                        font-semibold
-                        text-green-700
-                    "
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-
-                                    </div>
-
-                                </div>
+                            {featuredProject.demo && (
+                                <a
+                                    href={featuredProject.demo}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn-secondary btn-external"
+                                >
+                                    <ExternalLink size={16} />
+                                    Live Demo
+                                </a>
                             )}
 
                             {featuredProject.github && (
                                 <a
                                     href={featuredProject.github}
                                     target="_blank"
-                                    rel="noreferrer"
-                                    className="
-                                    inline-flex
-                                    items-center
-                                    gap-3
-                                    rounded-full
-                                    border
-                                    border-green-200
-                                    bg-white
-                                    px-8
-                                    py-4
-                                    font-semibold
-                                    text-slate-700
-                                    transition-all
-                                    duration-300
-                                    hover:border-green-500
-                                    hover:text-green-600
-                                    hover:shadow-lg
-                                    "
+                                    rel="noopener noreferrer"
+                                    className="social-icon"
+                                    aria-label="View GitHub repository"
                                 >
-                                    <FaGithub size={16} />
-                                    GitHub
+                                    <FaGithub size={18} />
                                 </a>
                             )}
-
-                            <Link
-                                to={`/project/${featuredProject.slug}`}
-                                className="
-                                inline-flex
-                                items-center
-                                gap-3
-                                rounded-full
-                                border
-                                border-green-200
-                                bg-white
-                                px-8
-                                py-4
-                                font-semibold
-                                text-slate-700
-                                transition-all
-                                duration-300
-                                hover:border-green-500
-                                hover:text-green-600
-                                hover:shadow-lg
-                                "
-                            >
-                                View Details
-                                <ArrowRight size={16} />
-                            </Link>
-
                         </div>
-
                     </motion.div>
-
                 </div>
-
             </div>
         </section>
     );

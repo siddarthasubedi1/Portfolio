@@ -5,13 +5,13 @@ import ScrollTop from "../components/layout/ScrollTop";
 
 import Hero from "../components/sections/Hero";
 import FeaturedProject from "../components/sections/FeaturedProject";
-import WhyHireMe from "../components/sections/WhyHireMe";
 import About from "../components/sections/About";
-import WhatIBuild from "../components/sections/WhatIBuild";
-import MyJourney from "../components/sections/MyJourney";
 import Projects from "../components/sections/Projects";
 import Skills from "../components/sections/Skills";
+import WhatIBuild from "../components/sections/WhatIBuild";
+import MyJourney from "../components/sections/MyJourney";
 import Certificates from "../components/sections/Certificates";
+import WhyHireMe from "../components/sections/WhyHireMe";
 import Contact from "../components/sections/Contact";
 
 const Home = () => {
@@ -21,40 +21,30 @@ const Home = () => {
 
             <Navbar />
 
-            <main>
-                {/* Hero */}
+            <main className="w-full overflow-x-hidden">
                 <Hero />
 
-                {/* Featured Project */}
                 <FeaturedProject />
 
-                {/* Why Hire Me */}
-                <WhyHireMe />
-
-                {/* About */}
                 <About />
 
-                {/* What I Build */}
-                <WhatIBuild />
-
-                {/* Journey */}
-                <MyJourney />
-
-                {/* All Projects */}
                 <Projects />
 
-                {/* Skills */}
                 <Skills />
 
-                {/* Certificates & Learning */}
+                <WhatIBuild />
+
+                <MyJourney />
+
                 <Certificates />
 
-                {/* Contact */}
+                <WhyHireMe />
+
                 <Contact />
             </main>
 
-
             <Footer />
+
             <ScrollTop />
         </>
     );

@@ -1,148 +1,289 @@
-import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { Mail, Download, ArrowUpRight, Heart } from "lucide-react";
+import {
+    ArrowUp,
+    Download,
+    Mail,
+} from "lucide-react";
+
+import {
+    FaGithub,
+    FaLinkedinIn,
+} from "react-icons/fa";
+
 import profile from "../../constants/profile";
 
-const quickLinks = [
-    { title: "Home", link: "#hero" },
-    { title: "Featured Project", link: "#featured-project" },
-    { title: "Projects", link: "#projects" },
-    { title: "Skills", link: "#skills" },
-    { title: "Journey", link: "#journey" },
-    { title: "Contact", link: "#contact" },
-];
-
 const Footer = () => {
+    const year = new Date().getFullYear();
+
+    const footerLinks = [
+        {
+            title: "About",
+            href: "#about",
+        },
+        {
+            title: "Projects",
+            href: "#projects",
+        },
+        {
+            title: "Skills",
+            href: "#skills",
+        },
+        {
+            title: "Journey",
+            href: "#journey",
+        },
+        {
+            title: "Contact",
+            href: "#contact",
+        },
+    ];
+
     return (
-        <footer className="section bg-slate-100 border-t border-slate-200">
+        <footer
+            className="
+                border-t border-slate-200
+                bg-slate-950
+                text-white
+            "
+        >
             <div className="container-custom">
 
-                {/* Top Branding */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="text-center"
+                {/* TOP */}
+                <div
+                    className="
+                        grid gap-10
+                        py-12
+                        sm:py-14
+                        lg:grid-cols-[1.1fr_.7fr_.7fr]
+                    "
                 >
-                    <h2 className="text-4xl font-black tracking-tight text-slate-900 md:text-5xl">
-                        SIDDARTHA.DEV
-                    </h2>
 
-                    <h3 className="mt-3 text-lg font-semibold text-indigo-600">
-                        Full Stack Developer
-                    </h3>
-
-                    <p className="mt-6 max-w-2xl mx-auto text-slate-600 leading-relaxed">
-                        Building secure, scalable and modern web applications using
-                        Django REST Framework, React and PostgreSQL while continuously
-                        learning modern software engineering practices.
-                    </p>
-                </motion.div>
-
-                {/* Middle Sections */}
-                <div className="mt-24 grid gap-16 text-center md:grid-cols-3">
-
-                    {/* Quick Links */}
+                    {/* BRAND */}
                     <div>
-                        <h3 className="text-xl font-bold">Quick Links</h3>
+                        <a
+                            href="#hero"
+                            className="
+                                inline-flex
+                                items-center gap-3
+                            "
+                        >
+                            <span
+                                className="
+                                    flex h-10 w-10
+                                    items-center justify-center
+                                    rounded-xl
+                                    bg-green-600
+                                    text-sm font-black
+                                    text-white
+                                "
+                            >
+                                SS
+                            </span>
 
-                        <div className="mt-6 space-y-4">
-                            {quickLinks.map((item) => (
-                                <a
-                                    key={item.title}
-                                    href={item.link}
-                                    className="block text-slate-600 transition hover:text-indigo-600"
-                                >
-                                    {item.title}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
+                            <div>
+                                <p className="font-extrabold text-white">
+                                    Siddartha Raj Subedi
+                                </p>
 
-                    {/* Connect */}
-                    <div>
-                        <h3 className="text-xl font-bold">Let's Connect</h3>
+                                <p className="text-xs text-slate-500">
+                                    Full Stack Developer
+                                </p>
+                            </div>
+                        </a>
 
-                        <div className="mt-6 space-y-4">
+                        <p
+                            className="
+                                mt-5
+                                max-w-md
+                                text-sm leading-7
+                                text-slate-400
+                            "
+                        >
+                            Computer System Engineering student focused on
+                            building responsive full stack applications with
+                            React, Django REST Framework and PostgreSQL.
+                        </p>
+
+                        <div className="mt-6 flex gap-2">
 
                             <a
                                 href={profile.github}
                                 target="_blank"
-                                rel="noreferrer"
-                                className="flex items-center justify-center gap-2 text-slate-600 transition hover:text-indigo-600"
+                                rel="noopener noreferrer"
+                                aria-label="GitHub"
+                                className="
+                                    flex h-10 w-10
+                                    items-center justify-center
+                                    rounded-xl
+                                    border border-white/10
+                                    bg-white/5
+                                    text-slate-300
+                                    transition
+                                    hover:border-green-600
+                                    hover:bg-green-600
+                                    hover:text-white
+                                "
                             >
-                                <FaGithub size={18} />
-                                GitHub
+                                <FaGithub size={17} />
                             </a>
 
                             <a
                                 href={profile.linkedin}
                                 target="_blank"
-                                rel="noreferrer"
-                                className="flex items-center justify-center gap-2 text-slate-600 transition hover:text-indigo-600"
+                                rel="noopener noreferrer"
+                                aria-label="LinkedIn"
+                                className="
+                                    flex h-10 w-10
+                                    items-center justify-center
+                                    rounded-xl
+                                    border border-white/10
+                                    bg-white/5
+                                    text-slate-300
+                                    transition
+                                    hover:border-green-600
+                                    hover:bg-green-600
+                                    hover:text-white
+                                "
                             >
-                                <FaLinkedin size={18} />
-                                LinkedIn
+                                <FaLinkedinIn size={17} />
                             </a>
 
                             <a
                                 href={`mailto:${profile.email}`}
-                                className="flex items-center justify-center gap-2 text-slate-600 transition hover:text-indigo-600"
+                                aria-label="Email"
+                                className="
+                                    flex h-10 w-10
+                                    items-center justify-center
+                                    rounded-xl
+                                    border border-white/10
+                                    bg-white/5
+                                    text-slate-300
+                                    transition
+                                    hover:border-green-600
+                                    hover:bg-green-600
+                                    hover:text-white
+                                "
                             >
-                                <Mail size={18} />
-                                Email
-                            </a>
-
-                            <a
-                                href={profile.resume}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="flex items-center justify-center gap-2 text-slate-600 transition hover:text-indigo-600"
-                            >
-                                <Download size={18} />
-                                Resume
+                                <Mail size={17} />
                             </a>
 
                         </div>
                     </div>
 
-                    {/* Opportunities */}
+                    {/* LINKS */}
                     <div>
-                        <h3 className="text-xl font-bold">
-                            Open For Opportunities
-                        </h3>
+                        <p
+                            className="
+                                text-xs font-bold
+                                uppercase
+                                tracking-[0.16em]
+                                text-slate-500
+                            "
+                        >
+                            Navigation
+                        </p>
 
-                        <p className="text-slate-600 mt-6">
-                            I'm currently open to Full Stack Developer internship
-                            opportunities, collaborative projects, and meaningful
-                            learning experiences.
+                        <nav className="mt-5 flex flex-col gap-3">
+                            {footerLinks.map((link) => (
+                                <a
+                                    key={link.title}
+                                    href={link.href}
+                                    className="
+                                        w-fit
+                                        text-sm
+                                        font-medium
+                                        text-slate-400
+                                        transition
+                                        hover:text-green-400
+                                    "
+                                >
+                                    {link.title}
+                                </a>
+                            ))}
+                        </nav>
+                    </div>
+
+                    {/* OPPORTUNITY */}
+                    <div>
+                        <p
+                            className="
+                                text-xs font-bold
+                                uppercase
+                                tracking-[0.16em]
+                                text-slate-500
+                            "
+                        >
+                            Opportunities
+                        </p>
+
+                        <p
+                            className="
+                                mt-5
+                                text-sm leading-7
+                                text-slate-400
+                            "
+                        >
+                            Currently interested in Full Stack Developer
+                            internship opportunities.
                         </p>
 
                         <a
-                            href="#contact"
-                            className="mt-8 inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-3 font-semibold text-white shadow-md transition hover:-translate-y-1 hover:bg-indigo-700 hover:shadow-lg"
+                            href={profile.resume}
+                            download="Siddartha_Raj_Subedi_Resume.pdf"
+                            className="
+        hidden
+        items-center gap-2
+        rounded-xl
+        bg-green-600
+        px-4 py-2.5
+        text-[13px]
+        font-bold text-white
+        transition-all
+        hover:-translate-y-0.5
+        hover:bg-green-700
+        hover:shadow-[0_10px_24px_rgba(22,163,74,0.18)]
+        lg:inline-flex
+    "
                         >
-                            Say Hello
-                            <ArrowUpRight size={16} />
+                            Resume
+                            <Download size={15} />
                         </a>
                     </div>
 
                 </div>
 
-                {/* Bottom */}
-                <div className="mt-24 border-t border-slate-200 pt-8 text-center">
-                    <p className="text-slate-600">
-                        Let's build something meaningful together.
+                {/* BOTTOM */}
+                <div
+                    className="
+                        flex flex-col
+                        items-center justify-between
+                        gap-4
+                        border-t border-white/10
+                        py-6
+                        text-center
+                        sm:flex-row
+                        sm:text-left
+                    "
+                >
+                    <p className="text-xs text-slate-500">
+                        © {year} Siddartha Raj Subedi. All rights reserved.
                     </p>
 
-                    <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">
-                        © {new Date().getFullYear()} Siddartha Raj Subedi.
-                        Designed & Developed with{" "}
-                        <Heart size={14} className="mx-1 inline text-red-500" />
-                        by Siddartha Raj Subedi.
-                    </p>
+                    <a
+                        href="#hero"
+                        className="
+                            inline-flex
+                            items-center gap-2
+                            text-xs
+                            font-semibold
+                            text-slate-400
+                            transition
+                            hover:text-green-400
+                        "
+                    >
+                        Back to top
 
+                        <ArrowUp size={14} />
+                    </a>
                 </div>
 
             </div>

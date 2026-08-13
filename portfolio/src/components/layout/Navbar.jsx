@@ -1,150 +1,375 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Download, ArrowUpRight } from "lucide-react";
+import {
+    ArrowUpRight,
+    Download,
+    Menu,
+    X,
+} from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import profile from "../../constants/profile";
 
 const navLinks = [
-    { title: "Home", href: "#hero" },
-    { title: "Featured", href: "#featured-project" },
-    { title: "Projects", href: "#projects" },
-    { title: "Skills", href: "#skills" },
-    { title: "Journey", href: "#journey" },
-    { title: "Certificates", href: "#certificates" },
-    { title: "Contact", href: "#contact" },
+    {
+        title: "Home",
+        href: "#hero",
+    },
+    {
+        title: "About",
+        href: "#about",
+    },
+    {
+        title: "Work",
+        href: "#projects",
+    },
+    {
+        title: "Skills",
+        href: "#skills",
+    },
+    {
+        title: "Journey",
+        href: "#journey",
+    },
+    {
+        title: "Contact",
+        href: "#contact",
+    },
 ];
 
 const Navbar = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("#hero");
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+
             let current = "#hero";
 
             navLinks.forEach((item) => {
                 const section = document.querySelector(item.href);
+
                 if (!section) return;
 
-                const top = section.offsetTop - 120;
-                if (window.scrollY >= top) current = item.href;
+                if (window.scrollY >= section.offsetTop - 150) {
+                    current = item.href;
+                }
             });
 
             setActiveSection(current);
         };
 
-        window.addEventListener("scroll", handleScroll);
         handleScroll();
-        return () => window.removeEventListener("scroll", handleScroll);
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, []);
 
     useEffect(() => {
-        document.body.style.overflow = mobileOpen ? "hidden" : "";
+        if (mobileOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
         return () => {
-            document.body.style.overflow = "";
+            document.body.style.overflow = "auto";
         };
     }, [mobileOpen]);
 
     return (
         <>
-            {/* ===== Navbar ===== */}
-            <header className="fixed top-0 left-0 right-0 z-50 h-20 border-b border-slate-200 bg-white">
+            {/* ================= NAVBAR ================= */}
+            <header
+                className={`
+                    fixed left-0 right-0 top-0 z-50
+                    h-20
+                    border-b border-slate-200
+                    transition-all duration-300
+                    ${scrolled
+                        ? "bg-white/95 shadow-[0_5px_25px_rgba(15,23,42,0.05)] backdrop-blur-xl"
+                        : "bg-white"
+                    }
+                `}
+            >
                 <div className="container-custom flex h-full items-center justify-between">
 
-                    {/* Logo */}
-                    <a href="#hero" className="text-xl font-bold text-slate-900">
-                        Siddartha<span className="text-indigo-600">.</span>
+                    {/* ================= LOGO ================= */}
+                    <a
+                        href="#hero"
+                        className="group flex items-center gap-3"
+                    >
+                        <div
+                            className="
+                                flex h-10 w-10
+                                items-center justify-center
+                                rounded-xl
+                                bg-green-600
+                                text-sm font-extrabold
+                                text-white
+                                shadow-[0_8px_20px_rgba(22,163,74,0.18)]
+                                transition-all duration-300
+                                group-hover:-translate-y-0.5
+                                group-hover:bg-green-700
+                                group-hover:shadow-[0_12px_26px_rgba(22,163,74,0.22)]
+                            "
+                        >
+                            SS
+                        </div>
+
+                        <div className="leading-tight">
+                            <p className="text-[16px] font-extrabold text-slate-900">
+                                Siddartha
+                                <span className="text-green-600">.</span>
+                            </p>
+
+                            <p className="hidden text-[10px] font-semibold tracking-[0.14em] text-slate-400 sm:block">
+                                FULL STACK DEVELOPER
+                            </p>
+                        </div>
                     </a>
 
-                    {/* Desktop Nav */}
-                    <nav className="hidden lg:flex items-center gap-6">
-                        {navLinks.map((item) => (
-                            <a
-                                key={item.title}
-                                href={item.href}
-                                className={`text-sm font-semibold transition ${activeSection === item.href
-                                    ? "text-indigo-600"
-                                    : "text-slate-600 hover:text-indigo-600"
-                                    }`}
-                            >
-                                {item.title}
-                            </a>
-                        ))}
+                    {/* ================= DESKTOP NAV ================= */}
+                    <nav className="hidden items-center gap-1 lg:flex">
+                        {navLinks.map((item) => {
+                            const active =
+                                activeSection === item.href;
+
+                            return (
+                                <a
+                                    key={item.title}
+                                    href={item.href}
+                                    className={`
+                                        relative
+                                        rounded-lg
+                                        px-3.5 py-2.5
+                                        text-[13px]
+                                        font-semibold
+                                        transition-all duration-300
+                                        ${active
+                                            ? "bg-green-50 text-green-700"
+                                            : "text-slate-600 hover:bg-slate-50 hover:text-green-700"
+                                        }
+                                    `}
+                                >
+                                    {item.title}
+                                </a>
+                            );
+                        })}
                     </nav>
 
-                    {/* Resume Button */}
+                    {/* ================= DESKTOP RESUME ================= */}
                     <a
                         href={profile.resume}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hidden lg:inline-flex items-center gap-3 rounded-full bg-indigo-600 px-6 py-2 text-sm font-semibold text-white hover:bg-indigo-700 transition"
+                        download="Siddartha_Raj_Subedi_Resume.pdf"
+                        className="
+                            hidden
+                            items-center gap-2
+                            rounded-xl
+                            bg-green-600
+                            px-4 py-2.5
+                            text-[13px]
+                            font-bold text-white
+                            transition-all duration-300
+                            hover:-translate-y-0.5
+                            hover:bg-green-700
+                            hover:shadow-[0_10px_24px_rgba(22,163,74,0.18)]
+                            lg:inline-flex
+                        "
                     >
                         Resume
-                        <Download size={16} />
+                        <Download
+                            size={15}
+                            className="transition-transform duration-300 group-hover:translate-y-0.5"
+                        />
                     </a>
 
-                    {/* Mobile Menu Button */}
+                    {/* ================= MOBILE BUTTON ================= */}
                     <button
+                        type="button"
+                        aria-label="Open navigation"
                         onClick={() => setMobileOpen(true)}
-                        className="lg:hidden"
+                        className="
+                            flex h-10 w-10
+                            items-center justify-center
+                            rounded-xl
+                            border border-slate-200
+                            bg-white
+                            text-slate-700
+                            transition-all duration-300
+                            hover:-translate-y-0.5
+                            hover:border-green-300
+                            hover:bg-green-50
+                            hover:text-green-700
+                            lg:hidden
+                        "
                     >
-                        <Menu size={24} />
+                        <Menu size={20} />
                     </button>
+
                 </div>
             </header>
 
-            {/* ===== Mobile Drawer ===== */}
+            {/* ================= MOBILE MENU ================= */}
             <AnimatePresence>
                 {mobileOpen && (
                     <>
-                        {/* Backdrop */}
+                        {/* OVERLAY */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setMobileOpen(false)}
-                            className="fixed inset-0 z-40 bg-black/40"
+                            className="
+                                fixed inset-0 z-[60]
+                                bg-slate-950/35
+                                backdrop-blur-sm
+                            "
                         />
 
-                        {/* Drawer */}
+                        {/* SIDE MENU */}
                         <motion.aside
                             initial={{ x: "100%" }}
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
-                            transition={{ duration: 0.3 }}
-                            className="fixed right-0 top-0 z-50 h-screen w-80 bg-white p-6 shadow-lg"
+                            transition={{
+                                duration: 0.28,
+                                ease: "easeOut",
+                            }}
+                            className="
+                                fixed right-0 top-0 z-[70]
+                                flex h-dvh
+                                w-[86%]
+                                max-w-[360px]
+                                flex-col
+                                bg-white
+                                p-6
+                                shadow-2xl
+                            "
                         >
-                            <div className="flex justify-between items-center mb-8">
-                                <h2 className="font-bold text-lg">Menu</h2>
-                                <button onClick={() => setMobileOpen(false)}>
-                                    <X size={22} />
+                            {/* MOBILE HEADER */}
+                            <div className="flex items-center justify-between">
+
+                                <div className="flex items-center gap-3">
+                                    <span
+                                        className="
+                                            flex h-10 w-10
+                                            items-center justify-center
+                                            rounded-xl
+                                            bg-green-600
+                                            text-sm font-black
+                                            text-white
+                                        "
+                                    >
+                                        SS
+                                    </span>
+
+                                    <div>
+                                        <p className="font-extrabold text-slate-900">
+                                            Siddartha.
+                                        </p>
+
+                                        <p className="text-xs text-slate-400">
+                                            Portfolio
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    aria-label="Close navigation"
+                                    onClick={() =>
+                                        setMobileOpen(false)
+                                    }
+                                    className="
+                                        flex h-10 w-10
+                                        items-center justify-center
+                                        rounded-xl
+                                        bg-slate-100
+                                        text-slate-700
+                                        transition-all duration-300
+                                        hover:bg-green-50
+                                        hover:text-green-700
+                                    "
+                                >
+                                    <X size={19} />
                                 </button>
+
                             </div>
 
-                            <nav className="flex flex-col gap-6">
+                            <div className="my-6 h-px bg-slate-100" />
+
+                            {/* MOBILE LINKS */}
+                            <nav className="flex flex-col gap-1">
                                 {navLinks.map((item) => (
                                     <a
                                         key={item.title}
                                         href={item.href}
-                                        onClick={() => setMobileOpen(false)}
-                                        className="flex items-center justify-between text-base font-semibold text-slate-700 hover:text-indigo-600"
+                                        onClick={() =>
+                                            setMobileOpen(false)
+                                        }
+                                        className="
+                                            flex items-center
+                                            justify-between
+                                            rounded-xl
+                                            px-4 py-3.5
+                                            text-sm
+                                            font-semibold
+                                            text-slate-700
+                                            transition-all duration-300
+                                            hover:translate-x-1
+                                            hover:bg-green-50
+                                            hover:text-green-700
+                                        "
                                     >
                                         {item.title}
-                                        <ArrowUpRight size={16} />
+
+                                        <ArrowUpRight
+                                            size={15}
+                                            className="
+                                                transition-transform duration-300
+                                                group-hover:translate-x-0.5
+                                                group-hover:-translate-y-0.5
+                                            "
+                                        />
                                     </a>
                                 ))}
                             </nav>
 
-                            <div className="mt-10">
+                            {/* MOBILE RESUME */}
+                            <div className="mt-auto pt-8">
                                 <a
                                     href={profile.resume}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-3 rounded-full bg-indigo-600 px-6 py-3 font-semibold text-white hover:bg-indigo-700 transition"
+                                    download="Siddartha_Raj_Subedi_Resume.pdf"
+                                    onClick={() =>
+                                        setMobileOpen(false)
+                                    }
+                                    className="
+                                        flex w-full
+                                        items-center
+                                        justify-center
+                                        gap-2
+                                        rounded-xl
+                                        bg-green-600
+                                        px-5 py-3.5
+                                        text-sm
+                                        font-bold
+                                        text-white
+                                        transition-all duration-300
+                                        hover:-translate-y-0.5
+                                        hover:bg-green-700
+                                        hover:shadow-[0_10px_24px_rgba(22,163,74,0.18)]
+                                    "
                                 >
-                                    <Download size={18} />
+                                    <Download size={17} />
+
                                     Download Resume
                                 </a>
                             </div>
+
                         </motion.aside>
                     </>
                 )}
