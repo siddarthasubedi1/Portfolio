@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Briefcase, Code2, Trophy } from "lucide-react";
+import {
+    GraduationCap,
+    Briefcase,
+    Code2,
+    Trophy,
+    ArrowUpRight,
+    MapPin,
+} from "lucide-react";
 
 const journey = [
     {
@@ -7,185 +14,480 @@ const journey = [
         icon: GraduationCap,
         title: "Higher Secondary Education",
         subtitle: "Kalika Secondary School",
+        location: "Pokhara, Nepal",
         description:
-            "Completed Higher Secondary Education in Science, building strong analytical thinking and foundational computer science knowledge.",
+            "Completed Higher Secondary Education in Science and developed a strong foundation in analytical thinking, problem solving and computer science.",
+        type: "Education",
     },
     {
         year: "2023 – Present",
         icon: GraduationCap,
         title: "BSc (Hons) Computer System Engineering",
-        subtitle: "ISMT College, Pokhara",
+        subtitle: "ISMT College",
+        location: "Pokhara, Nepal",
         description:
-            "Focused on software engineering, databases, networking, and modern full stack development.",
+            "Studying software engineering, databases, networking and full stack development while working on practical academic projects.",
+        type: "University",
     },
     {
         year: "2024",
         icon: Code2,
         title: "Full Stack Development Journey",
-        subtitle: "React + Django REST",
+        subtitle: "React + Django REST Framework",
+        location: "Personal Learning",
         description:
-            "Built real-world applications using modern backend architecture and responsive frontend systems.",
+            "Started building full stack applications using React for frontend development and Django REST Framework for backend APIs.",
+        type: "Development",
     },
     {
         year: "2024 – Present",
         icon: Briefcase,
-        title: "Personal Projects & Systems",
-        subtitle: "Authentication & E-commerce",
+        title: "Building Real Projects",
+        subtitle: "Authentication, E-commerce & Portfolio",
+        location: "Project Based Learning",
         description:
-            "Developed scalable authentication systems and full e-commerce applications with clean architecture.",
+            "Built practical systems involving authentication, REST APIs, PostgreSQL databases, responsive interfaces and reusable application architecture.",
+        type: "Projects",
     },
     {
         year: "Current Goal",
         icon: Trophy,
         title: "Seeking Internship",
         subtitle: "Full Stack Developer",
+        location: "Open to Opportunities",
         description:
-            "Actively seeking opportunities to contribute, learn, and grow as a professional developer.",
+            "Looking for an internship where I can contribute to real projects, learn from experienced developers and continue growing professionally.",
+        type: "Career",
     },
 ];
 
 const MyJourney = () => {
     return (
-        <section id="journey" className="relative overflow-hidden py-32 lg:py-40">
-            <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
+        <section
+            id="journey"
+            className="relative overflow-hidden bg-white py-20 sm:py-24 lg:py-28"
+        >
+            {/* BACKGROUND DECORATION */}
+            <div className="pointer-events-none absolute -left-40 top-32 h-80 w-80 rounded-full bg-green-100/50 blur-[120px]" />
 
-                {/* ================= Header ================= */}
+            <div className="pointer-events-none absolute -right-40 bottom-20 h-96 w-96 rounded-full bg-emerald-100/40 blur-[130px]" />
 
+            <div className="container-custom relative z-10">
+
+                {/* ================= HEADER ================= */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: .6 }}
-                    className="mx-auto max-w-4xl text-center"
+                    transition={{ duration: 0.55 }}
+                    className="mx-auto max-w-3xl text-center"
                 >
-
-                    <span className="inline-flex rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-semibold text-green-700">
+                    <span
+                        className="
+                            inline-flex items-center gap-2
+                            rounded-full
+                            border border-green-200
+                            bg-green-50
+                            px-4 py-2
+                            text-xs font-bold
+                            uppercase tracking-[0.16em]
+                            text-green-700
+                            sm:text-sm
+                        "
+                    >
+                        <Briefcase size={15} />
                         My Journey
                     </span>
 
-                    <h2 className="mt-8 text-4xl font-black text-slate-900 md:text-6xl">
-
-                        Learning,
-                        <span className="block bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
-                            Building & Growing
+                    <h2
+                        className="
+                            mt-6
+                            text-3xl font-black
+                            tracking-tight text-slate-900
+                            sm:text-4xl
+                            lg:text-5xl
+                        "
+                    >
+                        Learning, Building
+                        <span className="text-green-600">
+                            {" "}
+                            & Growing.
                         </span>
-
                     </h2>
 
-                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-600">
-
-                        Every project, every challenge, and every technology I learn
-                        moves me one step closer to becoming a professional Full Stack
-                        Software Engineer.
-
+                    <p
+                        className="
+                            mx-auto mt-5
+                            max-w-2xl
+                            text-[15px] leading-7
+                            text-slate-600
+                            sm:text-base
+                        "
+                    >
+                        A quick look at how my education, learning and practical
+                        development experience have shaped my path as a Full Stack
+                        Developer.
                     </p>
-
                 </motion.div>
 
-                {/* Timeline */}
-                <div className="relative mt-24">
+                {/* ================= TIMELINE ================= */}
+                <div className="relative mx-auto mt-14 max-w-6xl sm:mt-16">
 
-                    {/* Center Line */}
-                    <div className="
-        group
-        relative
-        overflow-hidden
-        rounded-[32px]
-        border
-        border-green-100
-        bg-white
-        p-8
-        shadow-md
-        transition-all
-        duration-300
-        hover:-translate-y-3
-        hover:border-green-300
-        hover:shadow-[0_25px_70px_rgba(34,197,94,.15)]
-    ">
+                    {/* DESKTOP CENTER LINE */}
+                    <div
+                        className="
+                            absolute left-1/2 top-4
+                            hidden h-[calc(100%-2rem)] w-px
+                            -translate-x-1/2
+                            bg-gradient-to-b
+                            from-green-200
+                            via-green-400
+                            to-green-100
+                            lg:block
+                        "
+                    />
 
-                        <div className="space-y-24">
+                    {/* MOBILE LINE */}
+                    <div
+                        className="
+                            absolute left-[21px] top-5
+                            h-[calc(100%-2.5rem)] w-px
+                            bg-green-200
+                            lg:hidden
+                        "
+                    />
 
-                            {journey.map((item, index) => {
-                                const Icon = item.icon;
-                                const isLeft = index % 2 === 0;
+                    <div className="space-y-6 lg:space-y-10">
+                        {journey.map((item, index) => {
+                            const Icon = item.icon;
+                            const isLeft = index % 2 === 0;
 
-                                return (
-                                    <motion.div
-                                        key={item.title}
-                                        initial={{ opacity: 0, y: 40 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.6, delay: index * 0.08 }}
-                                        viewport={{ once: true }}
-                                        className={`relative flex flex-col items-centermd:flex-row ${isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                                            } items-center`}
+                            return (
+                                <motion.div
+                                    key={item.title}
+                                    initial={{
+                                        opacity: 0,
+                                        y: 30,
+                                    }}
+                                    whileInView={{
+                                        opacity: 1,
+                                        y: 0,
+                                    }}
+                                    viewport={{
+                                        once: true,
+                                        amount: 0.2,
+                                    }}
+                                    transition={{
+                                        duration: 0.5,
+                                        delay: index * 0.06,
+                                    }}
+                                    className="
+                                        relative
+                                        grid grid-cols-[44px_1fr]
+                                        gap-4
+                                        lg:grid-cols-[1fr_72px_1fr]
+                                        lg:gap-0
+                                    "
+                                >
+                                    {/* ================= LEFT SIDE ================= */}
+                                    <div
+                                        className={`
+                                            hidden lg:block
+                                            ${isLeft
+                                                ? "pr-8"
+                                                : "order-3 pl-8"
+                                            }
+                                        `}
                                     >
-                                        {/* Content */}
-                                        <div className="w-full md:w-1/2 md:px-12">
+                                        {isLeft && (
+                                            <JourneyCard
+                                                item={item}
+                                                Icon={Icon}
+                                                align="right"
+                                            />
+                                        )}
+                                    </div>
 
-                                            <div className="rounded-3xl bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                                    {/* ================= TIMELINE ICON ================= */}
+                                    <div
+                                        className="
+                                            relative z-10
+                                            flex items-start justify-center
+                                            pt-1
+                                            lg:order-2
+                                        "
+                                    >
+                                        <div
+                                            className="
+                                                flex h-11 w-11
+                                                shrink-0
+                                                items-center justify-center
+                                                rounded-2xl
+                                                border-4 border-white
+                                                bg-green-600
+                                                text-white
+                                                shadow-[0_8px_24px_rgba(34,197,94,0.25)]
+                                                sm:h-12 sm:w-12
+                                            "
+                                        >
+                                            <Icon
+                                                size={20}
+                                                strokeWidth={2}
+                                            />
+                                        </div>
+                                    </div>
 
-                                                <div className="flex items-center gap-4">
-                                                    <div
-                                                        className="
-        flex
-        h-16
-        w-16
-        items-center
-        justify-center
-        rounded-2xl
-        bg-gradient-to-br
-        from-green-500
-        to-emerald-600
-        text-white
-        shadow-lg
-        transition-all
-        duration-300
-        group-hover:rotate-6
-        group-hover:scale-110
-    "
-                                                    >
-                                                        <Icon size={28} />
-                                                    </div>
+                                    {/* ================= RIGHT SIDE ================= */}
+                                    <div
+                                        className={`
+                                            ${isLeft
+                                                ? "lg:order-3 lg:pl-8"
+                                                : "lg:order-1 lg:pr-8"
+                                            }
+                                        `}
+                                    >
+                                        {/* MOBILE */}
+                                        <div className="lg:hidden">
+                                            <JourneyCard
+                                                item={item}
+                                                Icon={Icon}
+                                                align="left"
+                                            />
+                                        </div>
 
-                                                    <div>
-                                                        <span className="inline-flex rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700">
-                                                            {item.year}
-                                                        </span>
-
-                                                        <h3 className="mt-4 text-2xl font-bold text-slate-900">
-                                                            {item.title}
-                                                        </h3>
-
-                                                        <p className="mt-2 text-sm font-medium text-green-600">
-                                                            {item.subtitle}
-                                                        </p>
-                                                    </div>
-                                                </div>
-
-                                                <p className="mt-6 leading-8 text-slate-600">
-                                                    {item.description}
-                                                </p>
-
+                                        {/* DESKTOP */}
+                                        {!isLeft && (
+                                            <div className="hidden lg:block">
+                                                <JourneyCard
+                                                    item={item}
+                                                    Icon={Icon}
+                                                    align="left"
+                                                />
                                             </div>
-
-                                        </div>
-
-                                        {/* Timeline Dot */}
-                                        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2">
-                                            <div className="h-4 w-4 rounded-full bg-indigo-600 ring-4 ring-white shadow-md"></div>
-                                        </div>
-
-                                    </motion.div>
-                                );
-                            })}
-
-                        </div>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
                     </div>
-
                 </div>
 
+                {/* ================= BOTTOM CTA ================= */}
+                <motion.div
+                    initial={{ opacity: 0, y: 25 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="
+                        mx-auto mt-14
+                        flex max-w-6xl
+                        flex-col items-center justify-between
+                        gap-6
+                        rounded-[24px]
+                        border border-green-100
+                        bg-green-50/70
+                        px-6 py-7
+                        text-center
+                        sm:px-8
+                        lg:flex-row
+                        lg:text-left
+                    "
+                >
+                    <div>
+                        <p
+                            className="
+                                text-xs font-bold
+                                uppercase tracking-[0.18em]
+                                text-green-600
+                            "
+                        >
+                            Next Step
+                        </p>
+
+                        <h3
+                            className="
+                                mt-2 text-xl font-bold
+                                text-slate-900
+                                sm:text-2xl
+                            "
+                        >
+                            Ready to turn learning into industry experience.
+                        </h3>
+
+                        <p
+                            className="
+                                mt-2 max-w-2xl
+                                text-sm leading-6
+                                text-slate-600
+                            "
+                        >
+                            My next goal is to work with a professional development
+                            team and contribute to meaningful software projects.
+                        </p>
+                    </div>
+
+                    <a
+                        href="#contact"
+                        className="
+                            group inline-flex shrink-0
+                            items-center justify-center gap-2
+                            rounded-xl
+                            bg-green-600
+                            px-5 py-3
+                            text-sm font-semibold
+                            text-white
+                            transition-all duration-300
+                            hover:-translate-y-0.5
+                            hover:bg-green-700
+                            hover:shadow-lg
+                        "
+                    >
+                        Let's Connect
+
+                        <ArrowUpRight
+                            size={16}
+                            className="
+                                transition-transform
+                                group-hover:translate-x-0.5
+                                group-hover:-translate-y-0.5
+                            "
+                        />
+                    </a>
+                </motion.div>
             </div>
         </section>
+    );
+};
+
+/* =========================================================
+REUSABLE JOURNEY CARD
+========================================================= */
+
+const JourneyCard = ({ item, align }) => {
+    return (
+        <article
+            className="
+                group
+                relative
+                overflow-hidden
+                rounded-[22px]
+                border border-slate-200
+                bg-white
+                p-5
+                shadow-[0_8px_30px_rgba(15,23,42,0.04)]
+                transition-all duration-300
+                hover:-translate-y-1
+                hover:border-green-200
+                hover:shadow-[0_16px_45px_rgba(34,197,94,0.09)]
+                sm:p-6
+            "
+        >
+            {/* TOP GREEN ACCENT */}
+            <div
+                className="
+                    absolute inset-x-0 top-0
+                    h-[3px]
+                    origin-left scale-x-0
+                    bg-gradient-to-r
+                    from-green-500 to-emerald-400
+                    transition-transform duration-300
+                    group-hover:scale-x-100
+                "
+            />
+
+            <div
+                className={`
+                    flex flex-wrap
+                    items-center gap-2
+                    ${align === "right" ? "lg:justify-end" : ""}
+                `}
+            >
+                <span
+                    className="
+                        rounded-full
+                        bg-green-50
+                        px-3 py-1.5
+                        text-[11px] font-bold
+                        text-green-700
+                    "
+                >
+                    {item.year}
+                </span>
+
+                <span
+                    className="
+                        rounded-full
+                        border border-slate-200
+                        bg-slate-50
+                        px-3 py-1.5
+                        text-[11px] font-semibold
+                        text-slate-500
+                    "
+                >
+                    {item.type}
+                </span>
+            </div>
+
+            <h3
+                className={`
+                    mt-4
+                    text-lg font-bold
+                    leading-7
+                    text-slate-900
+                    sm:text-xl
+                    ${align === "right"
+                        ? "lg:text-right"
+                        : ""
+                    }
+                `}
+            >
+                {item.title}
+            </h3>
+
+            <p
+                className={`
+                    mt-1.5
+                    text-sm font-semibold
+                    text-green-600
+                    ${align === "right"
+                        ? "lg:text-right"
+                        : ""
+                    }
+                `}
+            >
+                {item.subtitle}
+            </p>
+
+            <div
+                className={`
+                    mt-3
+                    flex items-center gap-2
+                    text-xs font-medium
+                    text-slate-400
+                    ${align === "right"
+                        ? "lg:justify-end"
+                        : ""
+                    }
+                `}
+            >
+                <MapPin size={13} />
+                {item.location}
+            </div>
+
+            <p
+                className={`
+                    mt-4
+                    text-sm leading-7
+                    text-slate-600
+                    ${align === "right"
+                        ? "lg:text-right"
+                        : ""
+                    }
+                `}
+            >
+                {item.description}
+            </p>
+        </article>
     );
 };
 

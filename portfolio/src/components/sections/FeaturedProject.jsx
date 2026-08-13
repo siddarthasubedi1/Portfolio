@@ -1,228 +1,310 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { projects } from "../../constants/projectData";
+import {
+    ArrowRight,
+    ExternalLink,
+    Sparkles,
+} from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+import { featuredProject } from "../../constants/projectData";
 
 const FeaturedProject = () => {
-    const featuredProject = projects[0];
-    const sectionRef = useRef(null);
-
-    if (!featuredProject) return null;
-
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start end", "end start"],
-    });
-
-    // ✅ Reduced parallax intensity (better performance)
-    const imageY = useTransform(scrollYProgress, [0, 1], [20, -20]);
-    const contentY = useTransform(scrollYProgress, [0, 1], [10, -10]);
+    if (!featuredProject) {
+        return null;
+    }
 
     return (
         <section
-            ref={sectionRef}
             id="featured-project"
-            className="relative overflow-hidden py-32 lg:py-40 mb-20 "
+            className="
+                relative overflow-hidden
+                bg-white
+                py-20 sm:py-24 lg:py-28
+            "
         >
-            <div className="container-custom relative z-1 ">
+            <div className="container-custom">
 
-                {/* ================= Header ================= */}
-
+                {/* HEADER */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: .6 }}
-                    className="mx-auto max-w-4xl text-center"
+                    transition={{ duration: 0.5 }}
+                    className="mx-auto max-w-3xl text-center"
                 >
-
-                    <span className="inline-flex rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-semibold text-green-700">
+                    <span className="section-badge">
+                        <Sparkles size={14} />
                         Featured Project
                     </span>
 
-                    <h2 className="mt-8 text-4xl font-black text-slate-900 md:text-6xl">
-
-                        {featuredProject.title}
-
+                    <h2 className="section-title">
+                        A closer look at one of my
+                        <span className="text-green-600">
+                            {" "}
+                            full stack projects.
+                        </span>
                     </h2>
-
-                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-600 ">
-
-                        {featuredProject.description}
-
-                    </p>
-
                 </motion.div>
 
-                {/* Layout */}
-                <div className="mt-24 grid items-center gap-20 lg:grid-cols-[1.1fr_.9fr]">
-                    {/* ✅ Optimized Image */}
-                    <motion.div style={{ y: imageY }} className="relative">
+                {/* FEATURED CARD */}
+                <motion.article
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{
+                        once: true,
+                        amount: 0.15,
+                    }}
+                    transition={{ duration: 0.55 }}
+                    className="
+                        mx-auto mt-12
+                        grid max-w-6xl
+                        overflow-hidden
+                        rounded-[24px]
+                        border border-slate-200
+                        bg-slate-50/50
+                        shadow-[0_12px_40px_rgba(15,23,42,0.05)]
+                        lg:grid-cols-[1.08fr_.92fr]
+                    "
+                >
+                    {/* IMAGE */}
+                    <div
+                        className="
+                            relative
+                            min-h-[270px]
+                            overflow-hidden
+                            bg-slate-100
+                            sm:min-h-[360px]
+                            lg:min-h-[520px]
+                        "
+                    >
+                        <img
+                            src={featuredProject.image}
+                            alt={featuredProject.title}
+                            className="
+                                absolute inset-0
+                                h-full w-full
+                                object-cover
+                                transition-transform
+                                duration-700
+                                hover:scale-[1.025]
+                            "
+                        />
 
                         <div
                             className="
-        group
-        relative
-        overflow-hidden
-        rounded-[36px]
-        border
-        border-green-100
-        bg-white
-        p-4
-        shadow-[0_25px_70px_rgba(34,197,94,.10)]
-    "
+                                absolute left-4 top-4
+                                rounded-lg
+                                border border-white/70
+                                bg-white/90
+                                px-3 py-1.5
+                                text-[11px]
+                                font-bold
+                                text-slate-700
+                                backdrop-blur
+                            "
                         >
-
-                            <img
-                                src={featuredProject.image}
-                                alt={featuredProject.title}
-                                loading="lazy"
-                                decoding="async"
-                                className="
-        aspect-[16/10]
-        w-full
-        rounded-[24px]
-        object-cover
-        transition-all
-        duration-700
-        group-hover:scale-105
-    "
-                            />
-
+                            FEATURED
                         </div>
-                    </motion.div>
+                    </div>
 
-                    {/* ✅ Content */}
-                    <motion.div
-                        style={{ y: contentY }}
+                    {/* CONTENT */}
+                    <div
                         className="
-        rounded-[36px]
-        border
-        border-green-100
-        bg-white
-        p-10
-        shadow-[0_25px_70px_rgba(34,197,94,.08)]
-    "
+                            flex flex-col
+                            justify-center
+                            p-6 sm:p-8
+                            lg:p-10
+                        "
                     >
-                        {featuredProject.problem && (
-                            <div className="rounded-3xl border border-red-100 bg-red-50 p-7">
-                                <h3 className="text-sm font-bold uppercase tracking-[4px] text-indigo-600">
-                                    Problem
-                                </h3>
-                                <p className="mt-4 text-slate-600 leading-relaxed">
-                                    {featuredProject.problem}
+                        <p
+                            className="
+                                text-xs font-bold
+                                uppercase tracking-[0.18em]
+                                text-green-600
+                            "
+                        >
+                            Full Stack Application
+                        </p>
+
+                        <h3
+                            className="
+                                mt-3
+                                text-2xl font-bold
+                                tracking-tight
+                                text-slate-900
+                                sm:text-3xl
+                            "
+                        >
+                            {featuredProject.title}
+                        </h3>
+
+                        <p
+                            className="
+                                mt-4
+                                text-sm leading-7
+                                text-slate-600
+                                sm:text-[15px]
+                            "
+                        >
+                            {featuredProject.description}
+                        </p>
+
+                        {/* TECH */}
+                        <div className="mt-6 flex flex-wrap gap-2">
+                            {featuredProject.technologies
+                                ?.slice(0, 6)
+                                .map((technology) => (
+                                    <span
+                                        key={technology}
+                                        className="
+                                            rounded-lg
+                                            border border-green-100
+                                            bg-green-50
+                                            px-2.5 py-1.5
+                                            text-[11px]
+                                            font-semibold
+                                            text-green-700
+                                        "
+                                    >
+                                        {technology}
+                                    </span>
+                                ))}
+                        </div>
+
+                        {/* SMALL PROJECT INFORMATION */}
+                        <div
+                            className="
+                                mt-7
+                                grid grid-cols-2
+                                gap-3
+                            "
+                        >
+                            <div
+                                className="
+                                    rounded-xl
+                                    border border-slate-200
+                                    bg-white
+                                    p-4
+                                "
+                            >
+                                <p
+                                    className="
+                                        text-[10px]
+                                        font-bold
+                                        uppercase
+                                        tracking-[0.12em]
+                                        text-slate-400
+                                    "
+                                >
+                                    Focus
+                                </p>
+
+                                <p
+                                    className="
+                                        mt-1
+                                        text-sm font-bold
+                                        text-slate-800
+                                    "
+                                >
+                                    Full Stack
                                 </p>
                             </div>
-                        )}
 
-                        {featuredProject.solution && (
-                            <div className="mt-8 rounded-3xl border border-green-100 bg-green-50 p-7">
-                                <h3 className="text-sm font-bold uppercase tracking-[4px] text-green-700">
-                                    Solution
-                                </h3>
-                                <p className="mt-4 leading-8 text-slate-600">
-                                    {featuredProject.solution}
+                            <div
+                                className="
+                                    rounded-xl
+                                    border border-slate-200
+                                    bg-white
+                                    p-4
+                                "
+                            >
+                                <p
+                                    className="
+                                        text-[10px]
+                                        font-bold
+                                        uppercase
+                                        tracking-[0.12em]
+                                        text-slate-400
+                                    "
+                                >
+                                    Main Backend
+                                </p>
+
+                                <p
+                                    className="
+                                        mt-1
+                                        text-sm font-bold
+                                        text-slate-800
+                                    "
+                                >
+                                    Django REST
                                 </p>
                             </div>
-                        )}
+                        </div>
 
-                        {/* Buttons */}
-                        <div className="mt-12 flex flex-wrap gap-5">
+                        {/* ACTIONS */}
+                        <div
+                            className="
+                                mt-7
+                                flex flex-col
+                                gap-3
+                                sm:flex-row
+                            "
+                        >
+                            <Link
+                                to={`/project/${featuredProject.slug}`}
+                                className="btn-primary group"
+                            >
+                                View Project
 
-                            {featuredProject.tech && (
-                                <div className="mt-10">
+                                <ArrowRight
+                                    size={16}
+                                    className="
+                                        transition-transform
+                                        group-hover:translate-x-1
+                                    "
+                                />
+                            </Link>
 
-                                    <h3 className="text-lg font-bold text-slate-900">
-                                        Technologies Used
-                                    </h3>
-
-                                    <div className="mt-5 flex flex-wrap gap-3">
-
-                                        {featuredProject.tech.map((tech) => (
-                                            <span
-                                                key={tech}
-                                                className="
-                        rounded-full
-                        border
-                        border-green-200
-                        bg-green-50
-                        px-4
-                        py-2
-                        text-sm
-                        font-semibold
-                        text-green-700
-                    "
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-
-                                    </div>
-
-                                </div>
+                            {featuredProject.demo && (
+                                <a
+                                    href={featuredProject.demo}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn-secondary"
+                                >
+                                    <ExternalLink size={16} />
+                                    Live Demo
+                                </a>
                             )}
 
                             {featuredProject.github && (
                                 <a
                                     href={featuredProject.github}
                                     target="_blank"
-                                    rel="noreferrer"
+                                    rel="noopener noreferrer"
                                     className="
-                                    inline-flex
-                                    items-center
-                                    gap-3
-                                    rounded-full
-                                    border
-                                    border-green-200
-                                    bg-white
-                                    px-8
-                                    py-4
-                                    font-semibold
-                                    text-slate-700
-                                    transition-all
-                                    duration-300
-                                    hover:border-green-500
-                                    hover:text-green-600
-                                    hover:shadow-lg
+                                        flex h-11 w-11
+                                        shrink-0
+                                        items-center justify-center
+                                        rounded-xl
+                                        border border-slate-200
+                                        bg-white
+                                        text-slate-700
+                                        transition
+                                        hover:border-green-300
+                                        hover:bg-green-50
+                                        hover:text-green-700
                                     "
+                                    aria-label="View GitHub repository"
                                 >
-                                    <FaGithub size={16} />
-                                    GitHub
+                                    <FaGithub size={17} />
                                 </a>
                             )}
-
-                            <Link
-                                to={`/project/${featuredProject.slug}`}
-                                className="
-                                inline-flex
-                                items-center
-                                gap-3
-                                rounded-full
-                                border
-                                border-green-200
-                                bg-white
-                                px-8
-                                py-4
-                                font-semibold
-                                text-slate-700
-                                transition-all
-                                duration-300
-                                hover:border-green-500
-                                hover:text-green-600
-                                hover:shadow-lg
-                                "
-                            >
-                                View Details
-                                <ArrowRight size={16} />
-                            </Link>
-
                         </div>
 
-                    </motion.div>
-
-                </div>
+                    </div>
+                </motion.article>
 
             </div>
         </section>

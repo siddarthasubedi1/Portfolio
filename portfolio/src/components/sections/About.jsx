@@ -1,386 +1,391 @@
 import { motion } from "framer-motion";
 import {
-    GraduationCap,
+    ArrowRight,
     BriefcaseBusiness,
-    MapPin,
     Code2,
-    Laptop,
-    Target,
-    Award,
+    GraduationCap,
+    MapPin,
     Rocket,
+    Sparkles,
+    Target,
 } from "lucide-react";
 
-const cards = [
+const highlights = [
     {
         icon: GraduationCap,
         title: "Education",
         description:
-            "Currently pursuing BSc (Hons) Computer System Engineering at ISMT College, with a focus on software engineering, system design, and modern web technologies.",
+            "Computer System Engineering student developing practical knowledge in software engineering, databases and modern web development.",
     },
     {
         icon: Code2,
-        title: "Full Stack Development",
+        title: "Development",
         description:
-            "Building responsive, secure and scalable applications using React, Django REST Framework, PostgreSQL, REST APIs and modern development practices.",
+            "Focused on building full stack applications with React, Django REST Framework, REST APIs and PostgreSQL.",
     },
     {
         icon: BriefcaseBusiness,
-        title: "Career Goal",
+        title: "Career Direction",
         description:
-            "Seeking a Full Stack Developer Internship where I can contribute to real-world projects while growing as a professional software engineer.",
+            "Seeking a Full Stack Developer internship where I can contribute to real projects and grow within a professional team.",
     },
     {
         icon: MapPin,
-        title: "Based In",
+        title: "Location",
         description:
-            "Pokhara, Nepal • Available for remote, hybrid and on-site internship opportunities.",
+            "Based in Pokhara, Nepal and open to suitable remote, hybrid and on-site opportunities.",
     },
 ];
 
 const stats = [
     {
         number: "10+",
-        label: "Projects Completed",
-        icon: Rocket,
+        label: "Projects",
     },
     {
         number: "15+",
         label: "Technologies",
-        icon: Award,
     },
     {
         number: "2+",
         label: "Years Learning",
-        icon: Target,
     },
 ];
 
-export default function About() {
+const About = () => {
     return (
         <section
             id="about"
-            className="relative overflow-hidden py-32 lg:py-40"
+            className="
+                relative overflow-hidden
+                bg-slate-50/70
+                py-20 sm:py-24 lg:py-28
+            "
         >
-            {/* Background Glow */}
-            <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute left-0 top-24 h-72 w-72 rounded-full bg-emerald-200/20 blur-3xl"></div>
-                <div className="absolute right-0 bottom-24 h-72 w-72 rounded-full bg-sky-200/20 blur-3xl"></div>
-            </div>
+            <div className="pointer-events-none absolute -left-40 top-20 h-80 w-80 rounded-full bg-green-100/60 blur-[120px]" />
 
             <div className="container-custom relative z-10">
 
-                {/* ================= Section Header ================= */}
-
+                {/* HEADER */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 25 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="mx-auto max-w-5xl text-center"
+                    transition={{ duration: 0.5 }}
+                    className="mx-auto max-w-3xl text-center"
                 >
-
-                    <span className="inline-flex items-center rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-semibold text-green-700">
+                    <span className="section-badge">
+                        <Sparkles size={14} />
                         About Me
                     </span>
 
-                    <h2 className="mt-8 text-4xl font-black leading-tight text-slate-900 md:text-6xl">
-                        Building Digital Products
-                        <span className="mt-3 block bg-gradient-to-r from-green-600 via-emerald-500 to-teal-500 bg-clip-text text-transparent">
-                            That Solve Real Problems
+                    <h2 className="section-title">
+                        Developer focused on building
+                        <span className="text-green-600">
+                            {" "}
+                            useful digital products.
                         </span>
                     </h2>
 
-                    <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-600">
-                        I'm a Computer System Engineering student passionate about Full Stack
-                        Development. I enjoy designing modern user experiences, building secure
-                        backend systems, and creating scalable applications that deliver real
-                        business value.
+                    <p className="section-description">
+                        I'm a Computer System Engineering student with a strong
+                        interest in Full Stack Development. I enjoy transforming
+                        ideas into practical web applications while continuing
+                        to improve my understanding of frontend, backend and
+                        software engineering.
                     </p>
-
                 </motion.div>
 
-                {/* Mission Card */}
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }}
-                    viewport={{ once: true }}
-                    className="mt-24"
-                >
-                    <div
-                        className="
-                    group
-                    relative
-                    overflow-hidden
-                    rounded-[40px]
-                    border
-                    border-green-100
-                    bg-white/90
-                    p-8
-                    shadow-lg
-                    backdrop-blur-xl
-                    transition-all
-                    duration-500
-                    hover:shadow-[0_30px_80px_rgba(34,197,94,.15)]
-                    md:p-14
+                {/* MAIN ABOUT AREA */}
+                <div
+                    className="
+                        mx-auto mt-12
+                        grid max-w-6xl
+                        gap-6
+                        lg:grid-cols-[1.15fr_.85fr]
                     "
+                >
+
+                    {/* LEFT */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -25 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="
+                            portfolio-card
+                            relative overflow-hidden
+                            p-6 sm:p-8 lg:p-9
+                        "
                     >
-
-                        <div className="grid items-center gap-20 lg:grid-cols-[1.2fr_.8fr]">
-
-                            {/* Left */}
-                            <div>
-                                <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-green-500 to-emerald-600 text-white shadow-[0_20px_40px_rgba(34,197,94,.35)]">
-                                    <Laptop size={36} />
-                                </div>
-
-                                <h3 className="mt-10 text-3xl font-bold text-slate-900">
-                                    My Development Journey
-                                </h3>
-
-                                <p className="mt-8 max-w-xl text-lg leading-9 text-slate-600">
-                                    My objective is to become a skilled Full Stack Developer capable of building
-                                    high-quality web applications from frontend to backend. I continuously improve
-                                    my technical skills by working on real-world projects, learning modern
-                                    frameworks, and following industry best practices.
-
-                                </p>
-
-                                <div
-                                    className="
-                                mt-10
-                                inline-flex
-                                items-center
+                        <div
+                            className="
+                                absolute right-0 top-0
+                                h-40 w-40
                                 rounded-full
-                                border
-                                border-green-200
-                                bg-green-50
-                                px-6
-                                py-3
-                                font-semibold
-                                text-green-700
-                                ">
-                                    🚀 Available for Full Stack Developer Internship
-                                </div>
+                                bg-green-100/60
+                                blur-[70px]
+                            "
+                        />
+
+                        <div className="relative z-10">
+
+                            <div
+                                className="
+                                    flex h-12 w-12
+                                    items-center justify-center
+                                    rounded-xl
+                                    bg-green-600
+                                    text-white
+                                "
+                            >
+                                <Target size={21} />
                             </div>
 
-                            {/* Right - Stats */}
-                            <div className="grid gap-6 sm:grid-cols-3">
-                                {stats.map((item) => {
-                                    const Icon = item.icon;
+                            <p
+                                className="
+                                    mt-6 text-xs
+                                    font-bold uppercase
+                                    tracking-[0.17em]
+                                    text-green-600
+                                "
+                            >
+                                My Focus
+                            </p>
 
-                                    return (
-                                        <motion.div
-                                            key={item.label}
-                                            whileHover={{
-                                                y: -8,
-                                                scale: 1.03,
-                                            }}
-                                            transition={{
-                                                duration: 0.3,
-                                            }}
-                                            className="
-                                            group
-                                            relative
-                                            overflow-hidden
-                                            rounded-[30px]
-                                            border
-                                            border-green-100
-                                            bg-white
-                                            p-8
-                                            text-center
-                                            shadow-md
-                                            transition-all
-                                            duration-300
-                                            hover:border-green-300
-                                            hover:shadow-[0_20px_60px_rgba(34,197,94,.18)]
+                            <h3
+                                className="
+                                    mt-2
+                                    text-2xl font-bold
+                                    tracking-tight
+                                    text-slate-900
+                                    sm:text-3xl
+                                "
+                            >
+                                Learning by building real applications.
+                            </h3>
+
+                            <p
+                                className="
+                                    mt-5
+                                    max-w-2xl
+                                    text-sm leading-7
+                                    text-slate-600
+                                    sm:text-[15px]
+                                "
+                            >
+                                My goal is to become a dependable Full Stack
+                                Developer who understands both the user-facing
+                                side of an application and the systems working
+                                behind it. I strengthen my skills through
+                                practical projects, debugging, API development
+                                and continuous learning.
+                            </p>
+
+                            <div
+                                className="
+                                    mt-6
+                                    flex flex-wrap gap-2
+                                "
+                            >
+                                {[
+                                    "React",
+                                    "Django REST",
+                                    "PostgreSQL",
+                                    "REST APIs",
+                                    "Responsive UI",
+                                ].map((item) => (
+                                    <span
+                                        key={item}
+                                        className="
+                                            rounded-lg
+                                            border border-green-100
+                                            bg-green-50/70
+                                            px-3 py-2
+                                            text-xs
+                                            font-semibold
+                                            text-green-700
                                         "
-                                        >
-
-                                            {/* Background Glow */}
-
-                                            <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-
-                                            <div className="relative z-10">
-
-                                                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 text-white shadow-lg">
-
-                                                    <Icon size={26} />
-
-                                                </div>
-
-                                                <h3 className="mt-6 text-4xl font-black text-slate-900">
-                                                    {item.number}
-                                                </h3>
-
-                                                <p className="mt-3 text-sm font-semibold uppercase tracking-wider text-slate-500">
-                                                    {item.label}
-                                                </p>
-
-                                            </div>
-
-                                        </motion.div>
-                                    );
-                                })}
+                                    >
+                                        {item}
+                                    </span>
+                                ))}
                             </div>
+
+                            <a
+                                href="#projects"
+                                className="
+                                    group mt-7
+                                    inline-flex items-center
+                                    gap-2
+                                    text-sm font-bold
+                                    text-green-700
+                                "
+                            >
+                                Explore my projects
+
+                                <ArrowRight
+                                    size={16}
+                                    className="
+                                        transition-transform
+                                        group-hover:translate-x-1
+                                    "
+                                />
+                            </a>
 
                         </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
 
-                {/* ================= Information Cards ================= */}
-
-                <div className="mt-32 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-
-                    {cards.map((card, index) => {
-
-                        const Icon = card.icon;
-
-                        return (
-
-                            <motion.div
-                                key={card.title}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{
-                                    duration: .5,
-                                    delay: index * .08,
-                                }}
-                                whileHover={{
-                                    y: -12,
-                                }}
-                                className="
-                    group
-                    relative
-                    overflow-hidden
-                    rounded-[32px]
-                    border
-                    border-green-100
-                    bg-white
-                    p-8
-                    shadow-md
-                    transition-all
-                    duration-300
-                    hover:border-green-300
-                    hover:shadow-[0_25px_70px_rgba(34,197,94,.15)]
-                "
-                            >
-
-                                {/* Background */}
-
-                                <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-
-                                {/* Icon */}
-
-                                <div className="relative z-10">
-
-                                    <div
-                                        className="
-                            flex
-                            h-16
-                            w-16
-                            items-center
-                            justify-center
-                            rounded-2xl
-                            bg-gradient-to-br
-                            from-green-500
-                            to-emerald-600
-                            text-white
-                            shadow-lg
-                            transition-all
-                            duration-300
-                            group-hover:scale-110
-                            group-hover:rotate-6
+                    {/* RIGHT STATS */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 25 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="
+                            grid grid-cols-3 gap-3
+                            lg:grid-cols-1
                         "
-                                    >
-                                        <Icon size={28} />
-                                    </div>
-
-                                    <h3 className="mt-8 text-xl font-bold text-slate-900">
-                                        {card.title}
-                                    </h3>
-
-                                    <p className="mt-5 leading-8 text-slate-600">
-                                        {card.description}
-                                    </p>
-
+                    >
+                        {stats.map((stat, index) => (
+                            <div
+                                key={stat.label}
+                                className="
+                                    portfolio-card
+                                    flex flex-col
+                                    items-center justify-center
+                                    p-4 text-center
+                                    sm:p-6
+                                    lg:flex-row
+                                    lg:justify-start
+                                    lg:gap-5
+                                    lg:text-left
+                                "
+                            >
+                                <div
+                                    className="
+                                        flex h-10 w-10
+                                        shrink-0
+                                        items-center justify-center
+                                        rounded-xl
+                                        bg-green-50
+                                        text-green-600
+                                    "
+                                >
+                                    {index === 0 ? (
+                                        <Rocket size={18} />
+                                    ) : index === 1 ? (
+                                        <Code2 size={18} />
+                                    ) : (
+                                        <Target size={18} />
+                                    )}
                                 </div>
 
-                            </motion.div>
+                                <div className="mt-3 lg:mt-0">
+                                    <p
+                                        className="
+                                            text-xl font-extrabold
+                                            text-slate-900
+                                            sm:text-2xl
+                                        "
+                                    >
+                                        {stat.number}
+                                    </p>
 
-                        );
-
-                    })}
-
+                                    <p
+                                        className="
+                                            mt-0.5
+                                            text-[10px]
+                                            font-semibold
+                                            uppercase
+                                            tracking-[0.08em]
+                                            text-slate-500
+                                            sm:text-xs
+                                        "
+                                    >
+                                        {stat.label}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </motion.div>
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: .6 }}
-                    className="mt-24 text-center"
+                {/* INFO CARDS */}
+                <div
+                    className="
+                        mx-auto mt-6
+                        grid max-w-6xl
+                        gap-5
+                        sm:grid-cols-2
+                        lg:grid-cols-4
+                    "
                 >
+                    {highlights.map((item, index) => {
+                        const Icon = item.icon;
 
-                    <h3 className="text-3xl font-black text-slate-900">
+                        return (
+                            <motion.article
+                                key={item.title}
+                                initial={{
+                                    opacity: 0,
+                                    y: 20,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    duration: 0.4,
+                                    delay: index * 0.05,
+                                }}
+                                className="
+                                    portfolio-card
+                                    flex h-full
+                                    flex-col p-5
+                                    sm:p-6
+                                "
+                            >
+                                <div
+                                    className="
+                                        flex h-10 w-10
+                                        items-center justify-center
+                                        rounded-xl
+                                        bg-green-50
+                                        text-green-600
+                                    "
+                                >
+                                    <Icon size={18} />
+                                </div>
 
-                        Let's Build Something Amazing Together
+                                <h3
+                                    className="
+                                        mt-5
+                                        text-base font-bold
+                                        text-slate-900
+                                    "
+                                >
+                                    {item.title}
+                                </h3>
 
-                    </h3>
-
-                    <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-
-                        I'm always excited to work on meaningful projects,
-                        learn from experienced developers, and contribute
-                        to building high-quality digital products.
-
-                    </p>
-
-                    <div className="mt-10 flex flex-wrap justify-center gap-5">
-
-                        <a
-                            href="#projects"
-                            className="
-                rounded-full
-                bg-gradient-to-r
-                from-green-600
-                to-emerald-600
-                px-8
-                py-4
-                font-semibold
-                text-white
-                transition
-                hover:-translate-y-1
-                hover:shadow-xl
-            "
-                        >
-                            View My Projects
-                        </a>
-
-                        <a
-                            href="#contact"
-                            className="
-                rounded-full
-                border
-                border-slate-300
-                px-8
-                py-4
-                font-semibold
-                text-slate-700
-                transition
-                hover:border-green-500
-                hover:text-green-600
-            "
-                        >
-                            Contact Me
-                        </a>
-
-                    </div>
-
-                </motion.div>
+                                <p
+                                    className="
+                                        mt-2
+                                        text-sm leading-6
+                                        text-slate-600
+                                    "
+                                >
+                                    {item.description}
+                                </p>
+                            </motion.article>
+                        );
+                    })}
+                </div>
 
             </div>
         </section>
     );
-}
+};
+
+export default About;
