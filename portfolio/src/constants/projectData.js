@@ -15,6 +15,11 @@ import authLogin from "../assets/projects/authentication/login.png";
 import portfolioCover from "../assets/projects/portfolio/cover.png";
 import portfolioHero from "../assets/projects/portfolio/hero.png";
 
+// Hospital Management System
+import hospitalCover from "../assets/projects/hospital/cover.png";
+import hospitalDashboard from "../assets/projects/hospital/dashboard.png";
+import hospitalHero from "../assets/projects/hospital/hero.png";
+
 export const projects = [
     {
         id: 1,
@@ -236,6 +241,73 @@ export const projects = [
         github: "https://github.com/siddarthasubedi1",
 
         demo: "",
+    },
+    {
+        id: 4,
+
+        slug: "hospital-management-system",
+
+        featured: false,
+
+        title: "Hospital Management System",
+
+        shortDescription:
+            "Hospital management system built with React.",
+
+        description:
+            "A comprehensive hospital management system built with React, featuring patient records, appointment scheduling, medical history tracking, payment processing, and more.",
+
+        image: hospitalCover,
+
+        screenshots: [
+            hospitalDashboard,
+            hospitalHero,
+        ],
+
+        problem:
+            "Hospital management systems often lack user-friendly interfaces and efficient workflows, leading to administrative challenges and patient dissatisfaction.",
+
+        solution:
+            "Designed a modern hospital management system emphasizing projects and practical skills.",
+
+        features: [
+            "Responsive Layout",
+            "Framer Motion",
+            "Patient Records",
+            "Appointment Scheduling",
+            "Medical History Tracking",
+            "Payment Processing",
+            "User Management",
+        ],
+
+        technologies: [
+            "React",
+            "Vite",
+            "Tailwind CSS",
+            "Framer Motion",
+        ],
+
+        architecture: [
+            "Reusable Components",
+            "Responsive Design",
+            "React Router",
+        ],
+
+        challenges: [
+            "Responsive Layout",
+            "Animations",
+            "Performance",
+        ],
+
+        lessons: [
+            "Modern UI Design",
+            "Animations",
+            "Accessibility",
+        ],
+
+        github: "https://github.com/siddarthasubedi1",
+
+        demo: "https://hospital-prototype-ten.vercel.app/",
     },
 ];
 

@@ -102,7 +102,7 @@ const projects = [
             "PostgreSQL",
             "Postman",
             "JWT",
-
+            "React"
 
         ],
 
